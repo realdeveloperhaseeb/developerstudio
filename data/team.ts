@@ -31,7 +31,7 @@ export const team: TeamMember[] = [
     name: "Abida",
     role: "Meta Ads Specialist",
     bio: "Abida runs profitable paid social campaigns across Meta and TikTok, obsessing over cost-per-lead and creative that stops the scroll.",
-    image: "/images/team/abida.svg",
+    image: "/images/team/abida.webp",
     socials: { linkedin: "#" },
   },
   {
