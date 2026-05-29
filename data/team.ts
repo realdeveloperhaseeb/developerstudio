@@ -43,11 +43,11 @@ export const team: TeamMember[] = [
     socials: { instagram: "#" },
   },
   {
-    slug: "hamza",
-    name: "Hamza",
-    role: "SEO & PPC Specialist",
-    bio: "Hamza blends technical SEO with Google Ads to capture high-intent searches and squeeze maximum ROI from every channel.",
-    image: "/images/team/hamza.svg",
+    slug: "sohaib",
+    name: "Sohaib",
+    role: "SEO Expert",
+    bio: "Sohaib gets businesses to the top of Google — technical SEO, local rankings, and content strategy that captures high-intent searches and turns them into clients.",
+    image: "/images/team/sohaib.svg",
     socials: { linkedin: "#" },
   },
   {
