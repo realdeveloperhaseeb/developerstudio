@@ -51,11 +51,11 @@ export const team: TeamMember[] = [
     socials: { linkedin: "#" },
   },
   {
-    slug: "ayesha",
-    name: "Ayesha",
-    role: "Social Media Manager",
-    bio: "Ayesha builds communities that trust and buy — planning content, managing channels, and turning followers into clients.",
-    image: "/images/team/ayesha.svg",
+    slug: "alisha",
+    name: "Alisha",
+    role: "Graphics Designer",
+    bio: "Alisha designs the visuals that make the brand impossible to ignore — social creatives, ad graphics, and on-brand assets crafted to stop the scroll and drive clicks.",
+    image: "/images/team/alisha-graphics-adjusted.webp",
     socials: { instagram: "#" },
   },
 ];
