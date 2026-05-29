@@ -30,8 +30,8 @@ export default function TeamSection({ heading = true }: { heading?: boolean }) {
                     src={m.image}
                     alt={m.name}
                     fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                   />
                   {m.founder && (
                     <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-brand-darker backdrop-blur">

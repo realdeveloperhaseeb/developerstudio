@@ -14,7 +14,7 @@ export const team: TeamMember[] = [
     name: "Haseeb",
     role: "Founder & Lead Developer",
     bio: "Haseeb founded Developer Studio to help ambitious firms grow from zero. He leads engineering and strategy, having shipped dozens of high-performance websites and growth systems for UK businesses.",
-    image: "/images/team/haseeb.svg",
+    image: "/images/team/haseeb.png",
     founder: true,
     socials: { linkedin: "#", x: "#" },
   },
