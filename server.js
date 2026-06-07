@@ -4,15 +4,22 @@
 // at this file. The app will listen on whatever PORT Hostinger assigns.
 //
 // (Vercel ignores this file — it uses next start directly.)
+//
+// IMPORTANT: this file is for PRODUCTION only. Use `npm run dev` for local
+// development — never run server.js in dev mode.
+
+// Force production mode. Hostinger's Node panel doesn't set NODE_ENV by
+// default, and running Next in dev mode on a production host crashes it
+// (requires dev deps + runtime compile = OOM / 503).
+process.env.NODE_ENV = "production";
 
 const { createServer } = require("http");
 const next = require("next");
 
-const dev = process.env.NODE_ENV !== "production";
 const hostname = process.env.HOSTNAME || "0.0.0.0";
 const port = parseInt(process.env.PORT || "3000", 10);
 
-const app = next({ dev, hostname, port });
+const app = next({ dev: false, hostname, port });
 const handle = app.getRequestHandler();
 
 app
