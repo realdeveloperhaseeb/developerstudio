@@ -73,6 +73,7 @@ export default function Footer() {
                 { label: "About Us", href: "/about" },
                 { label: "Projects", href: "/projects" },
                 { label: "Locations", href: "/locations" },
+                { label: "Landing Pages", href: "/landing-pages" },
                 { label: "Contact", href: "/contact" },
               ].map((l) => (
                 <li key={l.href}>

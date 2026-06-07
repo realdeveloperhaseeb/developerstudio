@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { site } from "@/data/site";
 import { cities } from "@/data/cities";
 import { services } from "@/data/services";
+import { landingPages } from "@/data/landingPages";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -10,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/services",
     "/projects",
     "/locations",
+    "/landing-pages",
     "/about",
     "/contact",
     "/privacy",
@@ -37,5 +39,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  return [...staticRoutes, ...cityRoutes, ...cityServiceRoutes];
+  const landingRoutes = landingPages.map((p) => ({
+    url: `${site.url}/${p.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.75,
+  }));
+
+  return [...staticRoutes, ...cityRoutes, ...cityServiceRoutes, ...landingRoutes];
 }

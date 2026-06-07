@@ -24,8 +24,8 @@ export const site = {
   // Social links — replace with real profiles.
   social: [
     { name: "Facebook", href: "https://facebook.com/developerstudio.org", icon: "facebook" },
-    { name: "Instagram", href: "https://instagram.com/developerstudio.org", icon: "instagram" },
-    { name: "LinkedIn", href: "https://linkedin.com/company/developerstudio", icon: "linkedin" },
+    { name: "Instagram", href: "https://www.instagram.com/developerstudio_org/", icon: "instagram" },
+    { name: "LinkedIn", href: "https://www.linkedin.com/company/developer-studio-org/", icon: "linkedin" },
     { name: "X", href: "https://x.com/developerstudio", icon: "x" },
     { name: "YouTube", href: "https://youtube.com/@developerstudio", icon: "youtube" },
     { name: "WhatsApp", href: "https://wa.me/447988563005", icon: "whatsapp" },
