@@ -46,6 +46,11 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: site.url },
   robots: { index: true, follow: true },
+  verification: {
+    // Google Search Console — Next.js renders this as
+    // <meta name="google-site-verification" content="..." />
+    google: "3RL-QPOsLnl29KrrBPmammgDTSXldRH3wAv-w8ZWxrE",
+  },
 };
 
 export default function RootLayout({
