@@ -15,21 +15,40 @@ import CtaSection from "@/components/sections/CtaSection";
 */
 
 const SLUG = "website-development-services-for-roofing-companies";
-const TITLE = "Roofing Websites That Fill Your Diary | Built in 14 Days";
+const TITLE = "Website Development Agency for Roofing Companies | Developer Studio";
 const PHONE_E164 = site.phones.uk.e164;
 const PHONE_DISPLAY = site.phones.uk.display;
 
 export const metadata: Metadata = {
-  title: TITLE,
+  // Use absolute to bypass the root layout's title template
+  // (which otherwise appends "| Developer Studio" a second time)
+  title: { absolute: TITLE },
   description:
-    "Mobile-first roofing websites engineered to fill your diary with quote requests. Instant lead forms, local SEO, Google reviews — built and launched in 14 days. Free consultation.",
+    "Developer Studio is a UK web design agency for roofing companies. We design and build mobile-first websites with instant quote forms, local SEO, and Google reviews — live in 14 days. Book a free consultation.",
   alternates: { canonical: `/${SLUG}` },
   openGraph: {
-    title: `${TITLE} | ${site.name}`,
+    title: TITLE,
     description:
-      "Lead-generating roofing websites with instant quote forms, local SEO, and Google reviews. Live in 14 days. Free consultation.",
+      "Developer Studio designs lead-generating websites for UK roofing companies. Quote forms, local SEO, Google reviews — live in 14 days. Free consultation.",
     url: `${site.url}/${SLUG}`,
+    siteName: site.name,
+    type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description:
+      "UK web design agency for roofing companies. Lead-generating sites, live in 14 days.",
+  },
+  robots: { index: true, follow: true },
+  keywords: [
+    "web design agency for roofers",
+    "roofing company website design",
+    "websites for roofing companies UK",
+    "roofer website development",
+    "local SEO for roofers",
+    "Developer Studio",
+  ],
 };
 
 const trustBadges: { icon: IconName; value: string; label: string }[] = [
@@ -389,17 +408,19 @@ export default function RoofingLandingPage() {
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-70" />
                   <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-brand" />
                 </span>
-                Now booking 14-day builds &mdash; limited spots
+                Developer Studio &middot; web agency for UK roofers
               </span>
 
               <h1 className="mt-6 text-4xl font-extrabold leading-[1.05] text-ink sm:text-5xl lg:text-[3.4rem]">
-                Roofing websites that{" "}
+                We build roofing websites that{" "}
                 <span className="text-gradient">fill your diary.</span>
               </h1>
               <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink-muted sm:text-xl">
-                Mobile-first sites engineered to bring you quote requests every
-                single day &mdash; with local SEO, instant lead forms, Google
-                reviews and call tracking baked in. <strong className="text-ink">Live in 14 days.</strong>
+                We&apos;re a UK web agency that designs mobile-first sites for
+                roofing companies &mdash; engineered to bring you quote requests
+                every single day with local SEO, instant lead forms, Google
+                reviews and call tracking baked in.{" "}
+                <strong className="text-ink">Live in 14 days.</strong>
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
