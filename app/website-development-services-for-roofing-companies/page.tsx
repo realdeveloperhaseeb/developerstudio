@@ -4,216 +4,159 @@ import { site } from "@/data/site";
 import { Icon, type IconName } from "@/components/icons";
 import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
-import SectionHeading from "@/components/SectionHeading";
+import Button from "@/components/Button";
+import SectionHeading, { Eyebrow } from "@/components/SectionHeading";
+import CtaSection from "@/components/sections/CtaSection";
 
 /*
-  This page acts as a LIVE SAMPLE of a roofing company's website.
-  Brand: "Apex Roofing UK" (fictional). All "Get a Quote", "Call", etc.
-  buttons route to Developer Studio's own contact + WhatsApp — so when
-  the link is shared with a real roofer, every CTA leads back to us.
+  Agency pitch page: Developer Studio pitching website development services
+  to UK roofing companies. CTAs route to our own /contact + WhatsApp so any
+  visiting roofer becomes a lead for us.
 */
 
-const BRAND = "Apex Roofing UK";
 const SLUG = "website-development-services-for-roofing-companies";
+const TITLE = "Website Development for Roofing Companies — Lead-Generating Sites";
 
 export const metadata: Metadata = {
-  title: `${BRAND} — Sample Roofing Website by Developer Studio`,
+  title: TITLE,
   description:
-    "Live sample of a roofing company website built by Developer Studio. See how your roofing business could look online — and get the same site for yours.",
+    "Mobile-first roofing websites that fill your diary. Instant quote forms, before/after galleries, local SEO and Google reviews — built and launched in 14 days by Developer Studio.",
   alternates: { canonical: `/${SLUG}` },
-  robots: { index: true, follow: true },
+  openGraph: {
+    title: `${TITLE} | ${site.name}`,
+    description:
+      "Lead-generating roofing websites with instant quote forms, local SEO, and call tracking.",
+    url: `${site.url}/${SLUG}`,
+  },
 };
 
-const services: { icon: IconName; title: string; text: string }[] = [
-  { icon: "home",    title: "New Roof Installation", text: "Full residential and commercial re-roofs in slate, tile, and metal — guaranteed for 25 years." },
-  { icon: "bolt",    title: "Emergency Roof Repairs", text: "Storm damage, broken tiles, leaks — same-day response across our service area." },
-  { icon: "rocket",  title: "Flat Roofing",          text: "EPDM, GRP fibreglass, and felt systems for garages, extensions and commercial roofs." },
-  { icon: "scale",   title: "Chimney & Lead Work",   text: "Re-pointing, flashing, and full chimney rebuilds carried out by certified roofers." },
-  { icon: "share",   title: "Gutters & Fascias",     text: "Cleaning, repair, and full replacement of guttering, fascias, soffits and downpipes." },
-  { icon: "sparkles",title: "Roof Cleaning & Moss",  text: "Professional moss removal and treatment to extend the life of your roof by years." },
+const pains: { icon: IconName; title: string; text: string }[] = [
+  {
+    icon: "phone",
+    title: "Quiet phones, empty diary",
+    text: "Your competitors are getting calls every day. Your line stays silent — or rings with the wrong jobs.",
+  },
+  {
+    icon: "search",
+    title: "Invisible on Google",
+    text: "When someone types 'roofer near me', your business is on page two. Nobody scrolls that far.",
+  },
+  {
+    icon: "code",
+    title: "An old, slow website",
+    text: "Loads slowly on mobile, looks dated, and no one trusts it. You're losing quotes before you even know.",
+  },
+  {
+    icon: "mail",
+    title: "Manual back-and-forth",
+    text: "Every quote starts with five emails. You'd rather be on the roof than at the keyboard.",
+  },
 ];
 
-const why: { icon: IconName; title: string; text: string }[] = [
-  { icon: "check",  title: "Fully insured",       text: "£5M public liability cover on every job — your home and our team are protected." },
-  { icon: "star",   title: "10-year guarantee",   text: "Every new roof comes with a written 10-year workmanship guarantee, transferable on sale." },
-  { icon: "phone",  title: "Free quotes, fast",   text: "Tell us about your job and we'll come back with a clear written quote within 24 hours." },
-  { icon: "scale",  title: "Family-run since 2010", text: "Local, trusted, and rated 5.0 on Google. We treat your home like our own." },
+const features: { icon: IconName; title: string; text: string }[] = [
+  {
+    icon: "bolt",
+    title: "Mobile-first & lightning fast",
+    text: "Loads in under a second on a phone. Every section optimised to turn a tap into a quote request.",
+  },
+  {
+    icon: "target",
+    title: "Instant quote form",
+    text: "A simple step-by-step form on every page. Job type, postcode, photos — straight to your phone.",
+  },
+  {
+    icon: "sparkles",
+    title: "Before & after gallery",
+    text: "A showcase that proves quality. Easy to update — no developer needed.",
+  },
+  {
+    icon: "search",
+    title: "Local SEO + Google Business",
+    text: "Your firm at the top of 'roofers near me' in your service area. GBP setup and review collection included.",
+  },
+  {
+    icon: "star",
+    title: "Reviews front-and-centre",
+    text: "Google reviews and trust badges woven through the site so visitors feel safe to call.",
+  },
+  {
+    icon: "phone",
+    title: "Call tracking & reporting",
+    text: "Know which jobs came from the site, which ads worked, and where your money went.",
+  },
 ];
 
-const gallery: { title: string; area: string; tag: string; svg: (props: { className?: string }) => React.JSX.Element }[] = [
-  { title: "Slate re-roof", area: "Leeds, LS6",   tag: "Re-roof",    svg: RoofSlate },
-  { title: "Terracotta tile roof", area: "York, YO24", tag: "Re-roof", svg: RoofTile },
-  { title: "EPDM flat roof",        area: "Manchester, M20", tag: "Flat roof", svg: RoofFlat },
-  { title: "Storm repair",          area: "Sheffield, S11", tag: "Repair",   svg: RoofRepair },
-  { title: "Chimney re-point",      area: "Bradford, BD9",  tag: "Chimney",  svg: RoofChimney },
-  { title: "New gutters & fascias", area: "Wakefield, WF1", tag: "Guttering",svg: RoofGutter },
+const steps: { n: string; title: string; text: string }[] = [
+  { n: "01", title: "Discovery call", text: "20 minutes. We learn your jobs, your area, and your goals." },
+  { n: "02", title: "Design", text: "We design a homepage and quote flow built for your customers." },
+  { n: "03", title: "Build & content", text: "We build the site, write the copy, and set up tracking." },
+  { n: "04", title: "Launch & SEO", text: "We launch, configure Google Business Profile, and start ranking." },
 ];
 
-const reviews = [
-  { name: "Sarah J.", area: "Leeds",     text: "Outstanding from start to finish. Honest quote, turned up on time, left the place spotless. Our new slate roof looks fantastic." },
-  { name: "Mark T.",  area: "Manchester", text: "Came out same day for a storm leak. Fixed it properly first time. Couldn't ask for better — friendly, professional, fair price." },
-  { name: "Priya R.", area: "Sheffield",  text: "Three local roofers quoted us. Apex were the only ones who actually went up to look. Quality work, no nasty surprises on the bill." },
+const stats = [
+  { value: "+95%", label: "Bookings increase" },
+  { value: "#1", label: "Local pack rankings" },
+  { value: "120+", label: "Calls per month" },
+  { value: "0.9s", label: "Mobile load time" },
 ];
 
-const areas = [
-  "Leeds", "Manchester", "Sheffield", "Bradford", "York", "Wakefield",
-  "Huddersfield", "Halifax", "Doncaster", "Harrogate", "Rotherham", "Barnsley",
+const faqs = [
+  {
+    q: "How long until my roofing site is live?",
+    a: "Typically 14 days from kickoff to launch — including copywriting, design, build, hosting setup, and Google Business Profile optimisation.",
+  },
+  {
+    q: "Do I have to write the content?",
+    a: "No. We write everything — your services, your area, your pitch — based on a single 20-minute discovery call.",
+  },
+  {
+    q: "Will it actually bring me quotes?",
+    a: "Yes. Every page is designed to convert. Combined with the local SEO setup and (optionally) Google Ads, most of our roofing clients see a noticeable jump in quote requests within 30–60 days.",
+  },
+  {
+    q: "How much does it cost?",
+    a: "We quote per project after the discovery call so it matches your size and area. Get in touch and we'll give you a clear, no-pressure price.",
+  },
 ];
 
-/* ------------ SVG illustrations (different roof scenes) ------------ */
+/* ---------------- Original SVG illustrations ---------------- */
 
-function RoofSlate({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" className={className} role="img" aria-label="Slate roof">
-      <rect width="400" height="280" fill="#dbeafe" />
-      <circle cx="340" cy="60" r="34" fill="#fef3c7" />
-      <rect x="60" y="170" width="280" height="100" fill="#f1f5f9" />
-      <polygon points="40 180, 200 70, 360 180" fill="#1e293b" />
-      <g stroke="#0f172a" strokeWidth="1.5" opacity="0.6">
-        <line x1="60" y1="178" x2="340" y2="178" />
-        <line x1="80" y1="158" x2="320" y2="158" />
-        <line x1="100" y1="138" x2="300" y2="138" />
-        <line x1="120" y1="118" x2="280" y2="118" />
-        <line x1="140" y1="98"  x2="260" y2="98"  />
-      </g>
-      <rect x="280" y="100" width="22" height="60" fill="#334155" />
-      <rect x="100" y="200" width="40" height="60" rx="3" fill="#cffafe" />
-      <rect x="260" y="200" width="40" height="60" rx="3" fill="#cffafe" />
-      <rect x="180" y="190" width="40" height="80" rx="3" fill="#10b981" />
-    </svg>
-  );
-}
-
-function RoofTile({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" className={className} role="img" aria-label="Terracotta tile roof">
-      <rect width="400" height="280" fill="#e0f2fe" />
-      <rect x="60" y="170" width="280" height="100" fill="#fef3c7" />
-      <polygon points="40 180, 200 70, 360 180" fill="#c2410c" />
-      <g stroke="#7c2d12" strokeWidth="1.5" opacity="0.55">
-        <line x1="60" y1="178" x2="340" y2="178" />
-        <line x1="80" y1="158" x2="320" y2="158" />
-        <line x1="100" y1="138" x2="300" y2="138" />
-        <line x1="120" y1="118" x2="280" y2="118" />
-      </g>
-      {Array.from({ length: 18 }).map((_, i) => (
-        <circle key={i} cx={70 + (i % 9) * 30} cy={170 + Math.floor(i / 9) * -22 + (i % 2) * 2} r="2.4" fill="#7c2d12" opacity="0.5" />
-      ))}
-      <rect x="270" y="100" width="22" height="60" fill="#7c2d12" />
-      <rect x="100" y="200" width="40" height="60" rx="3" fill="#fef9c3" />
-      <rect x="260" y="200" width="40" height="60" rx="3" fill="#fef9c3" />
-    </svg>
-  );
-}
-
-function RoofFlat({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" className={className} role="img" aria-label="EPDM flat roof">
-      <rect width="400" height="280" fill="#dbeafe" />
-      <rect x="40" y="120" width="320" height="20" fill="#0f172a" />
-      <rect x="40" y="140" width="320" height="140" fill="#f1f5f9" />
-      <g fill="#1e293b" opacity="0.4">
-        {Array.from({ length: 12 }).map((_, i) => (
-          <rect key={i} x={50 + i * 26} y={124} width="6" height="12" />
-        ))}
-      </g>
-      <rect x="80"  y="170" width="50" height="60" rx="2" fill="#cffafe" />
-      <rect x="170" y="170" width="50" height="60" rx="2" fill="#cffafe" />
-      <rect x="260" y="170" width="50" height="60" rx="2" fill="#cffafe" />
-      <rect x="0"   y="270" width="400" height="10" fill="#10b981" opacity="0.25" />
-      <circle cx="340" cy="55" r="30" fill="#fef3c7" />
-    </svg>
-  );
-}
-
-function RoofRepair({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" className={className} role="img" aria-label="Storm roof repair">
-      <rect width="400" height="280" fill="#e2e8f0" />
-      <path d="M0 80 Q60 60, 120 80 T240 80 T400 80 V0 H0 Z" fill="#cbd5e1" />
-      <rect x="60" y="170" width="280" height="100" fill="#f8fafc" />
-      <polygon points="40 180, 200 70, 360 180" fill="#1e293b" />
-      <path d="M180 90 L210 120 L185 130 L215 165" stroke="#fde047" strokeWidth="3" fill="none" />
-      <g stroke="#0f172a" strokeWidth="1.5" opacity="0.5">
-        <line x1="60" y1="178" x2="340" y2="178" />
-        <line x1="80" y1="158" x2="320" y2="158" />
-      </g>
-      <rect x="240" y="100" width="22" height="60" fill="#334155" />
-      <g fill="#10b981">
-        <circle cx="155" cy="135" r="10" />
-      </g>
-      <rect x="180" y="200" width="40" height="70" rx="3" fill="#10b981" />
-    </svg>
-  );
-}
-
-function RoofChimney({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" className={className} role="img" aria-label="Chimney re-pointing">
-      <rect width="400" height="280" fill="#fef3c7" />
-      <rect x="60" y="170" width="280" height="100" fill="#f8fafc" />
-      <polygon points="40 180, 200 70, 360 180" fill="#7f1d1d" />
-      <rect x="240" y="80" width="50" height="110" fill="#b45309" />
-      <g stroke="#451a03" strokeWidth="1.2" opacity="0.6">
-        <line x1="240" y1="100" x2="290" y2="100" />
-        <line x1="240" y1="120" x2="290" y2="120" />
-        <line x1="240" y1="140" x2="290" y2="140" />
-        <line x1="240" y1="160" x2="290" y2="160" />
-        <line x1="252" y1="80"  x2="252" y2="190" />
-        <line x1="278" y1="80"  x2="278" y2="190" />
-      </g>
-      <rect x="238" y="74" width="54" height="10" fill="#7c2d12" />
-    </svg>
-  );
-}
-
-function RoofGutter({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" className={className} role="img" aria-label="New gutters and fascias">
-      <rect width="400" height="280" fill="#dbeafe" />
-      <rect x="60" y="180" width="280" height="90" fill="#f1f5f9" />
-      <polygon points="40 180, 200 80, 360 180" fill="#1e293b" />
-      <rect x="40" y="178" width="320" height="10" rx="3" fill="#10b981" />
-      <rect x="60" y="188" width="6" height="80" fill="#10b981" />
-      <rect x="334" y="188" width="6" height="80" fill="#10b981" />
-      <rect x="100" y="210" width="40" height="55" rx="3" fill="#cffafe" />
-      <rect x="260" y="210" width="40" height="55" rx="3" fill="#cffafe" />
-      <rect x="180" y="200" width="40" height="65" rx="3" fill="#0f172a" />
-    </svg>
-  );
-}
-
-function HeroIllustration() {
+function HouseIllustration() {
   return (
     <svg
       viewBox="0 0 640 520"
       xmlns="http://www.w3.org/2000/svg"
       className="h-auto w-full"
       role="img"
-      aria-label="Modern UK home with a freshly installed roof"
+      aria-label="Modern house with tiled roof and a green ladder"
     >
       <defs>
-        <linearGradient id="apexSky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#bae6fd" />
-          <stop offset="1" stopColor="#ecfdf5" />
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#ecfdf5" />
+          <stop offset="1" stopColor="#ffffff" />
         </linearGradient>
-        <linearGradient id="apexRoof" x1="0" y1="0" x2="0" y2="1">
+        <linearGradient id="roof" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#0f172a" />
           <stop offset="1" stopColor="#1e293b" />
         </linearGradient>
       </defs>
-      <rect width="640" height="520" fill="url(#apexSky)" rx="28" />
-      <circle cx="540" cy="100" r="80" fill="#fde047" fillOpacity="0.45" />
-      <circle cx="540" cy="100" r="46" fill="#facc15" />
-      <path d="M0 380 L80 320 L140 340 L200 300 L260 330 L320 290 L380 320 L440 290 L500 330 L560 310 L640 340 L640 520 L0 520 Z" fill="#86efac" opacity="0.55" />
+      <rect width="640" height="520" fill="url(#sky)" rx="28" />
+      <circle cx="540" cy="100" r="80" fill="#10b981" fillOpacity="0.15" />
+      <circle cx="540" cy="100" r="46" fill="#10b981" fillOpacity="0.35" />
+      <path
+        d="M0 380 L80 320 L140 340 L200 300 L260 330 L320 290 L380 320 L440 290 L500 330 L560 310 L640 340 L640 520 L0 520 Z"
+        fill="#a7f3d0"
+        opacity="0.55"
+      />
       <rect x="130" y="320" width="340" height="180" fill="#f8fafc" stroke="#e2e8f0" strokeWidth="2" />
-      <polygon points="100 330, 300 170, 500 330" fill="url(#apexRoof)" />
+      <polygon points="100 330, 300 170, 500 330" fill="url(#roof)" />
       <g stroke="#0f172a" strokeWidth="2" opacity="0.5">
         <line x1="130" y1="318" x2="470" y2="318" />
         <line x1="158" y1="290" x2="442" y2="290" />
         <line x1="186" y1="262" x2="414" y2="262" />
         <line x1="214" y1="234" x2="386" y2="234" />
         <line x1="242" y1="206" x2="358" y2="206" />
+        <line x1="270" y1="178" x2="330" y2="178" />
       </g>
       <rect x="380" y="210" width="34" height="90" fill="#1e293b" />
       <rect x="180" y="370" width="60" height="80" rx="4" fill="#cffafe" />
@@ -224,60 +167,113 @@ function HeroIllustration() {
         <line x1="508" y1="500" x2="558" y2="240" />
         <line x1="485" y1="450" x2="535" y2="450" />
         <line x1="492" y1="395" x2="542" y2="395" />
+        <line x1="500" y1="340" x2="550" y2="340" />
+        <line x1="510" y1="285" x2="560" y2="285" />
       </g>
       <rect y="500" width="640" height="20" fill="#10b981" opacity="0.1" />
     </svg>
   );
 }
 
-/* ------------ Page ------------ */
+function WebsiteMockup() {
+  return (
+    <svg
+      viewBox="0 0 800 520"
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-auto w-full"
+      role="img"
+      aria-label="Browser mockup of a roofing company website"
+    >
+      <defs>
+        <linearGradient id="heroBg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#0f172a" />
+          <stop offset="1" stopColor="#064e3b" />
+        </linearGradient>
+      </defs>
+      <rect x="20" y="20" width="760" height="480" rx="18" fill="#ffffff" stroke="#e2e8f0" strokeWidth="2" />
+      <rect x="20" y="20" width="760" height="44" rx="18" fill="#f8fafc" />
+      <rect x="20" y="44" width="760" height="20" fill="#f8fafc" />
+      <circle cx="44" cy="42" r="6" fill="#fda4af" />
+      <circle cx="64" cy="42" r="6" fill="#fde68a" />
+      <circle cx="84" cy="42" r="6" fill="#86efac" />
+      <rect x="120" y="32" width="420" height="22" rx="11" fill="#ffffff" stroke="#e2e8f0" />
+      <text x="140" y="48" fontFamily="ui-monospace, monospace" fontSize="12" fill="#475569">
+        yourroofingco.co.uk
+      </text>
+      <rect x="20" y="64" width="760" height="220" fill="url(#heroBg)" />
+      <circle cx="720" cy="120" r="36" fill="#10b981" fillOpacity="0.3" />
+      <circle cx="720" cy="120" r="20" fill="#10b981" />
+      <rect x="60" y="100" width="180" height="14" rx="7" fill="#10b981" />
+      <rect x="60" y="130" width="420" height="26" rx="6" fill="#ffffff" />
+      <rect x="60" y="166" width="360" height="26" rx="6" fill="#ffffff" />
+      <rect x="60" y="210" width="320" height="14" rx="6" fill="#ffffff" fillOpacity="0.6" />
+      <rect x="60" y="234" width="240" height="14" rx="6" fill="#ffffff" fillOpacity="0.6" />
+      <rect x="60" y="266" width="170" height="36" rx="18" fill="#10b981" />
+      <text x="145" y="289" textAnchor="middle" fontFamily="Arial" fontSize="13" fontWeight="700" fill="#ffffff">
+        Get a Free Quote
+      </text>
+      <rect x="240" y="266" width="150" height="36" rx="18" fill="#ffffff" fillOpacity="0.1" stroke="#ffffff" strokeOpacity="0.3" />
+      <text x="315" y="289" textAnchor="middle" fontFamily="Arial" fontSize="13" fontWeight="600" fill="#ffffff">
+        Call us now
+      </text>
+      <g>
+        <rect x="60" y="320" width="220" height="120" rx="14" fill="#ffffff" stroke="#e2e8f0" />
+        <rect x="80" y="340" width="40" height="40" rx="10" fill="#d1fae5" />
+        <rect x="80" y="392" width="120" height="10" rx="5" fill="#0f172a" />
+        <rect x="80" y="410" width="170" height="8" rx="4" fill="#94a3b8" />
+        <rect x="80" y="422" width="130" height="8" rx="4" fill="#94a3b8" />
 
-export default function ApexRoofingSample() {
+        <rect x="290" y="320" width="220" height="120" rx="14" fill="#ffffff" stroke="#e2e8f0" />
+        <rect x="310" y="340" width="40" height="40" rx="10" fill="#d1fae5" />
+        <rect x="310" y="392" width="140" height="10" rx="5" fill="#0f172a" />
+        <rect x="310" y="410" width="170" height="8" rx="4" fill="#94a3b8" />
+        <rect x="310" y="422" width="130" height="8" rx="4" fill="#94a3b8" />
+
+        <rect x="520" y="320" width="220" height="120" rx="14" fill="#ffffff" stroke="#e2e8f0" />
+        <rect x="540" y="340" width="40" height="40" rx="10" fill="#d1fae5" />
+        <rect x="540" y="392" width="110" height="10" rx="5" fill="#0f172a" />
+        <rect x="540" y="410" width="170" height="8" rx="4" fill="#94a3b8" />
+        <rect x="540" y="422" width="130" height="8" rx="4" fill="#94a3b8" />
+      </g>
+      <rect x="60" y="460" width="680" height="24" rx="6" fill="#f1f5f9" />
+    </svg>
+  );
+}
+
+/* ---------------- Page ---------------- */
+
+export default function RoofingLandingPage() {
   return (
     <>
-      {/* Small ribbon framing this as a sample built by Developer Studio */}
-      <div className="bg-ink text-white">
-        <Container className="flex flex-col items-center justify-between gap-2 py-2.5 text-xs sm:flex-row">
-          <span className="inline-flex items-center gap-2 text-white/70">
-            <Icon name="sparkles" className="h-4 w-4 text-brand-light" />
-            Sample roofing website by Developer Studio — your site could look like this.
-          </span>
-          <Link href="/contact" className="font-semibold text-brand-light hover:underline">
-            Get one for your business →
-          </Link>
-        </Container>
-      </div>
-
-      {/* 1. Hero (as the roofer) */}
-      <section className="relative overflow-hidden bg-white pt-12 pb-14 sm:pt-16">
+      {/* 1. Hero */}
+      <section className="relative overflow-hidden bg-white pt-12 pb-16 sm:pt-16 lg:pt-20">
         <div className="pointer-events-none absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-grid [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
           <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-brand/15 blur-3xl" />
+          <div className="absolute top-40 -left-24 h-80 w-80 rounded-full bg-brand-light/15 blur-3xl" />
         </div>
+
         <Container>
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <Reveal>
-              <span className="inline-flex items-center gap-2 rounded-full border border-brand/30 bg-brand-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-darker">
-                <Icon name="home" className="h-4 w-4" />
-                {BRAND}
+              <span className="inline-flex items-center gap-2 rounded-full border border-brand/30 bg-brand-50 py-1 pl-1 pr-4 text-xs font-semibold text-brand-darker sm:text-sm">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-brand text-white">
+                  <Icon name="home" className="h-3.5 w-3.5" />
+                </span>
+                For Roofing Companies
               </span>
               <h1 className="mt-6 text-4xl font-extrabold leading-[1.05] text-ink sm:text-5xl lg:text-6xl">
-                Trusted UK roofers.{" "}
-                <span className="text-gradient">Free quotes in 60 seconds.</span>
+                Roofing websites that <span className="text-gradient">fill your diary.</span>
               </h1>
               <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink-muted">
-                Family-run since 2010. Slate, tile, flat roofing, repairs and gutters —
-                done properly, guaranteed for 10 years, with a clear written quote before
-                we lift a tool.
+                Fast, mobile-first sites engineered to bring quote requests every single day —
+                with local SEO, instant lead forms, before/after galleries, and Google reviews
+                built in. Live in 14 days.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Link
-                  href="/contact"
-                  className="group inline-flex h-13 items-center justify-center gap-2 rounded-full bg-brand px-7 text-base font-semibold text-white shadow-[0_10px_30px_-8px_rgba(16,185,129,0.7)] transition-all hover:bg-brand-dark active:scale-95"
-                >
-                  Get a Free Roof Quote
-                  <Icon name="arrowRight" className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-                </Link>
+                <Button href="/contact" size="lg" icon="arrowRight">
+                  Get a Free Roofing Quote
+                </Button>
                 <a
                   href={site.whatsapp.uk}
                   target="_blank"
@@ -285,47 +281,52 @@ export default function ApexRoofingSample() {
                   className="inline-flex h-13 items-center justify-center gap-2 rounded-full border border-line bg-white px-6 text-base font-semibold text-ink transition-colors hover:border-brand hover:text-brand-darker"
                 >
                   <Icon name="whatsapp" className="h-5 w-5 text-brand" />
-                  WhatsApp us
+                  Chat on WhatsApp
                 </a>
               </div>
-              <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
-                {[
-                  { v: "5.0", l: "Google rating" },
-                  { v: "500+", l: "Jobs completed" },
-                  { v: "10 yr", l: "Workmanship guarantee" },
-                  { v: "£5M", l: "Insurance cover" },
-                ].map((s) => (
-                  <div key={s.l}>
-                    <div className="text-xl font-extrabold text-brand-darker sm:text-2xl">{s.v}</div>
-                    <div className="text-xs text-ink-muted">{s.l}</div>
-                  </div>
-                ))}
+              <div className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm">
+                <span className="flex items-center gap-2 text-ink-soft">
+                  <span className="flex text-brand">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Icon key={i} name="star" className="h-4 w-4" />
+                    ))}
+                  </span>
+                  <span className="font-semibold">5.0 client rating</span>
+                </span>
+                <span className="flex items-center gap-2 text-ink-soft">
+                  <Icon name="bolt" className="h-4 w-4 text-brand" />
+                  <span className="font-semibold">120+ projects delivered</span>
+                </span>
+                <span className="flex items-center gap-2 text-ink-soft">
+                  <Icon name="mapPin" className="h-4 w-4 text-brand" />
+                  <span className="font-semibold">UK-based team</span>
+                </span>
               </div>
             </Reveal>
 
             <Reveal direction="left">
               <div className="relative">
                 <div className="absolute -inset-6 -z-10 rounded-[2rem] bg-gradient-to-tr from-brand/10 via-transparent to-brand-light/20 blur-2xl" />
-                <HeroIllustration />
+                <HouseIllustration />
                 <div className="absolute -bottom-5 -left-3 rounded-2xl border border-line bg-white p-4 shadow-card sm:-left-6">
                   <div className="flex items-center gap-3">
                     <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand text-white">
-                      <Icon name="phone" className="h-5 w-5" />
+                      <Icon name="bolt" className="h-5 w-5" />
                     </span>
                     <div>
-                      <div className="text-sm font-bold text-ink">Same-day callout</div>
-                      <div className="text-xs text-ink-muted">for leaks &amp; storm damage</div>
+                      <div className="text-sm font-bold text-ink">+3 new quotes</div>
+                      <div className="text-xs text-ink-muted">this week alone</div>
                     </div>
                   </div>
                 </div>
                 <div className="absolute -right-3 top-4 hidden rounded-2xl border border-line bg-white p-4 shadow-card sm:block">
                   <div className="flex items-center gap-3">
                     <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-50 text-brand-darker">
-                      <Icon name="star" className="h-5 w-5" />
+                      <Icon name="search" className="h-5 w-5" />
                     </span>
                     <div>
-                      <div className="text-sm font-bold text-ink">5.0 on Google</div>
-                      <div className="text-xs text-ink-muted">200+ verified reviews</div>
+                      <div className="text-sm font-bold text-ink">#1 in local pack</div>
+                      <div className="text-xs text-ink-muted">in 90 days</div>
                     </div>
                   </div>
                 </div>
@@ -335,216 +336,209 @@ export default function ApexRoofingSample() {
         </Container>
       </section>
 
-      {/* 2. Services */}
-      <section id="services" className="bg-zinc-50/70 py-12 sm:py-16">
-        <Container>
-          <SectionHeading
-            eyebrow="Our services"
-            title={<>What we do <span className="text-gradient">for your home</span></>}
-            description="Every roof job, big or small. Insured, guaranteed, and explained in plain English before we start."
-          />
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((s, i) => (
-              <Reveal key={s.title} delay={(i % 3) * 0.06}>
-                <div className="group flex h-full flex-col rounded-2xl border border-line bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:shadow-card">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-darker transition-colors group-hover:bg-brand group-hover:text-white">
-                    <Icon name={s.icon} className="h-6 w-6" />
-                  </span>
-                  <h3 className="mt-5 text-lg font-bold text-ink">{s.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink-muted">{s.text}</p>
-                  <Link href="/contact" className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-darker">
-                    Get a quote
-                    <Icon name="arrowRight" className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* 3. Why choose us */}
-      <section className="py-12 sm:py-16">
-        <Container>
-          <SectionHeading
-            eyebrow="Why choose us"
-            title={<>The roofer you can <span className="text-gradient">actually trust.</span></>}
-            description="No surprise bills, no half-finished jobs, no waiting weeks for a callback."
-          />
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {why.map((w, i) => (
-              <Reveal key={w.title} delay={i * 0.06}>
-                <div className="flex h-full flex-col rounded-2xl border border-line bg-white p-6">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand text-white">
-                    <Icon name={w.icon} className="h-6 w-6" />
-                  </span>
-                  <h3 className="mt-4 font-bold text-ink">{w.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink-muted">{w.text}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* 4. Recent jobs / gallery */}
-      <section id="work" className="bg-zinc-50/70 py-12 sm:py-16">
-        <Container>
-          <SectionHeading
-            eyebrow="Recent work"
-            title={<>Roofs we've <span className="text-gradient">finished this season.</span></>}
-            description="A snapshot of jobs from across Yorkshire and the North West."
-          />
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {gallery.map((g, i) => {
-              const Svg = g.svg;
-              return (
-                <Reveal key={g.title} delay={(i % 3) * 0.06}>
-                  <article className="group overflow-hidden rounded-2xl border border-line bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-card">
-                    <div className="relative aspect-[16/10] overflow-hidden">
-                      <Svg className="h-full w-full" />
-                      <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-[11px] font-bold text-brand-darker backdrop-blur">
-                        {g.tag}
-                      </span>
-                    </div>
-                    <div className="p-5">
-                      <h3 className="font-bold text-ink">{g.title}</h3>
-                      <p className="mt-1 text-xs text-ink-muted">{g.area}</p>
-                    </div>
-                  </article>
-                </Reveal>
-              );
-            })}
-          </div>
-          <div className="mt-10 text-center">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-1.5 rounded-full border border-line px-5 py-2.5 text-sm font-semibold text-ink transition-colors hover:border-brand hover:text-brand-darker"
-            >
-              Get a free quote for your roof
-              <Icon name="arrowRight" className="h-4 w-4" />
-            </Link>
-          </div>
-        </Container>
-      </section>
-
-      {/* 5. Reviews */}
-      <section className="py-12 sm:py-16">
-        <Container>
-          <SectionHeading
-            eyebrow="Customer reviews"
-            title={<>What our <span className="text-gradient">homeowners say.</span></>}
-            description="200+ five-star reviews on Google. Here are three recent ones."
-          />
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            {reviews.map((r, i) => (
-              <Reveal key={r.name} delay={i * 0.08}>
-                <figure className="flex h-full flex-col rounded-2xl border border-line bg-white p-7 shadow-soft">
-                  <div className="flex gap-0.5 text-brand">
-                    {Array.from({ length: 5 }).map((_, j) => (
-                      <Icon key={j} name="star" className="h-5 w-5" />
-                    ))}
-                  </div>
-                  <blockquote className="mt-4 flex-1 text-base leading-relaxed text-ink-soft">
-                    &ldquo;{r.text}&rdquo;
-                  </blockquote>
-                  <figcaption className="mt-5 flex items-center gap-3 border-t border-line pt-5">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-50 text-sm font-bold text-brand-darker">
-                      {r.name.charAt(0)}
-                    </span>
-                    <span>
-                      <span className="block text-sm font-bold text-ink">{r.name}</span>
-                      <span className="block text-xs text-ink-muted">Verified Google review · {r.area}</span>
-                    </span>
-                  </figcaption>
-                </figure>
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* 6. Service areas */}
+      {/* 2. Pain points */}
       <section className="bg-zinc-50/70 py-12 sm:py-16">
         <Container>
           <SectionHeading
-            eyebrow="Service areas"
-            title={<>Covering <span className="text-gradient">Yorkshire &amp; the North West.</span></>}
-            description="Same-day callouts available across our core area. Not sure if you're covered? Just ask."
+            eyebrow="Sound familiar?"
+            title={
+              <>
+                You&apos;re a great roofer.{" "}
+                <span className="text-gradient">Your website isn&apos;t.</span>
+              </>
+            }
+            description="Most roofing businesses lose work not on price or quality — but because customers can't find them, can't trust the site, or can't easily get a quote."
           />
-          <div className="mx-auto mt-10 flex max-w-3xl flex-wrap justify-center gap-2.5">
-            {areas.map((a) => (
-              <span
-                key={a}
-                className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-ink-soft"
-              >
-                <Icon name="mapPin" className="h-4 w-4 text-brand" />
-                {a}
-              </span>
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {pains.map((p, i) => (
+              <Reveal key={p.title} delay={(i % 4) * 0.06}>
+                <div className="flex h-full flex-col rounded-2xl border border-line bg-white p-6">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-rose-50 text-rose-600">
+                    <Icon name={p.icon} className="h-6 w-6" />
+                  </span>
+                  <h3 className="mt-4 font-bold text-ink">{p.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-muted">{p.text}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </Container>
       </section>
 
-      {/* 7. Final CTA (as roofer) */}
+      {/* 3. Features */}
       <section className="py-12 sm:py-16">
         <Container>
-          <Reveal>
-            <div className="relative overflow-hidden rounded-[2rem] border border-brand/20 bg-gradient-to-br from-brand-50 via-white to-brand-50 px-6 py-14 text-center sm:px-12 sm:py-20">
-              <div className="pointer-events-none absolute inset-0 -z-10 bg-dots opacity-50" />
-              <h2 className="mx-auto max-w-2xl text-3xl font-extrabold leading-tight text-ink sm:text-4xl md:text-5xl">
-                Get a free, no-obligation roof quote.
-              </h2>
-              <p className="mx-auto mt-5 max-w-xl text-base text-ink-muted sm:text-lg">
-                Tell us about your job — type, postcode, photos if you have them. We&apos;ll come
-                back within 24 hours with a clear price.
-              </p>
-              <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                <Link
-                  href="/contact"
-                  className="group inline-flex h-13 items-center justify-center gap-2 rounded-full bg-brand px-8 text-base font-semibold text-white shadow-[0_10px_30px_-8px_rgba(16,185,129,0.7)] transition-all hover:bg-brand-dark active:scale-95"
-                >
-                  Get my free quote
-                  <Icon name="arrowRight" className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-                </Link>
-                <a
-                  href={site.whatsapp.uk}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex h-13 items-center justify-center gap-2 rounded-full border border-ink/15 bg-white px-7 text-base font-semibold text-ink transition-colors hover:border-brand hover:text-brand-darker"
-                >
-                  <Icon name="whatsapp" className="h-5 w-5 text-brand" />
-                  Message on WhatsApp
-                </a>
+          <SectionHeading
+            eyebrow="What you get"
+            title={
+              <>
+                Everything a modern{" "}
+                <span className="text-gradient">roofing website needs.</span>
+              </>
+            }
+            description="Not a brochure — a lead-generation engine purpose-built for roofers."
+          />
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {features.map((f, i) => (
+              <Reveal key={f.title} delay={(i % 3) * 0.06}>
+                <div className="group flex h-full flex-col rounded-2xl border border-line bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:shadow-card">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-darker transition-colors group-hover:bg-brand group-hover:text-white">
+                    <Icon name={f.icon} className="h-6 w-6" />
+                  </span>
+                  <h3 className="mt-5 text-lg font-bold text-ink">{f.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-muted">{f.text}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* 4. Mockup showcase */}
+      <section className="bg-ink py-12 text-white sm:py-16">
+        <Container>
+          <Reveal className="mx-auto max-w-2xl text-center">
+            <Eyebrow className="border-brand-light/30 bg-white/5 text-brand-light">
+              The finished product
+            </Eyebrow>
+            <h2 className="mt-5 text-3xl font-bold sm:text-4xl">
+              Here&apos;s what we&apos;d build for you.
+            </h2>
+            <p className="mt-4 text-white/70">
+              A polished, conversion-focused website tailored to your area and your services.
+            </p>
+          </Reveal>
+
+          <Reveal className="mt-12">
+            <div className="relative mx-auto max-w-4xl">
+              <div className="absolute -inset-8 -z-10 rounded-[3rem] bg-brand/20 blur-3xl" />
+              <div className="overflow-hidden rounded-3xl shadow-[0_30px_80px_-20px_rgba(16,185,129,0.5)]">
+                <WebsiteMockup />
+              </div>
+              <div className="absolute -left-3 top-10 hidden rounded-2xl border border-white/10 bg-ink/80 px-4 py-3 shadow-card backdrop-blur sm:block">
+                <div className="flex items-center gap-2.5">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand text-white">
+                    <Icon name="bolt" className="h-5 w-5" />
+                  </span>
+                  <div>
+                    <div className="text-sm font-bold text-white">Loads in &lt; 1s</div>
+                    <div className="text-xs text-white/60">on mobile</div>
+                  </div>
+                </div>
+              </div>
+              <div className="absolute -right-3 bottom-10 hidden rounded-2xl border border-white/10 bg-ink/80 px-4 py-3 shadow-card backdrop-blur sm:block">
+                <div className="flex items-center gap-2.5">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-light text-ink">
+                    <Icon name="target" className="h-5 w-5" />
+                  </span>
+                  <div>
+                    <div className="text-sm font-bold text-white">Quote in 30s</div>
+                    <div className="text-xs text-white/60">from any page</div>
+                  </div>
+                </div>
               </div>
             </div>
           </Reveal>
         </Container>
       </section>
 
-      {/* Footer disclosure — for the roofer prospect viewing this demo */}
-      <div className="border-t border-line bg-ink py-8 text-center text-white">
+      {/* 5. Process */}
+      <section className="py-12 sm:py-16">
         <Container>
-          <p className="text-sm text-white/70">
-            <span className="font-semibold text-white">Like this site?</span> It&apos;s a sample built
-            by Developer Studio — we&apos;ll build the real version for your roofing company.
-          </p>
-          <div className="mt-3 flex flex-wrap justify-center gap-3">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-dark"
-            >
-              Get a site like this
-              <Icon name="arrowRight" className="h-4 w-4" />
-            </Link>
-            <Link
-              href="/landing-pages"
-              className="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-2.5 text-sm font-semibold text-white hover:border-brand-light hover:text-brand-light"
-            >
-              See more samples
-            </Link>
+          <SectionHeading
+            eyebrow="How it works"
+            title={
+              <>
+                Live in <span className="text-gradient">14 days.</span>
+              </>
+            }
+            description="A simple four-step path from first call to a website that brings you work."
+          />
+          <div className="relative mt-14">
+            <div className="absolute left-0 right-0 top-7 hidden h-px bg-gradient-to-r from-transparent via-brand/40 to-transparent lg:block" />
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+              {steps.map((s, i) => (
+                <Reveal key={s.n} delay={i * 0.08} className="relative">
+                  <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+                    <span className="relative z-10 flex h-14 w-14 items-center justify-center rounded-2xl border border-line bg-white text-brand-darker shadow-soft">
+                      <span className="text-base font-extrabold">{s.n}</span>
+                      <span className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-brand text-[11px] font-bold text-white">
+                        <Icon
+                          name={(["compass", "map", "code", "rocket"] as IconName[])[i]}
+                          className="h-3.5 w-3.5"
+                        />
+                      </span>
+                    </span>
+                    <h3 className="mt-5 text-lg font-bold text-ink">{s.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-ink-muted">{s.text}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </Container>
+      </section>
+
+      {/* 6. Results / Stats */}
+      <section className="py-8">
+        <Container>
+          <div className="relative overflow-hidden rounded-3xl bg-ink px-6 py-12 sm:px-12">
+            <div className="pointer-events-none absolute inset-0 opacity-30">
+              <div className="absolute -left-10 top-0 h-60 w-60 rounded-full bg-brand/40 blur-3xl" />
+              <div className="absolute -right-10 bottom-0 h-60 w-60 rounded-full bg-brand-light/30 blur-3xl" />
+            </div>
+            <Reveal className="relative mx-auto max-w-2xl text-center">
+              <p className="text-sm font-semibold uppercase tracking-wider text-brand-light">
+                Real results from our roofing clients
+              </p>
+            </Reveal>
+            <div className="relative mt-8 grid grid-cols-2 gap-8 lg:grid-cols-4">
+              {stats.map((s, i) => (
+                <Reveal key={s.label} delay={i * 0.06} className="text-center">
+                  <div className="text-4xl font-extrabold text-white sm:text-5xl">
+                    <span className="text-gradient">{s.value}</span>
+                  </div>
+                  <div className="mt-2 text-sm text-white/60">{s.label}</div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* 7. FAQ */}
+      <section className="py-12 sm:py-16">
+        <Container className="max-w-4xl">
+          <SectionHeading eyebrow="FAQ" title="Quick answers" />
+          <div className="mt-12 grid gap-5 sm:grid-cols-2">
+            {faqs.map((f, i) => (
+              <Reveal key={f.q} delay={(i % 2) * 0.06}>
+                <div className="h-full rounded-2xl border border-line bg-white p-6">
+                  <h3 className="flex items-start gap-2.5 font-bold text-ink">
+                    <Icon name="sparkles" className="mt-0.5 h-5 w-5 shrink-0 text-brand" />
+                    {f.q}
+                  </h3>
+                  <p className="mt-3 pl-7 text-sm leading-relaxed text-ink-muted">{f.a}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <CtaSection
+        title="Ready to fill your diary?"
+        subtitle="Get a free, no-pressure quote for your new roofing website — and a clear plan for the leads we'll bring you."
+      />
+
+      <div className="pb-12 text-center">
+        <Link
+          href="/landing-pages"
+          className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-darker hover:underline"
+        >
+          <Icon name="arrowRight" className="h-4 w-4 rotate-180" />
+          Back to all landing pages
+        </Link>
       </div>
     </>
   );
