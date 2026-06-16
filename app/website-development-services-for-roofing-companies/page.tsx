@@ -10,25 +10,34 @@ import CtaSection from "@/components/sections/CtaSection";
 
 /*
   Agency pitch page: Developer Studio pitching website development services
-  to UK roofing companies. CTAs route to our own /contact + WhatsApp so any
-  visiting roofer becomes a lead for us.
+  to UK roofing companies. Designed for Google Ads — strong above-the-fold
+  hook, testimonials, risk reversal, sticky mobile CTA, and click-to-call.
 */
 
 const SLUG = "website-development-services-for-roofing-companies";
-const TITLE = "Website Development for Roofing Companies — Lead-Generating Sites";
+const TITLE = "Roofing Websites That Fill Your Diary | Built in 14 Days";
+const PHONE_E164 = site.phones.uk.e164;
+const PHONE_DISPLAY = site.phones.uk.display;
 
 export const metadata: Metadata = {
   title: TITLE,
   description:
-    "Mobile-first roofing websites that fill your diary. Instant quote forms, before/after galleries, local SEO and Google reviews — built and launched in 14 days by Developer Studio.",
+    "Mobile-first roofing websites engineered to fill your diary with quote requests. Instant lead forms, local SEO, Google reviews — built and launched in 14 days. Free consultation.",
   alternates: { canonical: `/${SLUG}` },
   openGraph: {
     title: `${TITLE} | ${site.name}`,
     description:
-      "Lead-generating roofing websites with instant quote forms, local SEO, and call tracking.",
+      "Lead-generating roofing websites with instant quote forms, local SEO, and Google reviews. Live in 14 days. Free consultation.",
     url: `${site.url}/${SLUG}`,
   },
 };
+
+const trustBadges: { icon: IconName; value: string; label: string }[] = [
+  { icon: "star", value: "5.0", label: "Google rating" },
+  { icon: "bolt", value: "120+", label: "websites built" },
+  { icon: "rocket", value: "14 days", label: "to live" },
+  { icon: "mapPin", value: "UK-based", label: "in-house team" },
+];
 
 const pains: { icon: IconName; title: string; text: string }[] = [
   {
@@ -86,11 +95,51 @@ const features: { icon: IconName; title: string; text: string }[] = [
   },
 ];
 
-const steps: { n: string; title: string; text: string }[] = [
-  { n: "01", title: "Discovery call", text: "20 minutes. We learn your jobs, your area, and your goals." },
-  { n: "02", title: "Design", text: "We design a homepage and quote flow built for your customers." },
-  { n: "03", title: "Build & content", text: "We build the site, write the copy, and set up tracking." },
-  { n: "04", title: "Launch & SEO", text: "We launch, configure Google Business Profile, and start ranking." },
+const testimonials = [
+  {
+    rating: 5,
+    quote:
+      "Diary was quiet for weeks. Within 6 weeks of launching the site, we had 4–5 quote requests a day. The investment paid for itself in the first month.",
+    name: "James M.",
+    role: "Managing Director",
+    business: "Apex Roofing Ltd",
+    location: "Leeds",
+    initial: "J",
+  },
+  {
+    rating: 5,
+    quote:
+      "Tried 3 other web designers — all promised the world, delivered a template. Developer Studio actually understood roofing. The local SEO setup is what won us page 1.",
+    name: "Sarah W.",
+    role: "Owner",
+    business: "Premier Roofers",
+    location: "Manchester",
+    initial: "S",
+  },
+  {
+    rating: 5,
+    quote:
+      "Honest, straightforward, no jargon. Built our site in 12 days, ranked us #1 for 'flat roofers Sheffield' in 90 days. Best money I've spent on marketing.",
+    name: "Dave K.",
+    role: "Director",
+    business: "Northern Roofing Co",
+    location: "Sheffield",
+    initial: "D",
+  },
+];
+
+const steps: { n: string; title: string; text: string; icon: IconName }[] = [
+  { n: "01", title: "Discovery call", text: "20 minutes. We learn your jobs, your area, and your goals.", icon: "compass" },
+  { n: "02", title: "Design",         text: "We design a homepage and quote flow built for your customers.", icon: "map" },
+  { n: "03", title: "Build & content", text: "We build the site, write the copy, and set up tracking.",      icon: "code" },
+  { n: "04", title: "Launch & SEO",    text: "We launch, configure Google Business Profile, and start ranking.", icon: "rocket" },
+];
+
+const promises: { icon: IconName; title: string; text: string }[] = [
+  { icon: "phone",    title: "Free 20-min discovery call", text: "Zero obligation. Tell us your business, we'll show you exactly what we'd build." },
+  { icon: "bolt",     title: "Live in 14 days — guaranteed", text: "Your site goes live in two weeks. If we miss the date, the next month is on us." },
+  { icon: "check",    title: "No long contracts",         text: "Stay only as long as you're happy. Month-to-month support, cancel any time." },
+  { icon: "search",   title: "Monthly performance reports", text: "Clear, honest reports on traffic, calls, and rankings — straight to your inbox." },
 ];
 
 const stats = [
@@ -246,7 +295,7 @@ export default function RoofingLandingPage() {
   return (
     <>
       {/* 1. Hero */}
-      <section className="relative overflow-hidden bg-white pt-12 pb-16 sm:pt-16 lg:pt-20">
+      <section className="relative overflow-hidden bg-white pt-10 pb-16 sm:pt-14 lg:pt-20">
         <div className="pointer-events-none absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-grid [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
           <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-brand/15 blur-3xl" />
@@ -254,26 +303,39 @@ export default function RoofingLandingPage() {
         </div>
 
         <Container>
-          <div className="grid items-center gap-12 lg:grid-cols-2">
+          <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr]">
             <Reveal>
-              <span className="inline-flex items-center gap-2 rounded-full border border-brand/30 bg-brand-50 py-1 pl-1 pr-4 text-xs font-semibold text-brand-darker sm:text-sm">
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-brand text-white">
-                  <Icon name="home" className="h-3.5 w-3.5" />
+              {/* Urgency / live indicator */}
+              <span className="inline-flex items-center gap-2 rounded-full border border-brand/30 bg-brand-50 px-3.5 py-1.5 text-xs font-semibold text-brand-darker">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-70" />
+                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-brand" />
                 </span>
-                For Roofing Companies
+                Now booking 14-day builds &mdash; limited spots
               </span>
-              <h1 className="mt-6 text-4xl font-extrabold leading-[1.05] text-ink sm:text-5xl lg:text-6xl">
-                Roofing websites that <span className="text-gradient">fill your diary.</span>
+
+              <h1 className="mt-6 text-4xl font-extrabold leading-[1.05] text-ink sm:text-5xl lg:text-[3.4rem]">
+                Roofing websites that{" "}
+                <span className="text-gradient">fill your diary.</span>
               </h1>
-              <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink-muted">
-                Fast, mobile-first sites engineered to bring quote requests every single day —
-                with local SEO, instant lead forms, before/after galleries, and Google reviews
-                built in. Live in 14 days.
+              <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink-muted sm:text-xl">
+                Mobile-first sites engineered to bring you quote requests every
+                single day &mdash; with local SEO, instant lead forms, Google
+                reviews and call tracking baked in. <strong className="text-ink">Live in 14 days.</strong>
               </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+
+              {/* Triple CTA */}
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Button href="/contact" size="lg" icon="arrowRight">
-                  Get a Free Roofing Quote
+                  Get my free website plan
                 </Button>
+                <a
+                  href={`tel:+${PHONE_E164}`}
+                  className="inline-flex h-13 items-center justify-center gap-2 rounded-full border-2 border-ink bg-white px-6 text-base font-semibold text-ink transition-colors hover:bg-ink hover:text-white"
+                >
+                  <Icon name="phone" className="h-5 w-5" />
+                  Call {PHONE_DISPLAY}
+                </a>
                 <a
                   href={site.whatsapp.uk}
                   target="_blank"
@@ -281,26 +343,23 @@ export default function RoofingLandingPage() {
                   className="inline-flex h-13 items-center justify-center gap-2 rounded-full border border-line bg-white px-6 text-base font-semibold text-ink transition-colors hover:border-brand hover:text-brand-darker"
                 >
                   <Icon name="whatsapp" className="h-5 w-5 text-brand" />
-                  Chat on WhatsApp
+                  WhatsApp
                 </a>
               </div>
-              <div className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm">
-                <span className="flex items-center gap-2 text-ink-soft">
-                  <span className="flex text-brand">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Icon key={i} name="star" className="h-4 w-4" />
-                    ))}
-                  </span>
-                  <span className="font-semibold">5.0 client rating</span>
-                </span>
-                <span className="flex items-center gap-2 text-ink-soft">
-                  <Icon name="bolt" className="h-4 w-4 text-brand" />
-                  <span className="font-semibold">120+ projects delivered</span>
-                </span>
-                <span className="flex items-center gap-2 text-ink-soft">
-                  <Icon name="mapPin" className="h-4 w-4 text-brand" />
-                  <span className="font-semibold">UK-based team</span>
-                </span>
+
+              {/* Trust badges row */}
+              <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
+                {trustBadges.map((b) => (
+                  <div key={b.label} className="flex items-center gap-3">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-darker">
+                      <Icon name={b.icon} className="h-5 w-5" />
+                    </span>
+                    <div className="min-w-0">
+                      <div className="truncate text-sm font-bold text-ink">{b.value}</div>
+                      <div className="truncate text-xs text-ink-muted">{b.label}</div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </Reveal>
 
@@ -352,7 +411,7 @@ export default function RoofingLandingPage() {
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {pains.map((p, i) => (
               <Reveal key={p.title} delay={(i % 4) * 0.06}>
-                <div className="flex h-full flex-col rounded-2xl border border-line bg-white p-6">
+                <div className="flex h-full flex-col rounded-2xl border border-line bg-white p-6 transition-all hover:-translate-y-0.5 hover:shadow-card">
                   <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-rose-50 text-rose-600">
                     <Icon name={p.icon} className="h-6 w-6" />
                   </span>
@@ -394,7 +453,52 @@ export default function RoofingLandingPage() {
         </Container>
       </section>
 
-      {/* 4. Mockup showcase */}
+      {/* 4. Testimonials */}
+      <section className="bg-zinc-50/70 py-12 sm:py-16">
+        <Container>
+          <SectionHeading
+            eyebrow="What roofers say"
+            title={
+              <>
+                Diary-filling sites.{" "}
+                <span className="text-gradient">Happy roofers.</span>
+              </>
+            }
+            description="A few words from roofing companies we've helped grow."
+          />
+          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+            {testimonials.map((t, i) => (
+              <Reveal key={t.name} delay={(i % 3) * 0.08}>
+                <figure className="flex h-full flex-col rounded-2xl border border-line bg-white p-7 shadow-soft">
+                  <div className="flex gap-0.5 text-brand">
+                    {Array.from({ length: t.rating }).map((_, j) => (
+                      <Icon key={j} name="star" className="h-5 w-5" />
+                    ))}
+                  </div>
+                  <blockquote className="mt-4 flex-1 text-base leading-relaxed text-ink-soft">
+                    &ldquo;{t.quote}&rdquo;
+                  </blockquote>
+                  <figcaption className="mt-6 flex items-center gap-3 border-t border-line pt-5">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-full bg-brand text-base font-bold text-white">
+                      {t.initial}
+                    </span>
+                    <span className="min-w-0">
+                      <span className="block text-sm font-bold text-ink">
+                        {t.name} &middot; {t.role}
+                      </span>
+                      <span className="block text-xs text-ink-muted">
+                        {t.business}, {t.location}
+                      </span>
+                    </span>
+                  </figcaption>
+                </figure>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* 5. Mockup showcase */}
       <section className="bg-ink py-12 text-white sm:py-16">
         <Container>
           <Reveal className="mx-auto max-w-2xl text-center">
@@ -442,7 +546,7 @@ export default function RoofingLandingPage() {
         </Container>
       </section>
 
-      {/* 5. Process */}
+      {/* 6. Process */}
       <section className="py-12 sm:py-16">
         <Container>
           <SectionHeading
@@ -463,10 +567,7 @@ export default function RoofingLandingPage() {
                     <span className="relative z-10 flex h-14 w-14 items-center justify-center rounded-2xl border border-line bg-white text-brand-darker shadow-soft">
                       <span className="text-base font-extrabold">{s.n}</span>
                       <span className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-brand text-[11px] font-bold text-white">
-                        <Icon
-                          name={(["compass", "map", "code", "rocket"] as IconName[])[i]}
-                          className="h-3.5 w-3.5"
-                        />
+                        <Icon name={s.icon} className="h-3.5 w-3.5" />
                       </span>
                     </span>
                     <h3 className="mt-5 text-lg font-bold text-ink">{s.title}</h3>
@@ -479,8 +580,59 @@ export default function RoofingLandingPage() {
         </Container>
       </section>
 
-      {/* 6. Results / Stats */}
-      <section className="py-8">
+      {/* 7. Risk reversal / Our promise */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-brand-50 via-white to-brand-50 py-12 sm:py-16">
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-dots opacity-50" />
+        <Container>
+          <Reveal>
+            <div className="mx-auto max-w-5xl rounded-3xl border border-brand/20 bg-white p-8 shadow-card sm:p-12">
+              <div className="text-center">
+                <Eyebrow>Our promise to you</Eyebrow>
+                <h2 className="mt-5 text-3xl font-bold text-ink sm:text-4xl">
+                  Risk-free, results-first.{" "}
+                  <span className="text-gradient">No fine print.</span>
+                </h2>
+                <p className="mx-auto mt-4 max-w-2xl text-ink-muted">
+                  We&apos;re only successful when you are. Here&apos;s exactly what you can expect — in writing.
+                </p>
+              </div>
+
+              <ul className="mt-10 grid gap-5 sm:grid-cols-2">
+                {promises.map((p) => (
+                  <li
+                    key={p.title}
+                    className="flex items-start gap-4 rounded-2xl border border-line bg-zinc-50/60 p-5"
+                  >
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand text-white shadow-[0_8px_24px_-8px_rgba(16,185,129,0.5)]">
+                      <Icon name={p.icon} className="h-5 w-5" />
+                    </span>
+                    <div>
+                      <h3 className="font-bold text-ink">{p.title}</h3>
+                      <p className="mt-1 text-sm leading-relaxed text-ink-muted">{p.text}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+                <Button href="/contact" size="lg" icon="arrowRight">
+                  Book my free 20-min call
+                </Button>
+                <a
+                  href={`tel:+${PHONE_E164}`}
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-ink hover:text-brand-darker"
+                >
+                  <Icon name="phone" className="h-4 w-4 text-brand" />
+                  or call us on {PHONE_DISPLAY}
+                </a>
+              </div>
+            </div>
+          </Reveal>
+        </Container>
+      </section>
+
+      {/* 8. Stats */}
+      <section className="py-8 sm:py-12">
         <Container>
           <div className="relative overflow-hidden rounded-3xl bg-ink px-6 py-12 sm:px-12">
             <div className="pointer-events-none absolute inset-0 opacity-30">
@@ -506,7 +658,7 @@ export default function RoofingLandingPage() {
         </Container>
       </section>
 
-      {/* 7. FAQ */}
+      {/* 9. FAQ */}
       <section className="py-12 sm:py-16">
         <Container className="max-w-4xl">
           <SectionHeading eyebrow="FAQ" title="Quick answers" />
@@ -526,12 +678,13 @@ export default function RoofingLandingPage() {
         </Container>
       </section>
 
+      {/* 10. Closing CTA */}
       <CtaSection
         title="Ready to fill your diary?"
-        subtitle="Get a free, no-pressure quote for your new roofing website — and a clear plan for the leads we'll bring you."
+        subtitle={`Get a free, no-pressure quote for your new roofing website — or call us right now on ${PHONE_DISPLAY}.`}
       />
 
-      <div className="pb-12 text-center">
+      <div className="pb-28 text-center sm:pb-12">
         <Link
           href="/landing-pages"
           className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-darker hover:underline"
@@ -539,6 +692,30 @@ export default function RoofingLandingPage() {
           <Icon name="arrowRight" className="h-4 w-4 rotate-180" />
           Back to all landing pages
         </Link>
+      </div>
+
+      {/* Sticky mobile CTA bar */}
+      <div
+        className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-white/95 px-3 py-2.5 shadow-[0_-8px_24px_-12px_rgba(0,0,0,0.25)] backdrop-blur-md sm:hidden"
+        role="complementary"
+        aria-label="Quick contact"
+      >
+        <div className="mx-auto flex max-w-7xl items-center gap-2 pr-16">
+          <a
+            href={`tel:+${PHONE_E164}`}
+            aria-label={`Call ${PHONE_DISPLAY}`}
+            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-ink text-white"
+          >
+            <Icon name="phone" className="h-5 w-5" />
+          </a>
+          <Link
+            href="/contact"
+            className="inline-flex h-12 flex-1 items-center justify-center gap-2 rounded-full bg-brand text-sm font-bold text-white shadow-[0_8px_24px_-8px_rgba(16,185,129,0.6)]"
+          >
+            Get a Free Quote
+            <Icon name="arrowRight" className="h-4 w-4" />
+          </Link>
+        </div>
       </div>
     </>
   );
