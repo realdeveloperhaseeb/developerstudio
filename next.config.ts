@@ -2,8 +2,12 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    // Allows the placeholder team avatars (SVG) to be served via next/image.
-    // Safe here because all images are first-party assets in /public.
+    // Serve images straight from /public (e.g. /images/foo.png) instead of
+    // routing through the /_next/image optimisation proxy. Hostinger's CDN
+    // bot-protection was 403-ing every /_next/image request, so all <Image>
+    // tags were appearing as broken on developerstudio.org. With unoptimized
+    // they use the original paths, which Hostinger serves without issue.
+    unoptimized: true,
     dangerouslyAllowSVG: true,
     contentDispositionType: "attachment",
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
