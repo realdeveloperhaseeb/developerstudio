@@ -1,11 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Pure static HTML export to /out. NO Node runtime needed at the host —
-  // Hostinger just serves files. Eliminates the "Node app crashed = 503"
-  // class of failures entirely. Vercel handles static exports natively.
-  output: "export",
-  trailingSlash: true, // /services → /services/index.html (Apache-friendly)
+  // Standalone Node build → .next/standalone/server.js
+  // This is the leanest possible Next.js runtime: only the runtime files
+  // the server actually needs are bundled, with their deps inlined. It's
+  // what Hostinger's Next.js framework preset expects to find, uses far
+  // less memory than `next start`, and avoids the broad-node_modules
+  // class of startup failures.
+  output: "standalone",
   images: {
     // Serve images straight from /public (e.g. /images/foo.png) instead of
     // routing through the /_next/image optimisation proxy. Hostinger's CDN
