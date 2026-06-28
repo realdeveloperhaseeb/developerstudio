@@ -1,0 +1,47 @@
+# Apache rules for the static export. Copied into /out/.htaccess at build
+# time by Next.js (anything in /public is shipped verbatim).
+#
+# Mirrors the redirects() in next.config.ts so old WordPress URLs still
+# 301 to the new pages on Hostinger (where Next's redirect() doesn't run).
+
+# Pretty URLs — handle the trailingSlash: true output gracefully
+DirectoryIndex index.html
+
+# Block dotfiles
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+
+# Gzip text assets if possible
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml
+</IfModule>
+
+# Long cache for fingerprinted Next.js static assets
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/png  "access plus 30 days"
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+  ExpiresByType font/woff2 "access plus 1 year"
+  <FilesMatch "\.(js|css)$">
+    ExpiresDefault "access plus 1 year"
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
+# 301 redirects for retired WordPress URLs (mirrors next.config.ts)
+RewriteEngine On
+RedirectMatch 301 ^/law-firm-marketing/?$            /services/
+RedirectMatch 301 ^/law-firm-seo/?$                  /services/
+RedirectMatch 301 ^/law-firm-web-design/?$           /services/
+RedirectMatch 301 ^/financial-services-website-design/?$  /services/
+RedirectMatch 301 ^/legal-content-writing-services-for-lawyers-in-uk/?$  /services/
+RedirectMatch 301 ^/choose-the-right-law-firm-marketing-agency/?$  /services/
+RedirectMatch 301 ^/the-ultimate-guide-to-digital-marketing-for-lawyers/?$  /services/
+RedirectMatch 301 ^/why-law-firm-web-design-matters/?$  /services/
+RedirectMatch 301 ^/work/?$                          /projects/
+RedirectMatch 301 ^/stories/?$                       /projects/
+RedirectMatch 301 ^/careers/?$                       /about/
+RedirectMatch 301 ^/process/?$                       /about/

@@ -5,6 +5,8 @@ import { services } from "@/data/services";
 import { landingPages } from "@/data/landingPages";
 import { team } from "@/data/team";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   const staticRoutes = [
