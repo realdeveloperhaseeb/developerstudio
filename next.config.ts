@@ -1,6 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Produce a self-contained Node server at .next/standalone/server.js.
+  // This is the Next.js team's recommended output for non-Vercel Node
+  // hosting (e.g. Hostinger Business). Vercel handles this natively too —
+  // no downside to leaving it on. Reduces memory pressure at startup.
+  output: "standalone",
   images: {
     // Serve images straight from /public (e.g. /images/foo.png) instead of
     // routing through the /_next/image optimisation proxy. Hostinger's CDN
