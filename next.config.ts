@@ -19,8 +19,9 @@ const nextConfig: NextConfig = {
     contentDispositionType: "attachment",
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
-  // 301-redirect retired WordPress URLs to the closest new page so old
-  // indexed links and backlinks don't dead-end on a 404.
+  // 301-redirect legacy URL paths from the previous version of the site
+  // to the closest new page, so old Google rankings and backlinks don't
+  // dead-end on a 404.
   async redirects() {
     return [
       { source: "/law-firm-marketing", destination: "/services", permanent: true },
