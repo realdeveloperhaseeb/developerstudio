@@ -148,27 +148,26 @@ export default async function TeamMemberPage({
                     </span>
                   </a>
                 )}
-                {m.socials && (
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    {(["linkedin", "x", "instagram"] as const).map((k) => {
-                      const href = m.socials?.[k];
-                      if (!href) return null;
-                      const icon: IconName = k as IconName;
-                      return (
-                        <a
-                          key={k}
-                          href={href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={k}
-                          className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-50 text-brand-darker transition-colors hover:bg-brand hover:text-white"
-                        >
-                          <Icon name={icon} className="h-5 w-5" />
-                        </a>
-                      );
-                    })}
+                {/* Use Developer Studio's company social links for every team profile */}
+                <div className="pt-2">
+                  <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-ink-muted">
+                    Follow {site.name}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {site.social.map((s) => (
+                      <a
+                        key={s.name}
+                        href={s.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={s.name}
+                        className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-50 text-brand-darker transition-colors hover:bg-brand hover:text-white"
+                      >
+                        <Icon name={s.icon as IconName} className="h-5 w-5" />
+                      </a>
+                    ))}
                   </div>
-                )}
+                </div>
               </div>
             </Reveal>
 
