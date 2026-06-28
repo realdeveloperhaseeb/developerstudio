@@ -3,6 +3,7 @@ import { site } from "@/data/site";
 import { cities } from "@/data/cities";
 import { services } from "@/data/services";
 import { landingPages } from "@/data/landingPages";
+import { team } from "@/data/team";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -46,5 +47,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
-  return [...staticRoutes, ...cityRoutes, ...cityServiceRoutes, ...landingRoutes];
+  const teamRoutes = team.map((m) => ({
+    url: `${site.url}/team/${m.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: m.founder || m.cofounder ? 0.8 : 0.6,
+  }));
+
+  return [
+    ...staticRoutes,
+    ...cityRoutes,
+    ...cityServiceRoutes,
+    ...landingRoutes,
+    ...teamRoutes,
+  ];
 }

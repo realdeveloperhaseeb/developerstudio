@@ -13,6 +13,7 @@ import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
 import Button from "@/components/Button";
 import ProcessSection from "@/components/sections/ProcessSection";
+import ProjectsSection from "@/components/sections/ProjectsSection";
 import StatsSection from "@/components/sections/StatsSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import CtaSection from "@/components/sections/CtaSection";
@@ -311,6 +312,9 @@ export default async function CityPage({ params }: { params: Promise<Params> }) 
 
       <StatsSection />
       <ProcessSection />
+
+      {/* Recent projects (show 6) */}
+      <ProjectsSection limit={6} />
 
       {/* Local FAQ */}
       <section className="py-12 sm:py-16">

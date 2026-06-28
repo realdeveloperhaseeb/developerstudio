@@ -13,6 +13,7 @@ import Reveal from "@/components/Reveal";
 import Button from "@/components/Button";
 import ProcessSection from "@/components/sections/ProcessSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
+import ProjectsSection from "@/components/sections/ProjectsSection";
 import CtaSection from "@/components/sections/CtaSection";
 
 type Params = { city: string; service: string };
@@ -284,6 +285,9 @@ export default async function CityServicePage({ params }: { params: Promise<Para
       </section>
 
       <TestimonialsSection />
+
+      {/* Recent projects (show 6) */}
+      <ProjectsSection limit={6} />
 
       {/* Other services in this city */}
       <section className="py-12 sm:py-16">
