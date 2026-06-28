@@ -11,6 +11,12 @@ export type Project = {
   owner?: string; // team member slug, e.g. "abida" or "haseeb"
 };
 
+/*
+  Order matters: the home page shows the first 6 entries (`<ProjectsSection
+  limit={6} />`). They're interleaved so the home page surfaces a mix of
+  Haseeb's web-dev builds AND Abida's paid-ads wins — both founders'
+  work visible above the fold of the projects grid.
+*/
 export const projects: Project[] = [
   {
     slug: "petroff-law",
@@ -29,6 +35,22 @@ export const projects: Project[] = [
     owner: "haseeb",
   },
   {
+    slug: "meta-ecommerce-roas",
+    title: "Meta Ads — E-commerce 13.5× ROAS",
+    category: "Meta Ads · E-commerce",
+    industry: "E-commerce",
+    image: "/images/projects/google-ads-results-3.jpeg",
+    summary:
+      "E-commerce Meta Ads campaign delivering 121 website purchases at £1.47 cost-per-purchase — 13.5× return on ad spend over an 18-day window.",
+    services: ["Meta Ads", "Conversions API", "Audience Targeting"],
+    results: [
+      { label: "Purchases", value: "121" },
+      { label: "Cost / purchase", value: "£1.47" },
+      { label: "ROAS", value: "13.5×" },
+    ],
+    owner: "abida",
+  },
+  {
     slug: "london-motor-sports",
     title: "London Motor Sports",
     category: "E-commerce Website",
@@ -45,6 +67,22 @@ export const projects: Project[] = [
     owner: "haseeb",
   },
   {
+    slug: "google-ads-multi-region",
+    title: "Google Ads — UK/US Lead Engine",
+    category: "Google Ads · PPC",
+    industry: "Paid Advertising",
+    image: "/images/projects/google-ads-results-1.jpeg",
+    summary:
+      "Multi-region Google Ads campaign delivering 49 conversions from a $1.21k test budget — clean targeting across UK and US markets with full conversion tracking via GTM.",
+    services: ["Google Ads", "Conversion Tracking", "GTM"],
+    results: [
+      { label: "Conversions", value: "49" },
+      { label: "Impressions", value: "4,040" },
+      { label: "Clicks", value: "210" },
+    ],
+    owner: "abida",
+  },
+  {
     slug: "french-chateau-for-sale",
     title: "French Chateau For Sale",
     category: "Real Estate Website",
@@ -59,6 +97,22 @@ export const projects: Project[] = [
       { label: "Keywords top 10", value: "120+" },
     ],
     owner: "haseeb",
+  },
+  {
+    slug: "meta-leads-service-business",
+    title: "Meta Lead Ads — Service Business",
+    category: "Meta Ads · Lead Generation",
+    industry: "Local Services",
+    image: "/images/projects/google-ads-results-2.jpeg",
+    summary:
+      "Meta lead-generation funnel for a UK service business — qualified leads at £5.69 each from a £51 test budget, proving the channel before scaling spend.",
+    services: ["Meta Ads", "Conversions API", "Meta Pixel"],
+    results: [
+      { label: "Form leads", value: "9" },
+      { label: "Cost / lead", value: "£5.69" },
+      { label: "Spend", value: "£51" },
+    ],
+    owner: "abida",
   },
   {
     slug: "village-dog",
@@ -107,55 +161,6 @@ export const projects: Project[] = [
       { label: "Calls / month", value: "120+" },
     ],
     owner: "haseeb",
-  },
-  /* ----- Google / Meta Ads campaigns (Abida) ----- */
-  {
-    slug: "google-ads-multi-region",
-    title: "Google Ads — UK/US Lead Engine",
-    category: "Google Ads · PPC",
-    industry: "Paid Advertising",
-    image: "/images/projects/google-ads-results-1.jpeg",
-    summary:
-      "Multi-region Google Ads campaign delivering 49 conversions from a $1.21k test budget — clean targeting across UK and US markets with full conversion tracking via GTM.",
-    services: ["Google Ads", "Conversion Tracking", "GTM"],
-    results: [
-      { label: "Conversions", value: "49" },
-      { label: "Impressions", value: "4,040" },
-      { label: "Clicks", value: "210" },
-    ],
-    owner: "abida",
-  },
-  {
-    slug: "meta-leads-service-business",
-    title: "Meta Lead Ads — Service Business",
-    category: "Meta Ads · Lead Generation",
-    industry: "Local Services",
-    image: "/images/projects/google-ads-results-2.jpeg",
-    summary:
-      "Meta lead-generation funnel for a UK service business — qualified leads at £5.69 each from a £51 test budget, proving the channel before scaling spend.",
-    services: ["Meta Ads", "Conversions API", "Meta Pixel"],
-    results: [
-      { label: "Form leads", value: "9" },
-      { label: "Cost / lead", value: "£5.69" },
-      { label: "Spend", value: "£51" },
-    ],
-    owner: "abida",
-  },
-  {
-    slug: "meta-ecommerce-roas",
-    title: "Meta Ads — E-commerce 13.5× ROAS",
-    category: "Meta Ads · E-commerce",
-    industry: "E-commerce",
-    image: "/images/projects/google-ads-results-3.jpeg",
-    summary:
-      "E-commerce Meta Ads campaign delivering 121 website purchases at £1.47 cost-per-purchase — 13.5× return on ad spend over an 18-day window.",
-    services: ["Meta Ads", "Conversions API", "Audience Targeting"],
-    results: [
-      { label: "Purchases", value: "121" },
-      { label: "Cost / purchase", value: "£1.47" },
-      { label: "ROAS", value: "13.5×" },
-    ],
-    owner: "abida",
   },
 ];
 
