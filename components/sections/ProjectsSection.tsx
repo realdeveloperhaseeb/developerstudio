@@ -67,7 +67,9 @@ export default function ProjectsSection({
                   <div className="mt-5 grid grid-cols-3 gap-2 border-t border-line pt-4">
                     {p.results.map((r) => (
                       <div key={r.label}>
-                        <div className="text-base font-bold text-brand-darker">{r.value}</div>
+                        <div className="tabular text-base font-bold text-brand-darker">
+                          {r.value}
+                        </div>
                         <div className="text-[11px] leading-tight text-ink-muted">{r.label}</div>
                       </div>
                     ))}

@@ -29,8 +29,21 @@
   --font-display: var(--font-outfit);
   --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 
+  /*
+    Editorial shadow — a stack, not a single blob. Reads as considered
+    depth rather than a generic drop-shadow. Keep --shadow-soft for
+    smaller UI chrome that shouldn't compete for attention.
+  */
   --shadow-soft: 0 1px 2px rgba(10, 10, 10, 0.04), 0 8px 30px rgba(10, 10, 10, 0.06);
-  --shadow-card: 0 10px 40px -12px rgba(16, 185, 129, 0.18);
+  --shadow-card:
+    0 1px 0 rgba(10, 10, 10, 0.02),
+    0 2px 4px rgba(10, 10, 10, 0.03),
+    0 12px 24px -10px rgba(16, 185, 129, 0.14),
+    0 30px 60px -30px rgba(10, 10, 10, 0.10);
+  --shadow-lift:
+    0 2px 4px rgba(10, 10, 10, 0.04),
+    0 16px 32px -12px rgba(16, 185, 129, 0.22),
+    0 40px 80px -30px rgba(10, 10, 10, 0.14);
 }
 
 :root {
@@ -86,6 +99,119 @@ h1, h2, h3, h4, h5 {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+/*
+  ---- Hand-drawn "marker" accents ----
+  Use in place of .text-gradient on individual words to introduce
+  intentional, editorial character. Three variants — pick sparingly:
+    .mark-underline  → wavy green marker underline
+    .mark-highlight  → highlighter swipe behind the word
+    .mark-circle     → hand-drawn circle around the word
+*/
+.mark-underline {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12' preserveAspectRatio='none'><path d='M2,7 Q20,2 40,6 T78,5 T98,7' fill='none' stroke='%2310b981' stroke-width='4' stroke-linecap='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: 0 92%;
+  background-size: 100% 0.42em;
+  padding-bottom: 0.08em;
+}
+.mark-highlight {
+  background: linear-gradient(
+    180deg,
+    transparent 55%,
+    color-mix(in oklab, var(--color-brand) 30%, transparent) 55%,
+    color-mix(in oklab, var(--color-brand) 30%, transparent) 92%,
+    transparent 92%
+  );
+  padding: 0 0.18em;
+  border-radius: 2px;
+}
+.mark-circle {
+  position: relative;
+  display: inline-block;
+  padding: 0 0.35em;
+}
+.mark-circle::before {
+  content: "";
+  position: absolute;
+  inset: -0.08em -0.15em -0.05em -0.15em;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60' preserveAspectRatio='none'><path d='M15,32 Q6,10 55,7 T110,20 Q118,40 90,52 T15,32' fill='none' stroke='%2310b981' stroke-width='2.5' stroke-linecap='round'/></svg>");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  z-index: -1;
+  transform: rotate(-1.2deg);
+}
+
+/*
+  ---- Editorial section dividers ----
+  Small centered marker between sections — feels considered vs empty.
+*/
+.divider-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+.divider-mark::before, .divider-mark::after {
+  content: "";
+  height: 1px;
+  flex: 0 0 3rem;
+  background: linear-gradient(to right, transparent, var(--color-line));
+}
+.divider-mark::after {
+  background: linear-gradient(to left, transparent, var(--color-line));
+}
+
+/*
+  ---- Subtle paper warmth ----
+  Alternative to plain white/zinc-50 for section backgrounds. Adds a
+  1–2% warmth so pages don't feel screen-cold. Kept very restrained.
+*/
+.bg-paper {
+  background-color: #fbfaf7;
+}
+.bg-paper-strong { background-color: #f8f6f0; }
+
+/*
+  ---- Tabular numerics ----
+  Stat blocks feel typographically more considered when numbers align.
+*/
+.tabular { font-variant-numeric: tabular-nums; }
+
+/*
+  ---- Slight rotations for "sticker" badges ----
+*/
+.rotate-slight { transform: rotate(-2.5deg); }
+.rotate-slight-r { transform: rotate(2.5deg); }
+
+/*
+  ---- Editorial link underline (offset + brand color on hover) ----
+*/
+.link-editorial {
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklab, var(--color-brand) 40%, transparent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.2s;
+}
+.link-editorial:hover {
+  text-decoration-color: var(--color-brand);
+}
+
+/*
+  ---- Card "lift" on hover — layered, not a single translate ----
+  Attach with .card-editorial for shared card treatment.
+*/
+.card-editorial {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.3s;
+}
+.card-editorial:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in oklab, var(--color-brand) 25%, var(--color-line));
+  box-shadow: var(--shadow-lift);
 }
 
 .bg-grid {

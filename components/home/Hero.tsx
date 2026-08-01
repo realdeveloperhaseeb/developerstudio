@@ -3,6 +3,7 @@ import Link from "next/link";
 import { site } from "@/data/site";
 import { Icon } from "@/components/icons";
 import Container from "@/components/Container";
+import Mark from "@/components/Mark";
 
 const delay = (s: number) => ({ ["--load-delay"]: `${s}s` }) as React.CSSProperties;
 
@@ -34,7 +35,7 @@ export default function Hero() {
               style={delay(0.1)}
             >
               We grow your business{" "}
-              <span className="text-gradient">from zero</span> to industry leader.
+              <Mark variant="underline">from zero</Mark> to industry leader.
             </h1>
 
             <p
@@ -78,7 +79,7 @@ export default function Hero() {
                 { value: "98%", label: "Client retention" },
               ].map((s) => (
                 <div key={s.label}>
-                  <div className="text-2xl font-bold text-ink">{s.value}</div>
+                  <div className="tabular text-2xl font-bold text-ink">{s.value}</div>
                   <div className="text-sm text-ink-muted">{s.label}</div>
                 </div>
               ))}
@@ -108,8 +109,8 @@ export default function Hero() {
                 />
               </div>
 
-              {/* Floating stat card */}
-              <div className="animate-float absolute -bottom-6 -left-6 hidden rounded-2xl border border-line bg-white p-4 shadow-card sm:block">
+              {/* Floating stat card — offset asymmetrically (not the mirror of the other card) */}
+              <div className="animate-float absolute -bottom-6 -left-8 hidden rounded-2xl border border-line bg-white p-4 shadow-card sm:block">
                 <div className="flex items-center gap-3">
                   <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-50 text-brand-darker">
                     <Icon name="search" className="h-5 w-5" />
@@ -121,8 +122,11 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* Floating leads card */}
-              <div className="animate-float absolute -top-5 -right-4 hidden rounded-2xl border border-line bg-white p-4 shadow-card sm:block">
+              {/* Floating leads card — sits closer to the browser chrome, slightly overlapping */}
+              <div
+                className="animate-float absolute -top-4 right-4 hidden rounded-2xl border border-line bg-white p-4 shadow-card sm:block"
+                style={{ animationDelay: "1.5s" }}
+              >
                 <div className="flex items-center gap-3">
                   <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand text-white">
                     <Icon name="bolt" className="h-5 w-5" />
@@ -130,6 +134,19 @@ export default function Hero() {
                   <div>
                     <div className="text-sm font-bold text-ink">+212% leads</div>
                     <div className="text-xs text-ink-muted">in 6 months</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Small "5.0" sticker — rotated, hand-crafted feel */}
+              <div
+                aria-hidden
+                className="rotate-slight absolute -bottom-4 right-6 hidden h-20 w-20 items-center justify-center rounded-full bg-ink text-white shadow-card sm:flex"
+              >
+                <div className="text-center leading-tight">
+                  <div className="text-xl font-black tabular">5.0</div>
+                  <div className="text-[9px] font-semibold uppercase tracking-widest text-white/70">
+                    ★★★★★
                   </div>
                 </div>
               </div>
