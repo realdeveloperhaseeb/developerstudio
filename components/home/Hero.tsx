@@ -86,98 +86,21 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Visual: dual-niche browser mockups.
-              Main card = a real law firm client (Petroff Law).
-              Secondary card = a designed-in-SVG roofer mockup, rotated
-              behind the main card so the two niches read at a glance. */}
+          {/* Visual */}
           <div className="animate-load relative" style={delay(0.2)}>
             <div className="relative mx-auto max-w-md lg:max-w-none">
               <div className="absolute -inset-6 -z-10 rounded-[2rem] bg-gradient-to-tr from-brand/10 via-transparent to-brand-light/20 blur-2xl" />
 
-              {/* SECONDARY: roofing mockup (designed inline). Sits behind, rotated. */}
-              <div
-                aria-hidden
-                className="animate-float absolute -bottom-10 -right-4 hidden w-[62%] rotate-[4deg] overflow-hidden rounded-2xl border border-line bg-white shadow-card sm:block lg:-right-8"
-                style={{ animationDelay: "1.2s" }}
-              >
-                <div className="flex items-center gap-1.5 border-b border-line bg-zinc-50 px-3 py-2">
-                  <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-yellow-400" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-green-400" />
-                  <span className="ml-2 truncate text-[10px] text-ink-muted">
-                    apexroofing.co.uk
-                  </span>
-                </div>
-                <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-b from-brand-50 via-white to-white p-4">
-                  {/* Roof silhouette */}
-                  <svg
-                    viewBox="0 0 300 180"
-                    className="absolute inset-x-0 bottom-0 h-full w-full"
-                    preserveAspectRatio="xMidYMax slice"
-                  >
-                    <defs>
-                      <pattern id="rooftiles" width="10" height="6" patternUnits="userSpaceOnUse">
-                        <path
-                          d="M0 6 L5 0 L10 6"
-                          stroke="rgba(4,120,87,0.35)"
-                          fill="none"
-                          strokeWidth="0.8"
-                        />
-                      </pattern>
-                    </defs>
-                    <path
-                      d="M40 110 L150 40 L260 110 L260 175 L40 175 Z"
-                      fill="rgba(16,185,129,0.10)"
-                    />
-                    <path
-                      d="M40 110 L150 40 L260 110"
-                      fill="url(#rooftiles)"
-                    />
-                    <path
-                      d="M40 110 L150 40 L260 110"
-                      fill="none"
-                      stroke="rgba(4,120,87,0.55)"
-                      strokeWidth="1.2"
-                    />
-                    <rect x="140" y="132" width="20" height="43" fill="rgba(4,120,87,0.6)" rx="1" />
-                    <circle cx="156" cy="154" r="1.2" fill="#fff" />
-                  </svg>
-                  <div className="relative">
-                    <div className="text-[9px] font-bold uppercase tracking-[0.2em] text-brand-darker">
-                      Apex Roofing Co.
-                    </div>
-                    <div className="mt-1 text-[13px] font-black leading-tight text-ink">
-                      Free roof
-                      <br />
-                      inspection.
-                    </div>
-                    <div className="mt-2 inline-flex items-center gap-1 rounded-full bg-brand px-2.5 py-1 text-[9px] font-bold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.3)]">
-                      Get a Quote →
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* MAIN: real law-firm client — Petroff Law */}
-              <div className="relative overflow-hidden rounded-2xl border border-line bg-white shadow-card">
+              <div className="overflow-hidden rounded-2xl border border-line bg-white shadow-card">
                 <div className="flex items-center gap-1.5 border-b border-line bg-zinc-50 px-4 py-3">
                   <span className="h-3 w-3 rounded-full bg-red-400" />
                   <span className="h-3 w-3 rounded-full bg-yellow-400" />
                   <span className="h-3 w-3 rounded-full bg-green-400" />
-                  <span className="ml-3 flex items-center gap-1.5 text-xs text-ink-muted">
-                    {/* Padlock glyph (no dep on an icon that may not exist) */}
-                    <span
-                      aria-hidden
-                      className="flex h-3 w-3 items-center justify-center rounded-[2px] bg-brand/15 text-[9px] leading-none text-brand-darker"
-                    >
-                      ●
-                    </span>
-                    petrofflaw.co.uk
-                  </span>
+                  <span className="ml-3 text-xs text-ink-muted">developerstudio.org</span>
                 </div>
                 <Image
-                  src="/images/projects/petroff-law-firm-website-design.png"
-                  alt="Petroff Law Firm website — a Developer Studio client"
+                  src="/images/projects/auto-repair-shop-website-design.png"
+                  alt="Auto repair shop website designed by Developer Studio"
                   width={1280}
                   height={720}
                   priority
@@ -186,43 +109,31 @@ export default function Hero() {
                 />
               </div>
 
-              {/* Niche chip on the main (law firm) card */}
-              <div className="absolute -top-3 left-4 inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-xs font-bold text-brand-darker shadow-card ring-1 ring-brand/25">
-                <Icon name="scale" className="h-3.5 w-3.5 text-brand" />
-                Law Firms
-              </div>
-
-              {/* Niche chip on the roofer card */}
-              <div className="absolute -bottom-2 right-10 hidden rotate-[4deg] items-center gap-1.5 rounded-full bg-ink px-3 py-1.5 text-xs font-bold text-white shadow-card sm:inline-flex">
-                <Icon name="home" className="h-3.5 w-3.5 text-brand-light" />
-                Roofing Companies
-              </div>
-
-              {/* Floating "+212% leads" chip — kept small, tucked into the corner so it doesn't compete */}
-              <div
-                className="animate-float absolute -top-4 right-4 hidden rounded-2xl border border-line bg-white p-3 shadow-card sm:block"
-                style={{ animationDelay: "1.5s" }}
-              >
-                <div className="flex items-center gap-2.5">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand text-white">
-                    <Icon name="bolt" className="h-4 w-4" />
+              {/* Floating stat card */}
+              <div className="animate-float absolute -bottom-6 -left-6 hidden rounded-2xl border border-line bg-white p-4 shadow-card sm:block">
+                <div className="flex items-center gap-3">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-50 text-brand-darker">
+                    <Icon name="search" className="h-5 w-5" />
                   </span>
                   <div>
-                    <div className="tabular text-sm font-bold text-ink">+212% leads</div>
-                    <div className="text-[10px] text-ink-muted">in 6 months</div>
+                    <div className="text-sm font-bold text-ink">Ranking #1</div>
+                    <div className="text-xs text-ink-muted">on Google in 90 days</div>
                   </div>
                 </div>
               </div>
 
-              {/* Rotated 5.0 sticker — moved to top-left so it doesn't fight the roofer card */}
+              {/* Floating leads card */}
               <div
-                aria-hidden
-                className="rotate-slight-r absolute -top-6 -left-6 hidden h-16 w-16 items-center justify-center rounded-full bg-ink text-white shadow-card sm:flex"
+                className="animate-float absolute -top-5 -right-4 hidden rounded-2xl border border-line bg-white p-4 shadow-card sm:block"
+                style={{ animationDelay: "1.5s" }}
               >
-                <div className="text-center leading-none">
-                  <div className="tabular text-base font-black">5.0</div>
-                  <div className="mt-0.5 text-[8px] font-semibold tracking-widest text-white/70">
-                    ★★★★★
+                <div className="flex items-center gap-3">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand text-white">
+                    <Icon name="bolt" className="h-5 w-5" />
+                  </span>
+                  <div>
+                    <div className="tabular text-sm font-bold text-ink">+212% leads</div>
+                    <div className="text-xs text-ink-muted">in 6 months</div>
                   </div>
                 </div>
               </div>

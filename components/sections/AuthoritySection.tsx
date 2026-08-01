@@ -4,6 +4,7 @@ import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
 import Button from "@/components/Button";
+import Mark from "@/components/Mark";
 
 const points = [
   "A senior, in-house team — not outsourced freelancers",
@@ -29,17 +30,42 @@ const photos = [
 
 export default function AuthoritySection() {
   return (
-    <section className="py-12 sm:py-16">
+    <section className="relative overflow-hidden py-12 sm:py-16">
+      {/* Off-grid ornament — asymmetric, breathes on the right side */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-20 -right-24 h-96 w-96 rounded-full bg-brand-50 blur-3xl opacity-70"
+      />
       <Container>
-        <SectionHeading
-          eyebrow="Why Developer Studio"
-          title={
-            <>
-              A real team behind your <span className="text-gradient">growth</span>
-            </>
-          }
-          description="We're not a faceless agency. You get a dedicated, senior team that meets with you, plans with you, and treats your business like our own."
-        />
+        {/* Personal, conversational note above the section heading —
+            humanises the brand instead of another agency headline. */}
+        <Reveal className="mx-auto max-w-2xl text-center">
+          <div className="inline-flex items-center gap-3 rounded-full border border-line bg-white px-4 py-1.5 shadow-soft">
+            <Image
+              src="/images/team/haseeb.png"
+              alt="Haseeb Ahmad, founder of Developer Studio"
+              width={28}
+              height={28}
+              className="h-7 w-7 rounded-full object-cover"
+            />
+            <span className="text-sm text-ink-soft">
+              <span className="font-semibold text-ink">Hey — it&apos;s Haseeb.</span>{" "}
+              <span className="text-ink-muted">Here&apos;s who we really are.</span>
+            </span>
+          </div>
+        </Reveal>
+
+        <div className="mt-5">
+          <SectionHeading
+            eyebrow="Why Developer Studio"
+            title={
+              <>
+                A real team behind your <Mark variant="underline">growth</Mark>
+              </>
+            }
+            description="We're not a faceless agency. You get a dedicated, senior team that meets with you, plans with you, and treats your business like our own."
+          />
+        </div>
 
         {/* Both real photos — large */}
         <div className="mt-12 grid gap-6 sm:grid-cols-2">
