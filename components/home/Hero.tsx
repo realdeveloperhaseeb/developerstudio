@@ -165,7 +165,13 @@ export default function Hero() {
                   <span className="h-3 w-3 rounded-full bg-yellow-400" />
                   <span className="h-3 w-3 rounded-full bg-green-400" />
                   <span className="ml-3 flex items-center gap-1.5 text-xs text-ink-muted">
-                    <Icon name="lock" className="h-3 w-3" />
+                    {/* Padlock glyph (no dep on an icon that may not exist) */}
+                    <span
+                      aria-hidden
+                      className="flex h-3 w-3 items-center justify-center rounded-[2px] bg-brand/15 text-[9px] leading-none text-brand-darker"
+                    >
+                      ●
+                    </span>
                     petrofflaw.co.uk
                   </span>
                 </div>
