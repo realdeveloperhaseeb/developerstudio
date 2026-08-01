@@ -5,6 +5,7 @@ import { Icon, type IconName } from "@/components/icons";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
+import Mark from "@/components/Mark";
 
 export default function IndustriesSection() {
   return (
@@ -15,7 +16,8 @@ export default function IndustriesSection() {
           eyebrow="Built for your industry"
           title={
             <>
-              We specialise in <span className="text-gradient">law firms &amp; roofers</span>
+              We specialise in{" "}
+              <Mark variant="highlight">law firms &amp; roofers</Mark>
             </>
           }
           description="Generic agencies guess. We know exactly how your customers search, what makes them call, and how to win in your market."
@@ -24,7 +26,29 @@ export default function IndustriesSection() {
         <div className="mt-14 grid gap-6 lg:grid-cols-2">
           {industries.map((ind, i) => (
             <Reveal key={ind.slug} delay={i * 0.1} direction={i === 0 ? "right" : "left"}>
-              <div className="group flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-white transition-all duration-300 hover:border-brand/40 hover:shadow-card">
+              <div className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-white transition-all duration-300 hover:border-brand/40 hover:shadow-card">
+                {/*
+                  Small "OUR SPECIALTY" sticker — rotated slightly, alternating
+                  sides between the two cards so they don't feel duplicated.
+                */}
+                <div
+                  aria-hidden
+                  className={`absolute top-4 z-10 flex h-16 w-16 items-center justify-center rounded-full bg-ink text-white shadow-card ${
+                    i === 0
+                      ? "right-4 rotate-slight-r"
+                      : "right-4 rotate-slight"
+                  }`}
+                >
+                  <div className="text-center leading-none">
+                    <div className="text-[9px] font-bold uppercase tracking-widest text-brand-light">
+                      Our
+                    </div>
+                    <div className="mt-0.5 text-[10px] font-black tracking-wide">
+                      NICHE
+                    </div>
+                  </div>
+                </div>
+
                 {/* Image */}
                 <div className="relative aspect-[16/10] overflow-hidden bg-zinc-100">
                   <Image
