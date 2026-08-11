@@ -11,23 +11,23 @@ import Button from "@/components/Button";
 import PageHeader from "@/components/PageHeader";
 import Mark from "@/components/Mark";
 import CtaSection from "@/components/sections/CtaSection";
-import DubaiServicesTabs from "@/components/dubai/DubaiServicesTabs";
-import DubaiCaseCarousel from "@/components/dubai/DubaiCaseCarousel";
 
 /*
   Dubai landing page. The flagship UAE page.
 
-  SEO objective: rank for the "digital marketing agency dubai" cluster.
-  Primary keyword sits in H1, meta title, meta description, canonical,
-  LocalBusiness schema, and appears naturally in H2s and body copy.
+  SEO objective: rank for the "digital marketing agency dubai" cluster
+  (see keyword table). Primary keyword sits in H1, meta title, meta
+  description, canonical, LocalBusiness schema, and appears naturally
+  in H2s and body copy without stuffing.
 
-  Design: agency-quality visual layout using existing team photography
-  + project screenshots + our own inline SVGs. Tabbed services, case
-  study carousel, comparison pricing table, founder split-screen
-  feature. Same white/black/green scheme as the rest of the site.
+  Design: uses the same white / black / green system as the rest of
+  the site, existing components (SectionHeading, Container, Reveal,
+  Button, Icon, Mark), and reuses the real Google Ads + Meta Ads
+  screenshots we already have for social proof.
 */
 
 const SLUG = "digital-marketing-agency-dubai";
+const CITY = "Dubai";
 
 const TITLE =
   "Digital Marketing Agency Dubai | SEO, Google Ads & Meta Ads | Developer Studio";
@@ -35,6 +35,8 @@ const DESCRIPTION =
   "Developer Studio is a results-driven digital marketing agency in Dubai. We manage SEO, Google Ads, Meta Ads and web development for ambitious UAE brands. With 2+ years of proven Dubai-market experience and campaigns delivering up to 13.5× ROAS. Book a free strategy call.";
 
 export const metadata: Metadata = {
+  // Absolute overrides the root layout's title template so we get the
+  // clean, keyword-first title on this landing page.
   title: { absolute: TITLE },
   description: DESCRIPTION,
   alternates: { canonical: `/${SLUG}` },
@@ -76,12 +78,12 @@ export const metadata: Metadata = {
 const PHONE_E164 = site.phones.uk.e164;
 const PHONE_DISPLAY = site.phones.uk.display;
 
-/* ---------------- Data ---------------- */
+/* ---------------- Data blocks ---------------- */
 
 const trustBadges: { icon: IconName; value: string; label: string }[] = [
   { icon: "star",   value: "5.0",     label: "Client rating" },
   { icon: "rocket", value: "13.5×",   label: "Highest ROAS" },
-  { icon: "bolt",   value: "2+ yrs",  label: "UAE experience" },
+  { icon: "bolt",   value: "2+ yrs",  label: "In UAE markets" },
   { icon: "mapPin", value: "Dubai",   label: "UK · US · UAE" },
 ];
 
@@ -89,120 +91,166 @@ const painsInDubai: { icon: IconName; title: string; text: string }[] = [
   {
     icon: "search",
     title: "You're invisible on Google in Dubai",
-    text: "Competitors are on page one for the searches that matter. You aren't, and you can't afford to be scrolled past.",
+    text: "Competitors are on page one for the searches that matter. 'digital marketing agency Dubai', 'lawyer Dubai', 'roofing Dubai'. You aren't, and you can't afford to be scrolled past.",
   },
   {
     icon: "bolt",
     title: "CPCs in the UAE keep rising",
-    text: "Dubai is one of the most competitive paid-media markets in the region. Unfocused campaigns burn AED fast.",
+    text: "Dubai is one of the most competitive paid-media markets in the region. Unfocused Google or Meta campaigns burn AED fast and return nothing measurable.",
   },
   {
     icon: "code",
     title: "A slow, dated website",
-    text: "Your site loads slowly on mobile in the UAE, looks nothing like your competitors, and loses you every enquiry.",
+    text: "Your site loads slowly on mobile in the UAE, looks nothing like the brands you compete with, and quietly loses you every enquiry it should be catching.",
   },
   {
     icon: "mail",
     title: "Agencies that go dark after signup",
-    text: "You've been through the Dubai agency carousel: bold promises, monthly retainer, then radio silence.",
+    text: "You've been through the Dubai agency carousel: bold promises, monthly retainer, then radio silence. No reports, no calls, no accountability.",
   },
 ];
 
-const pricingPlans = [
-  {
-    name: "Starter",
-    tag: "Local presence",
-    priceMonthly: "AED 3,500",
-    priceHint: "/month · 3-month min",
-    description:
-      "For Dubai founders who need to start showing up locally. Foundation + a paid channel test.",
-    ctaLabel: "Start local",
-    highlight: false,
-  },
-  {
-    name: "Growth",
-    tag: "Most popular",
-    priceMonthly: "AED 8,500",
-    priceHint: "/month · 3-month min",
-    description:
-      "Full paid engine + SEO for growing UAE brands who need consistent, measurable lead flow.",
-    ctaLabel: "Choose growth",
-    highlight: true,
-  },
-  {
-    name: "Scale",
-    tag: "Full engine",
-    priceMonthly: "AED 18,000",
-    priceHint: "/month · 6-month min",
-    description:
-      "Every channel, senior-led, with weekly optimisation and dedicated founder access.",
-    ctaLabel: "Talk to us",
-    highlight: false,
-  },
-];
-
-const pricingFeatures: {
-  label: string;
-  values: [string | boolean, string | boolean, string | boolean];
+const services: {
+  icon: IconName;
+  title: string;
+  bullet: string;
+  outcome: string;
 }[] = [
-  { label: "Google Business Profile setup + monthly optimisation", values: [true, true, true] },
-  { label: "Local Dubai SEO (on-page + technical)",                values: [true, true, true] },
-  { label: "Monthly SEO content (blog + landing pages)",            values: ["2 posts", "6 posts", "12 posts"] },
-  { label: "Google Ads management",                                 values: [false, true, true] },
-  { label: "Meta Ads (Facebook + Instagram)",                       values: [false, true, true] },
-  { label: "Landing page design + A/B testing",                     values: [false, "1 / quarter", "Unlimited"] },
-  { label: "Meta Pixel + Conversions API + GTM setup",              values: ["Basic", true, true] },
-  { label: "Bilingual (Arabic + English) creative",                 values: [false, true, true] },
-  { label: "Weekly optimisation calls",                             values: [false, true, true] },
-  { label: "Monthly performance report",                            values: [true, true, true] },
-  { label: "Direct access to founders",                             values: [false, true, true] },
-  { label: "Dedicated Slack + WhatsApp channel",                    values: [false, false, true] },
+  {
+    icon: "search",
+    title: "SEO for Dubai businesses",
+    bullet:
+      "Technical SEO, local Dubai keywords, Google Business Profile optimisation and content built to rank in the UAE.",
+    outcome: "Top-3 rankings for high-intent Dubai searches",
+  },
+  {
+    icon: "target",
+    title: "Google Ads (PPC) in Dubai",
+    bullet:
+      "Search, Performance Max, and remarketing campaigns tuned for cost-per-lead in the UAE. With full GTM conversion tracking.",
+    outcome: "49 conversions from $1.2k test spend (recent client)",
+  },
+  {
+    icon: "share",
+    title: "Facebook & Instagram Ads for Dubai",
+    bullet:
+      "Lead-generation and e-commerce funnels with the Meta Pixel, Conversions API and creative that stops the scroll in Arabic and English feeds.",
+    outcome: "13.5× ROAS on a recent UAE e-commerce campaign",
+  },
+  {
+    icon: "code",
+    title: "Web development for Dubai",
+    bullet:
+      "Fast, conversion-focused websites (Next.js / headless) built to load in under one second on UAE mobile networks and rank locally.",
+    outcome: "Sites that convert 2–3× better than agency defaults",
+  },
+  {
+    icon: "app",
+    title: "Social media management",
+    bullet:
+      "Content, community and paid amplification on Instagram, TikTok and LinkedIn. Bilingual where it matters, always brand-first.",
+    outcome: "Owned social channels that fill the pipeline",
+  },
+  {
+    icon: "rocket",
+    title: "Digital marketing consulting",
+    bullet:
+      "Not ready for a full retainer? Book our senior team by the hour to audit your funnels, campaigns and site.",
+    outcome: "Clarity on where every AED should be spent",
+  },
+];
+
+const whyUs: { icon: IconName; title: string; text: string }[] = [
+  {
+    icon: "check",
+    title: "Real Dubai-market experience",
+    text: "Our Co-Founder Abida has managed Meta and Google Ads for UAE, UK and US brands for 2+ years. Including UAE Google Business Profile optimisation and Dubai-audience targeting.",
+  },
+  {
+    icon: "target",
+    title: "Cost-per-lead, not clicks",
+    text: "We report on the metrics that actually matter to your business: leads, calls, bookings, revenue. Not vanity dashboards designed to hide waste.",
+  },
+  {
+    icon: "bolt",
+    title: "No lock-in retainers",
+    text: "Month-to-month engagements. If we're not driving measurable growth for your Dubai business, you're free to leave. Most clients stay because it works.",
+  },
+  {
+    icon: "star",
+    title: "Direct access to founders",
+    text: "You work directly with the people doing the work. No account-manager layer, no delayed replies, no lost context.",
+  },
 ];
 
 const process = [
   {
     step: "01",
     title: "Free Dubai growth audit",
-    text: "We audit your website, current campaigns, Google Business Profile and top 5 Dubai competitors. Then send you a plain-English opportunity map. No fee, no pitch trap.",
+    text: "We audit your website, current campaigns, Google Business Profile and competitors in Dubai. Then send you a plain-English opportunity map. No fee, no pitch trap.",
   },
   {
     step: "02",
     title: "Strategy & KPI agreement",
-    text: "We agree the target CPL, ROAS or ranking positions for your Dubai market and lock the 90-day plan before any AED is spent on media.",
+    text: "We agree the target CPL / ROAS / ranking positions for your Dubai market and lock the 90-day plan before any AED is spent on media.",
   },
   {
     step: "03",
-    title: "Build & launch in 14 days",
-    text: "Site tuning, tracking setup, campaign build, creative production. Live in the UAE market inside two weeks, not two months.",
+    title: "Build & launch (14 days)",
+    text: "Site tuning, tracking setup, campaign build, creative production. Live in the UAE market inside two weeks. Not two months.",
   },
   {
     step: "04",
     title: "Optimise & report",
-    text: "Weekly optimisations, monthly reporting call, transparent dashboard. You always know what's working, what isn't, and what we're doing about it.",
+    text: "Weekly optimisations, monthly reporting call, transparent dashboard. You always know what's working, what isn't and what we're doing about it.",
   },
 ];
 
 const industriesDubai: { icon: IconName; name: string; text: string }[] = [
-  { icon: "scale",  name: "Law firms & DIFC advisors",    text: "Corporate, family, immigration and property law practices ranking locally and winning consultation-quality leads." },
-  { icon: "home",   name: "Real estate & property",        text: "Off-plan, secondary market, holiday-home and short-let brands filling their diaries via Meta and Google." },
-  { icon: "rocket", name: "E-commerce & D2C brands",       text: "UAE-native online stores scaling profitably with Meta Ads, remarketing and conversion-focused product pages." },
-  { icon: "target", name: "Local services & trades",       text: "Roofers, cleaners, movers, contractors capturing high-intent 'near me' searches across Dubai's neighbourhoods." },
-  { icon: "star",   name: "Hospitality & F&B",             text: "Restaurants, cafés, hotels and event venues driving reservations and reviews across Instagram and Google." },
-  { icon: "app",    name: "Startups & SaaS",               text: "Founders in DIFC, ADGM and DMCC building repeatable acquisition engines before their Series A." },
+  {
+    icon: "scale",
+    name: "Law firms in Dubai & DIFC",
+    text: "Corporate, family, immigration and property law practices ranking locally and winning consultation-quality leads.",
+  },
+  {
+    icon: "home",
+    name: "Real estate & property",
+    text: "Off-plan, secondary market, holiday-home and short-let brands filling their diaries via Meta and Google.",
+  },
+  {
+    icon: "rocket",
+    name: "E-commerce & D2C brands",
+    text: "UAE-native online stores scaling profitably with Meta Ads, remarketing and conversion-focused product pages.",
+  },
+  {
+    icon: "target",
+    name: "Local services & trades",
+    text: "Roofers, cleaners, movers, contractors. Capturing high-intent 'near me' searches across Dubai's neighbourhoods.",
+  },
+  {
+    icon: "star",
+    name: "Hospitality & F&B",
+    text: "Restaurants, cafés, hotels and event venues driving reservations and reviews across Instagram and Google.",
+  },
+  {
+    icon: "app",
+    name: "Startups & SaaS",
+    text: "Founders in DIFC, ADGM and DMCC building repeatable acquisition engines before Series A.",
+  },
 ];
 
 const dubaiFaqs: { q: string; a: string }[] = [
   {
     q: "How much does digital marketing cost in Dubai?",
-    a: "It depends on channel and goal. A Google Ads engagement in Dubai typically starts around AED 3,500 to 5,000 per month in management on top of media spend (we recommend starting at AED 5,000+ for a valid test). SEO retainers start around AED 4,000/month. Our packages start at AED 3,500 and scale to AED 18,000 for full service. See the pricing table above for details.",
+    a: "It depends entirely on channel and goal. A Google Ads engagement in Dubai typically starts around AED 3,500–5,000 per month in management on top of media spend (which we recommend starting at AED 5,000+ for a valid test). SEO retainers start around AED 4,000/month. We only quote after understanding your business. No generic 'packages'. So book a free call and we'll send a Dubai-specific proposal.",
   },
   {
     q: "How long does SEO take to work for a Dubai business?",
-    a: "Local SEO in Dubai (Google Business Profile + city + service pages) usually starts producing leads inside 60 to 90 days. Broader organic rankings on competitive UAE terms take 4 to 6 months to move meaningfully and 9 to 12 months to compound. Anyone quoting 'top of Google in 30 days' for a competitive Dubai keyword is either running paid ads to fake the result or doesn't know what they're doing.",
+    a: "Local SEO in Dubai (Google Business Profile + city + service pages) usually starts producing leads inside 60–90 days. Broader organic rankings on competitive UAE terms take 4–6 months to move meaningfully and 9–12 months to compound. Anyone quoting 'top of Google in 30 days' for a competitive Dubai keyword is either running paid ads to fake the result or doesn't know what they're doing.",
   },
   {
     q: "Do you work with startups and small businesses in Dubai?",
-    a: "Yes. Most of our best UAE case studies are with founder-led businesses, not enterprises. If you're pre-revenue we'll usually recommend a lean SEO + Google Business Profile foundation before paid media, so you're not paying to send traffic to a site that can't convert.",
+    a: "Yes. Most of our best UAE case studies are with founder-led businesses, not enterprises. If you're pre-revenue we'll usually recommend a lean SEO + Google Business Profile foundation before paid media. So you're not paying to send traffic to a site that can't convert.",
   },
   {
     q: "What makes Developer Studio different from other digital marketing companies in Dubai?",
@@ -210,49 +258,22 @@ const dubaiFaqs: { q: string; a: string }[] = [
   },
   {
     q: "Which areas of Dubai do you serve?",
-    a: "All of Dubai. Downtown, Business Bay, DIFC, Dubai Marina, JLT, JBR, Deira, Bur Dubai, Al Barsha, Jumeirah, Silicon Oasis, Motor City, JVC, JVT, Al Quoz and every other neighbourhood. We also serve the wider UAE (Abu Dhabi, Sharjah, Ajman, Ras Al Khaimah, Fujairah, Umm Al Quwain). Same team, same standard.",
+    a: "All of Dubai. Downtown, Business Bay, DIFC, Dubai Marina, JLT, JBR, Deira, Bur Dubai, Al Barsha, Jumeirah, Silicon Oasis, Motor City, JVC, JVT, Al Quoz and every other neighbourhood. We also serve the wider UAE (Abu Dhabi, Sharjah, Ajman, Ras Al Khaimah, Fujairah, Umm Al Quwain). The same team, the same standard.",
   },
   {
     q: "Do you offer Arabic content or bilingual campaigns?",
-    a: "Yes. We produce and run Arabic-language ad creative and landing pages where it's going to lift performance, usually B2C, hospitality, F&B and services targeting Emirati and Arabic-speaking Dubai residents. For B2B and expat-focused work, English is usually enough.",
+    a: "Yes. We produce and run Arabic-language ad creative and landing pages where it's genuinely going to lift performance. Usually B2C, hospitality, F&B and services targeting Emirati and Arabic-speaking Dubai residents. For B2B and expat-focused work, English is usually enough.",
   },
   {
-    q: "Are you a Google Partner or Meta Business Partner agency in Dubai?",
-    a: "We work with Google Ads and Meta Ads every day, and our Co-Founder is a certified Google Ads and Meta Ads specialist. Partner-badge status matters far less than case studies; ours are shown in the carousel above.",
+    q: "Are you a Google Partner / Meta Business Partner agency in Dubai?",
+    a: "We work with Google Ads and Meta Ads every day. Our Co-Founder is a certified Google Ads and Meta Ads specialist. Partner-badge status matters far less than case studies; ours are on this page.",
   },
 ];
 
-/* ---------------- Helpers ---------------- */
+/* ---------------- Small helpers ---------------- */
 
-// Founders in a fixed order (co-founder first for Dubai — UAE market emphasis).
-const founders = team
-  .filter((m) => m.founder || m.cofounder)
-  .sort((a, b) => (b.cofounder ? 1 : 0) - (a.cofounder ? 1 : 0));
-
-// Small helper: render a pricing-table cell (boolean or string).
-function Cell({ value, highlight }: { value: string | boolean; highlight?: boolean }) {
-  if (value === true) {
-    return (
-      <span
-        className={`mx-auto flex h-6 w-6 items-center justify-center rounded-full ${
-          highlight ? "bg-brand text-white" : "bg-brand-50 text-brand-darker"
-        }`}
-      >
-        <Icon name="check" className="h-3.5 w-3.5" />
-      </span>
-    );
-  }
-  if (value === false) {
-    return <span className="text-ink/25">—</span>;
-  }
-  return (
-    <span
-      className={`text-sm font-semibold ${highlight ? "text-brand-darker" : "text-ink-soft"}`}
-    >
-      {value}
-    </span>
-  );
-}
+// Ensure the two founders are surfaced (in a fixed order). Haseeb + Abida.
+const founders = team.filter((m) => m.founder || m.cofounder);
 
 /* ---------------- Page ---------------- */
 
@@ -261,7 +282,7 @@ export default function DubaiDigitalMarketingPage() {
 
   return (
     <>
-      {/* Structured data */}
+      {/* Structured data. LocalBusiness + Service + Breadcrumb + FAQ */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -269,14 +290,14 @@ export default function DubaiDigitalMarketingPage() {
             {
               "@context": "https://schema.org",
               "@type": "ProfessionalService",
-              name: `${site.name} — Digital Marketing Agency Dubai`,
+              name: `${site.name}. Digital Marketing Agency Dubai`,
               url: `${site.url}/${SLUG}`,
               image: `${site.url}/images/developer-studio-logo.png`,
               telephone: PHONE_E164,
               email: site.email,
               priceRange: "$$",
               areaServed: [
-                { "@type": "City", name: "Dubai" },
+                { "@type": "City",    name: "Dubai" },
                 { "@type": "Country", name: "United Arab Emirates" },
               ],
               address: {
@@ -347,119 +368,55 @@ export default function DubaiDigitalMarketingPage() {
         ]}
       />
 
-      {/* ---------------- HERO: image split with CTAs + trust badges ---------------- */}
-      <section className="relative overflow-hidden border-b border-line bg-white py-10 sm:py-14">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -top-24 left-1/2 h-72 w-[80%] -translate-x-1/2 rounded-full bg-brand/8 blur-3xl"
-        />
-        <Container>
-          <div className="grid items-center gap-10 lg:grid-cols-[1fr_1fr] lg:gap-14">
-            {/* Copy */}
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-darker">
-                Serving Dubai · Abu Dhabi · Sharjah · Ras Al Khaimah
-              </p>
-              <h2 className="mt-3 text-3xl font-black leading-[1.1] text-ink sm:text-4xl lg:text-[42px]">
-                The <Mark variant="highlight">growth partner</Mark> Dubai
-                founders actually keep on retainer.
-              </h2>
-              <p className="mt-5 text-base leading-relaxed text-ink-muted sm:text-lg">
-                No account-manager layer. No vanity dashboards. Just senior
-                strategists shipping campaigns, tracking cost-per-lead in AED,
-                and reporting on the numbers that actually move your Dubai
-                business.
-              </p>
-
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <Button href="/contact" size="lg" icon="arrowRight">
-                  Get a free Dubai growth plan
-                </Button>
-                <a
-                  href={site.whatsapp.uk}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex h-13 items-center justify-center gap-2 rounded-full border border-line bg-white px-6 text-base font-semibold text-ink transition-colors hover:border-brand hover:text-brand-darker"
-                >
-                  <Icon name="whatsapp" className="h-5 w-5 text-brand" />
-                  Chat on WhatsApp
-                </a>
-                <a
-                  href={`tel:${PHONE_E164}`}
-                  className="inline-flex h-13 items-center justify-center gap-2 rounded-full border border-line bg-white px-6 text-base font-semibold text-ink transition-colors hover:border-brand hover:text-brand-darker"
-                >
-                  <Icon name="phone" className="h-5 w-5 text-brand" />
-                  {PHONE_DISPLAY}
-                </a>
-              </div>
+      {/* ---------------- HERO CTAs + trust badges ---------------- */}
+      <section className="border-b border-line bg-white">
+        <Container className="py-10 sm:py-14">
+          <div className="flex flex-col items-center gap-6">
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <Button href="/contact" size="lg" icon="arrowRight">
+                Get a free Dubai growth plan
+              </Button>
+              <a
+                href={site.whatsapp.uk}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-13 items-center justify-center gap-2 rounded-full border border-line bg-white px-6 text-base font-semibold text-ink transition-colors hover:border-brand hover:text-brand-darker"
+              >
+                <Icon name="whatsapp" className="h-5 w-5 text-brand" />
+                Chat on WhatsApp
+              </a>
+              <a
+                href={`tel:${PHONE_E164}`}
+                className="inline-flex h-13 items-center justify-center gap-2 rounded-full border border-line bg-white px-6 text-base font-semibold text-ink transition-colors hover:border-brand hover:text-brand-darker"
+              >
+                <Icon name="phone" className="h-5 w-5 text-brand" />
+                {PHONE_DISPLAY}
+              </a>
             </div>
 
-            {/* Image */}
-            <div className="relative">
-              <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-to-tr from-brand/15 to-brand-light/20 blur-2xl" />
-              <div className="relative overflow-hidden rounded-3xl border border-line shadow-card">
-                <Image
-                  src="/images/developer-studio-team-at-work.webp"
-                  alt="Developer Studio team working on a Dubai client's digital marketing strategy"
-                  width={1200}
-                  height={800}
-                  priority
-                  sizes="(min-width: 1024px) 50vw, 100vw"
-                  className="h-auto w-full object-cover"
-                />
-              </div>
-
-              {/* Floating stat card */}
-              <div className="absolute -top-5 -left-4 hidden rounded-2xl border border-line bg-white p-4 shadow-card sm:block">
-                <div className="flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand text-white">
-                    <Icon name="rocket" className="h-5 w-5" />
+            <div className="mt-2 grid w-full max-w-4xl grid-cols-2 gap-4 sm:grid-cols-4">
+              {trustBadges.map((b) => (
+                <div
+                  key={b.label}
+                  className="flex items-center gap-3 rounded-2xl border border-line bg-white p-4 shadow-soft"
+                >
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-darker">
+                    <Icon name={b.icon} className="h-5 w-5" />
                   </span>
                   <div>
-                    <div className="tabular text-sm font-bold text-ink">13.5× ROAS</div>
-                    <div className="text-xs text-ink-muted">recent UAE campaign</div>
+                    <div className="tabular text-lg font-black leading-none text-ink">
+                      {b.value}
+                    </div>
+                    <div className="text-[11px] text-ink-muted">{b.label}</div>
                   </div>
                 </div>
-              </div>
-
-              {/* Floating "UAE" sticker */}
-              <div
-                aria-hidden
-                className="rotate-slight absolute -bottom-4 right-6 hidden h-20 w-20 items-center justify-center rounded-full bg-ink text-white shadow-card sm:flex"
-              >
-                <div className="text-center leading-tight">
-                  <div className="text-[9px] font-bold uppercase tracking-widest text-brand-light">
-                    Serving
-                  </div>
-                  <div className="tabular mt-0.5 text-lg font-black">UAE</div>
-                </div>
-              </div>
+              ))}
             </div>
-          </div>
-
-          {/* Trust badges */}
-          <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {trustBadges.map((b) => (
-              <div
-                key={b.label}
-                className="flex items-center gap-3 rounded-2xl border border-line bg-white p-4 shadow-soft"
-              >
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-darker">
-                  <Icon name={b.icon} className="h-5 w-5" />
-                </span>
-                <div>
-                  <div className="tabular text-lg font-black leading-none text-ink">
-                    {b.value}
-                  </div>
-                  <div className="text-[11px] text-ink-muted">{b.label}</div>
-                </div>
-              </div>
-            ))}
           </div>
         </Container>
       </section>
 
-      {/* ---------------- WHY BRANDS COME TO US (pains) ---------------- */}
+      {/* ---------------- WHY BUSINESSES CHOOSE US IN DUBAI (pains) ---------------- */}
       <section className="relative overflow-hidden py-14 sm:py-20">
         <div
           aria-hidden
@@ -477,9 +434,10 @@ export default function DubaiDigitalMarketingPage() {
             </h2>
             <p className="mt-5 text-base leading-relaxed text-ink-muted sm:text-lg">
               Most digital marketing companies in Dubai run the same generic
-              playbook. That doesn&apos;t work in a market this competitive.
-              Here&apos;s what we hear from the founders who come to us for a
-              second opinion.
+              playbook. The same ad templates, the same landing pages, the same
+              monthly reports full of vanity metrics. That doesn&apos;t work in a
+              market this competitive. Here&apos;s what we hear from the founders
+              who come to us for a second opinion.
             </p>
           </div>
 
@@ -503,213 +461,245 @@ export default function DubaiDigitalMarketingPage() {
         </Container>
       </section>
 
-      {/* ---------------- SERVICES TABS ---------------- */}
-      <DubaiServicesTabs />
-
-      {/* ---------------- CASE STUDIES CAROUSEL ---------------- */}
-      <DubaiCaseCarousel />
-
-      {/* ---------------- PRICING TABLE ---------------- */}
-      <section className="relative overflow-hidden bg-zinc-50/60 py-14 sm:py-20">
+      {/* ---------------- SERVICES ---------------- */}
+      <section
+        id="services"
+        className="relative overflow-hidden bg-zinc-50/60 py-14 sm:py-20"
+      >
         <Container>
           <div className="mx-auto max-w-3xl text-center">
             <span className="inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-darker">
               <span aria-hidden className="inline-block h-[2px] w-6 rounded-full bg-brand" />
-              Pricing
+              What we do
             </span>
             <h2 className="mt-5 text-3xl font-black leading-tight text-ink sm:text-4xl">
-              Transparent Dubai <Mark variant="underline">pricing</Mark>
+              Digital marketing services in{" "}
+              <Mark variant="underline">Dubai</Mark>
             </h2>
             <p className="mt-5 text-base leading-relaxed text-ink-muted sm:text-lg">
-              Fixed monthly fees in AED. No lock-in retainers. Media spend is
-              billed separately (you always own your ad accounts).
+              A full-stack growth engine. SEO, paid media, web and social .
+              built for the UAE market and run by senior specialists, not
+              juniors on a training plan.
             </p>
           </div>
 
-          {/* Plan headers */}
-          <div className="mt-14 grid gap-6 lg:grid-cols-3">
-            {pricingPlans.map((plan) => (
-              <Reveal key={plan.name}>
-                <div
-                  className={`relative flex h-full flex-col rounded-3xl border p-7 transition-all ${
-                    plan.highlight
-                      ? "border-brand bg-ink text-white shadow-card ring-4 ring-brand/25"
-                      : "border-line bg-white text-ink shadow-soft hover:-translate-y-0.5 hover:shadow-card"
-                  }`}
-                >
-                  {plan.highlight && (
-                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-brand px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-white shadow-card">
-                      {plan.tag}
-                    </span>
-                  )}
-                  <div
-                    className={`text-[11px] font-semibold uppercase tracking-widest ${
-                      plan.highlight ? "text-brand-light" : "text-brand-darker"
-                    }`}
-                  >
-                    {plan.name}
-                  </div>
-                  <div className="mt-3 flex items-baseline gap-2">
-                    <span className="tabular text-3xl font-black leading-none sm:text-4xl">
-                      {plan.priceMonthly}
-                    </span>
-                    <span
-                      className={`text-xs ${plan.highlight ? "text-white/60" : "text-ink-muted"}`}
-                    >
-                      {plan.priceHint}
-                    </span>
-                  </div>
-                  <p
-                    className={`mt-4 flex-1 text-sm leading-relaxed ${
-                      plan.highlight ? "text-white/75" : "text-ink-muted"
-                    }`}
-                  >
-                    {plan.description}
+          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {services.map((s, i) => (
+              <Reveal key={s.title} delay={(i % 3) * 0.06}>
+                <article className="group flex h-full flex-col rounded-2xl border border-line bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:shadow-card">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-darker transition-colors group-hover:bg-brand group-hover:text-white">
+                    <Icon name={s.icon} className="h-6 w-6" />
+                  </span>
+                  <h3 className="mt-5 text-lg font-bold text-ink">{s.title}</h3>
+                  <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-muted">
+                    {s.bullet}
                   </p>
-                  <Link
-                    href="/contact"
-                    className={`mt-6 inline-flex items-center justify-center gap-1.5 rounded-full px-5 py-3 text-sm font-semibold transition-all active:scale-95 ${
-                      plan.highlight
-                        ? "bg-brand text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.3)] hover:bg-brand-dark"
-                        : "bg-ink text-white hover:bg-ink/90"
-                    }`}
-                  >
-                    {plan.ctaLabel}
-                    <Icon name="arrowRight" className="h-4 w-4" />
-                  </Link>
-                </div>
+                  <div className="mt-5 rounded-xl border border-brand/20 bg-brand-50/70 px-3 py-2">
+                    <div className="text-[10px] font-semibold uppercase tracking-widest text-brand-darker">
+                      Typical outcome
+                    </div>
+                    <div className="mt-0.5 text-xs font-semibold text-ink">
+                      {s.outcome}
+                    </div>
+                  </div>
+                </article>
               </Reveal>
             ))}
           </div>
 
-          {/* Feature comparison table */}
-          <div className="mt-10 overflow-x-auto rounded-3xl border border-line bg-white shadow-soft">
-            <table className="w-full min-w-[720px] text-left">
-              <thead>
-                <tr className="border-b border-line bg-zinc-50/70 text-[11px] font-semibold uppercase tracking-widest text-ink-muted">
-                  <th className="px-6 py-4">What&apos;s included</th>
-                  {pricingPlans.map((p) => (
-                    <th
-                      key={p.name}
-                      className={`px-4 py-4 text-center ${
-                        p.highlight ? "text-brand-darker" : "text-ink-muted"
-                      }`}
-                    >
-                      {p.name}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {pricingFeatures.map((f, rowIdx) => (
-                  <tr
-                    key={f.label}
-                    className={`border-b border-line last:border-b-0 ${
-                      rowIdx % 2 === 1 ? "bg-zinc-50/40" : ""
-                    }`}
-                  >
-                    <td className="px-6 py-4 text-sm text-ink-soft">{f.label}</td>
-                    {f.values.map((v, colIdx) => (
-                      <td key={colIdx} className="px-4 py-4 text-center">
-                        <Cell value={v} highlight={pricingPlans[colIdx].highlight} />
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="mt-10 text-center">
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-darker hover:underline"
+            >
+              See our full services & pricing
+              <Icon name="arrowRight" className="h-4 w-4" />
+            </Link>
           </div>
-
-          <p className="mt-5 text-center text-xs text-ink-muted">
-            Prices exclude media spend and 5% UAE VAT. Custom scopes available
-            for enterprise Dubai clients.
-          </p>
         </Container>
       </section>
 
-      {/* ---------------- FOUNDER FEATURE: Abida (UAE expert) ---------------- */}
-      <section className="relative overflow-hidden bg-ink py-16 text-white sm:py-24">
-        <div aria-hidden className="pointer-events-none absolute inset-0 opacity-40">
-          <div className="absolute -left-24 top-0 h-96 w-96 rounded-full bg-brand/40 blur-3xl" />
-          <div className="absolute -right-24 bottom-0 h-96 w-96 rounded-full bg-brand-light/20 blur-3xl" />
+      {/* ---------------- REAL RESULTS (proof) ---------------- */}
+      <section className="py-14 sm:py-20">
+        <Container>
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-darker">
+              <span aria-hidden className="inline-block h-[2px] w-6 rounded-full bg-brand" />
+              Real UAE campaigns
+            </span>
+            <h2 className="mt-5 text-3xl font-black leading-tight text-ink sm:text-4xl">
+              Results from a{" "}
+              <Mark variant="underline">real Dubai / UAE portfolio</Mark>
+            </h2>
+            <p className="mt-5 text-base leading-relaxed text-ink-muted sm:text-lg">
+              A snapshot from recent Google Ads and Meta Ads campaigns our
+              Co-Founder Abida has managed for brands across the UK, US and UAE
+             . Not stock case-study slides.
+            </p>
+          </div>
+
+          <div className="mt-14 grid gap-6 lg:grid-cols-3">
+            {[
+              {
+                img: "/images/projects/google-ads-results-1.jpeg",
+                tag: "Google Ads · UAE + international",
+                title: "49 conversions from $1.21k spend",
+                text: "Multi-region search + Performance Max campaign, GTM-tracked conversions, high-quality lead flow at a fraction of Dubai's average CPC.",
+              },
+              {
+                img: "/images/projects/google-ads-results-2.jpeg",
+                tag: "Meta Ads · Lead generation",
+                title: "Leads at £5.69 each from £51 spend",
+                text: "Meta lead-generation funnel with Conversions API. Proved the channel on a small test budget before scaling.",
+              },
+              {
+                img: "/images/projects/google-ads-results-3.jpeg",
+                tag: "Meta Ads · E-commerce",
+                title: "121 purchases · 13.5× ROAS",
+                text: "E-commerce Meta Ads campaign delivering 121 website purchases at £1.47 cost-per-purchase. 13.5× return over 18 days.",
+              },
+            ].map((r, i) => (
+              <Reveal key={r.title} delay={(i % 3) * 0.08}>
+                <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-soft">
+                  <div className="relative aspect-[16/10] overflow-hidden bg-zinc-100">
+                    <Image
+                      src={r.img}
+                      alt={`Digital marketing campaign result for a Developer Studio client. ${r.title}`}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 33vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="flex flex-1 flex-col p-6">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-brand-darker">
+                      {r.tag}
+                    </p>
+                    <h3 className="mt-1.5 text-lg font-bold text-ink">{r.title}</h3>
+                    <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-muted">
+                      {r.text}
+                    </p>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+
+          <div className="mt-10 text-center">
+            <Link
+              href="/projects"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-darker hover:underline"
+            >
+              See all our work
+              <Icon name="arrowRight" className="h-4 w-4" />
+            </Link>
+          </div>
+        </Container>
+      </section>
+
+      {/* ---------------- WHY US ---------------- */}
+      <section className="relative overflow-hidden bg-ink py-14 text-white sm:py-20">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-40"
+        >
+          <div className="absolute -left-16 top-4 h-72 w-72 rounded-full bg-brand/45 blur-3xl" />
+          <div className="absolute -right-24 bottom-0 h-64 w-64 rounded-full bg-brand-light/25 blur-3xl" />
         </div>
         <Container>
-          {founders.length > 0 &&
-            (() => {
-              const abida = founders[0];
-              return (
-                <div className="relative grid items-center gap-10 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
-                  <Reveal direction="right">
-                    <div className="relative mx-auto max-w-sm">
-                      <div className="absolute -inset-6 -z-10 rounded-[2rem] bg-gradient-to-tr from-brand/25 via-transparent to-brand-light/25 blur-2xl" />
-                      <div className="overflow-hidden rounded-3xl border border-white/15 shadow-card">
-                        <Image
-                          src={abida.image}
-                          alt={`${abida.fullName || abida.name}, Co-Founder of Developer Studio`}
-                          width={480}
-                          height={560}
-                          className="h-auto w-full object-cover"
-                        />
-                      </div>
-                      <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 rounded-2xl border border-white/15 bg-ink px-5 py-3 text-center shadow-card">
-                        <div className="text-sm font-bold text-white">
-                          {abida.fullName || abida.name}
-                        </div>
-                        <div className="text-xs text-brand-light">{abida.role}</div>
-                      </div>
-                    </div>
-                  </Reveal>
+          <div className="relative mx-auto max-w-3xl text-center">
+            <span className="inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-light">
+              <span aria-hidden className="inline-block h-[2px] w-6 rounded-full bg-brand-light" />
+              Why us
+            </span>
+            <h2 className="mt-5 text-3xl font-black leading-tight text-white sm:text-4xl">
+              A digital marketing agency in Dubai that acts like{" "}
+              <span className="text-brand-light">your growth partner</span>, not a supplier.
+            </h2>
+          </div>
 
-                  <Reveal direction="left">
-                    <span className="inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-light">
-                      <span aria-hidden className="inline-block h-[2px] w-6 rounded-full bg-brand-light" />
-                      The Dubai expert on your account
-                    </span>
-                    <h2 className="mt-5 text-3xl font-black leading-tight text-white sm:text-4xl">
-                      Meet <span className="text-brand-light">Abida Siddiqui</span>, your Co-Founder for the UAE market.
-                    </h2>
-                    <p className="mt-5 text-base leading-relaxed text-white/75 sm:text-lg">
-                      Abida has managed Meta Ads, Google Ads and Google Business
-                      Profile optimisation for brands across the UAE, UK and US
-                      for 2+ years. Every Dubai campaign we run gets her direct
-                      strategy and weekly optimisation. Not a junior handoff.
+          <div className="relative mt-14 grid gap-5 sm:grid-cols-2">
+            {whyUs.map((w, i) => (
+              <Reveal key={w.title} delay={(i % 2) * 0.08}>
+                <div className="flex h-full items-start gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand text-white">
+                    <Icon name={w.icon} className="h-6 w-6" />
+                  </span>
+                  <div>
+                    <h3 className="text-lg font-bold text-white">{w.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-white/70">
+                      {w.text}
                     </p>
-
-                    <ul className="mt-8 grid gap-2.5 sm:grid-cols-2">
-                      {(abida.expertise || []).slice(0, 8).map((skill) => (
-                        <li key={skill} className="flex items-start gap-2.5 text-sm text-white/85">
-                          <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand text-white">
-                            <Icon name="check" className="h-3.5 w-3.5" />
-                          </span>
-                          {skill}
-                        </li>
-                      ))}
-                    </ul>
-
-                    <div className="mt-8 flex flex-wrap items-center gap-3">
-                      <Link
-                        href={`/team/${abida.slug}`}
-                        className="inline-flex items-center gap-1.5 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.25)] transition-all hover:bg-brand-dark active:scale-95"
-                      >
-                        View Abida&apos;s full profile
-                        <Icon name="arrowRight" className="h-4 w-4" />
-                      </Link>
-                      <Link
-                        href="/contact"
-                        className="inline-flex items-center gap-1.5 rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-brand-light hover:text-brand-light"
-                      >
-                        Book a strategy call
-                      </Link>
-                    </div>
-                  </Reveal>
+                  </div>
                 </div>
-              );
-            })()}
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* ---------------- FOUNDERS (Dubai-focused) ---------------- */}
+      <section className="py-14 sm:py-20">
+        <Container>
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-darker">
+              <span aria-hidden className="inline-block h-[2px] w-6 rounded-full bg-brand" />
+              The team behind your Dubai growth
+            </span>
+            <h2 className="mt-5 text-3xl font-black leading-tight text-ink sm:text-4xl">
+              You&apos;ll work directly with the{" "}
+              <Mark variant="underline">founders</Mark>.
+            </h2>
+            <p className="mt-5 text-base leading-relaxed text-ink-muted sm:text-lg">
+              No junior account manager filtering your calls. No offshore
+              rotation of freelancers. Just the senior team building the
+              strategy and running the campaigns.
+            </p>
+          </div>
+
+          <div className="mt-14 grid gap-6 md:grid-cols-2">
+            {founders.map((m) => (
+              <Reveal key={m.slug}>
+                <Link
+                  href={`/team/${m.slug}`}
+                  className="group flex h-full gap-5 rounded-2xl border border-line bg-white p-6 shadow-soft transition-all hover:-translate-y-0.5 hover:border-brand/40 hover:shadow-card"
+                >
+                  <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-2xl">
+                    <Image
+                      src={m.image}
+                      alt={m.fullName || m.name}
+                      fill
+                      sizes="112px"
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="flex flex-1 flex-col">
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-brand-darker">
+                      {m.founder ? "Founder" : "Co-Founder"}
+                    </span>
+                    <h3 className="mt-1 text-lg font-bold text-ink">
+                      {m.fullName || m.name}
+                    </h3>
+                    <p className="text-sm text-ink-muted">{m.role}</p>
+                    <p className="mt-3 text-sm leading-relaxed text-ink-soft">
+                      {m.bio}
+                    </p>
+                    <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-darker">
+                      View profile
+                      <Icon
+                        name="arrowRight"
+                        className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                      />
+                    </span>
+                  </div>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
         </Container>
       </section>
 
       {/* ---------------- PROCESS ---------------- */}
-      <section className="relative overflow-hidden py-14 sm:py-20">
+      <section className="relative overflow-hidden bg-zinc-50/60 py-14 sm:py-20">
         <Container>
           <div className="mx-auto max-w-3xl text-center">
             <span className="inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-darker">
@@ -717,7 +707,8 @@ export default function DubaiDigitalMarketingPage() {
               How we work
             </span>
             <h2 className="mt-5 text-3xl font-black leading-tight text-ink sm:text-4xl">
-              From audit to <Mark variant="underline">measurable growth</Mark> in 4 steps.
+              From audit to <Mark variant="underline">measurable growth</Mark> .
+              in 4 steps.
             </h2>
           </div>
 
@@ -754,7 +745,7 @@ export default function DubaiDigitalMarketingPage() {
       </section>
 
       {/* ---------------- INDUSTRIES ---------------- */}
-      <section className="bg-zinc-50/60 py-14 sm:py-20">
+      <section className="py-14 sm:py-20">
         <Container>
           <div className="mx-auto max-w-3xl text-center">
             <span className="inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-darker">
@@ -762,11 +753,12 @@ export default function DubaiDigitalMarketingPage() {
               Who we serve in Dubai
             </span>
             <h2 className="mt-5 text-3xl font-black leading-tight text-ink sm:text-4xl">
-              Industries we grow in <Mark variant="highlight">the UAE</Mark>
+              Industries we grow in{" "}
+              <Mark variant="highlight">the UAE</Mark>
             </h2>
             <p className="mt-5 text-base leading-relaxed text-ink-muted sm:text-lg">
-              We&apos;re not a one-size-fits-all Dubai digital marketing firm.
-              We specialise in the sectors where our playbooks and case
+              We&apos;re not a one-size-fits-all Dubai digital marketing firm .
+              we specialise in the sectors where our playbooks and case
               studies are strongest.
             </p>
           </div>
@@ -792,7 +784,7 @@ export default function DubaiDigitalMarketingPage() {
       </section>
 
       {/* ---------------- FAQ ---------------- */}
-      <section className="py-14 sm:py-20">
+      <section className="bg-zinc-50/60 py-14 sm:py-20">
         <Container>
           <div className="mx-auto max-w-3xl text-center">
             <span className="inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-darker">
@@ -800,7 +792,8 @@ export default function DubaiDigitalMarketingPage() {
               FAQ
             </span>
             <h2 className="mt-5 text-3xl font-black leading-tight text-ink sm:text-4xl">
-              What Dubai clients <Mark variant="underline">ask us first</Mark>
+              What Dubai clients{" "}
+              <Mark variant="underline">ask us first</Mark>
             </h2>
           </div>
 
