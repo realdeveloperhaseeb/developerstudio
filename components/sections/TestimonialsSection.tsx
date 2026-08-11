@@ -14,7 +14,7 @@ import Mark from "@/components/Mark";
   breaks the "three identical cards in a row" template.
 */
 export default function TestimonialsSection() {
-  const [hero, ..rest] = testimonials;
+  const [hero, ...rest] = testimonials;
 
   return (
     <section className="relative overflow-hidden bg-zinc-50/70 py-14 sm:py-20">
