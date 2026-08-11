@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/cn";
@@ -8,10 +8,14 @@ import { site } from "@/data/site";
 import { cities } from "@/data/cities";
 import { Icon } from "@/components/icons";
 
-// Once a visitor submits, stop nagging them for the rest of the session.
-const SUBMIT_KEY = "ds_lead_submitted";
-const MAX_SHOWS = 3;
-const randDelay = () => 5000 + Math.random() * 10000; // 5–15s
+/*
+  The popup shows AT MOST ONCE per browser session and only after the
+  visitor has scrolled past the halfway point of the page. Both flags
+  live in sessionStorage so navigating between pages doesn't re-trigger,
+  and closing the tab resets the state (fresh chance on a new visit).
+*/
+const SUBMIT_KEY = "ds_lead_submitted"; // set after they submit
+const SHOWN_KEY = "ds_lead_shown";      // set the first time it opens
 
 type Form = {
   name: string;
@@ -90,44 +94,62 @@ export default function LeadPopup() {
   const [sent, setSent] = useState(false);
   const [form, setForm] = useState<Form>(empty);
 
-  const timer = useRef<number | null>(null);
-  const shows = useRef(0);
-
   const field =
     "w-full rounded-xl border border-line bg-white px-4 py-2.5 text-sm text-ink outline-none transition-colors placeholder:text-ink-muted focus:border-brand focus:ring-2 focus:ring-brand/20";
 
   const set = (k: keyof Form, v: string) => setForm((f) => ({ ...f, [k]: v }));
 
-  // Schedule the next appearance after a random 5–15s delay (max 3 per page).
-  const scheduleNext = () => {
-    if (timer.current) window.clearTimeout(timer.current);
-    if (shows.current >= MAX_SHOWS) return;
-    try {
-      if (sessionStorage.getItem(SUBMIT_KEY)) return;
-    } catch {}
-    timer.current = window.setTimeout(() => {
-      shows.current += 1;
-      setStep(0);
-      setSent(false);
-      setOpen(true);
-    }, randDelay());
-  };
-
-  // Restart the cycle on every page load / navigation.
+  /*
+    Trigger: fire once, ever, per session, when the visitor has scrolled
+    past 50% of the page. Skip entirely if they've already been shown
+    the popup this session or already submitted.
+  */
   useEffect(() => {
     setOpen(false);
-    shows.current = 0;
-    scheduleNext();
-    return () => {
-      if (timer.current) window.clearTimeout(timer.current);
+
+    // Already shown / submitted this session? Never trigger again.
+    try {
+      if (
+        sessionStorage.getItem(SUBMIT_KEY) ||
+        sessionStorage.getItem(SHOWN_KEY)
+      ) {
+        return;
+      }
+    } catch {
+      /* sessionStorage might be blocked (private mode, cookie block) */
+    }
+
+    const onScroll = () => {
+      // Total scrollable height (docHeight - viewportHeight).
+      const doc = document.documentElement;
+      const body = document.body;
+      const scrollable =
+        Math.max(doc.scrollHeight, body.scrollHeight) - window.innerHeight;
+      if (scrollable <= 0) return; // page not scrollable
+
+      const scrolled = window.scrollY || doc.scrollTop || body.scrollTop || 0;
+      const pct = scrolled / scrollable;
+
+      if (pct >= 0.5) {
+        // Mark shown BEFORE opening so a rapid re-render can't double-fire.
+        try {
+          sessionStorage.setItem(SHOWN_KEY, "1");
+        } catch {}
+        setStep(0);
+        setSent(false);
+        setOpen(true);
+        window.removeEventListener("scroll", onScroll);
+      }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    // Check once on mount in case the visitor lands mid-page (deep link, back-nav).
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
   }, [pathname]);
 
-  const dismiss = () => {
-    setOpen(false);
-    scheduleNext(); // queue the next of the 3 random appearances
-  };
+  // Dismissing just closes it. No timer, no re-queue.
+  const dismiss = () => setOpen(false);
 
   const canProceed =
     step === 0
@@ -161,8 +183,6 @@ export default function LeadPopup() {
     const url = `https://wa.me/${e164}?text=${encodeURIComponent(buildMessage())}`;
     window.open(url, "_blank", "noopener,noreferrer");
     setSent(true);
-    if (timer.current) window.clearTimeout(timer.current);
-    shows.current = MAX_SHOWS;
     try {
       sessionStorage.setItem(SUBMIT_KEY, "1");
     } catch {}
