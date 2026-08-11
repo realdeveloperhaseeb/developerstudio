@@ -8,6 +8,7 @@ import AuthoritySection from "@/components/sections/AuthoritySection";
 import ProcessSection from "@/components/sections/ProcessSection";
 import StatsSection from "@/components/sections/StatsSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
+import LiveDemosSection from "@/components/sections/LiveDemosSection";
 import TeamSection from "@/components/sections/TeamSection";
 import TestimonialsCarousel from "@/components/sections/TestimonialsCarousel";
 import FaqSection from "@/components/sections/FaqSection";
@@ -27,6 +28,8 @@ export default function Home() {
       <ProcessSection />
       <ClientsStrip />
       <ProjectsSection limit={6} />
+      {/* Full-width live-project carousel with real desktop screenshots */}
+      <LiveDemosSection />
       <TeamSection />
       {/* Testimonials as a carousel. One full-width pull-quote at a time */}
       <TestimonialsCarousel />
