@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import PageHeader from "@/components/PageHeader";
 import ProjectsSection from "@/components/sections/ProjectsSection";
+import LiveDemosSection from "@/components/sections/LiveDemosSection";
 import StatsSection from "@/components/sections/StatsSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import CtaSection from "@/components/sections/CtaSection";
@@ -26,6 +27,7 @@ export default function ProjectsPage() {
         breadcrumb={[{ label: "Home", href: "/" }, { label: "Projects" }]}
       />
       <ProjectsSection heading={false} />
+      <LiveDemosSection />
       <StatsSection />
       <TestimonialsSection />
       <CtaSection title="Want results like these?" subtitle="Let's build your next project. And the growth engine to back it up." />
