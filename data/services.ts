@@ -16,7 +16,7 @@ export const services: Service[] = [
     title: "Web Development",
     short: "Fast, modern websites that convert visitors into clients.",
     description:
-      "We design and build conversion-focused websites on a modern stack — blazing fast, fully responsive, and engineered to rank. Every site is built to turn traffic into booked calls and signed clients.",
+      "We design and build conversion-focused websites on a modern stack. Blazing fast, fully responsive, and engineered to rank. Every site is built to turn traffic into booked calls and signed clients.",
     icon: "code",
     features: [
       "Custom Next.js / headless builds",
@@ -54,7 +54,7 @@ export const services: Service[] = [
     title: "SEO",
     short: "Rank #1 for the searches that bring real customers.",
     description:
-      "Local and national SEO that puts you in front of high-intent buyers. Technical fixes, content that answers, and authority-building links — measured by leads, not vanity metrics.",
+      "Local and national SEO that puts you in front of high-intent buyers. Technical fixes, content that answers, and authority-building links. Measured by leads, not vanity metrics.",
     icon: "search",
     features: [
       "Technical SEO audits",
@@ -73,7 +73,7 @@ export const services: Service[] = [
     title: "Social Media Marketing",
     short: "Content that builds trust and fills your pipeline.",
     description:
-      "Strategy, content, and community management that makes your brand impossible to ignore — and drives DMs, enquiries, and bookings on autopilot.",
+      "Strategy, content, and community management that makes your brand impossible to ignore. And drives DMs, enquiries, and bookings on autopilot.",
     icon: "share",
     features: [
       "Content strategy & calendar",
@@ -109,9 +109,9 @@ export const services: Service[] = [
   {
     slug: "digital-marketing",
     title: "Digital Marketing",
-    short: "A full growth engine — strategy to execution.",
+    short: "A full growth engine. Strategy to execution.",
     description:
-      "The complete package. We grow your business from zero and manage everything — brand, web, content, ads, and analytics — as one accountable team focused on revenue.",
+      "The complete package. We grow your business from zero and manage everything. Brand, web, content, ads, and analytics. As one accountable team focused on revenue.",
     icon: "rocket",
     features: [
       "Full-funnel growth strategy",

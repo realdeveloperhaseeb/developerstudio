@@ -8,7 +8,7 @@ import Reveal from "@/components/Reveal";
 import CtaSection from "@/components/sections/CtaSection";
 
 export const metadata: Metadata = {
-  title: "Landing Pages — Pitch Decks for Your Industry",
+  title: "Landing Pages. Pitch Decks for Your Industry",
   description:
     "Industry-specific landing pages from Developer Studio. Tailored pitches for law firms, roofing companies, and other UK businesses we grow.",
   alternates: { canonical: "/landing-pages" },
@@ -24,7 +24,7 @@ export default function LandingPagesIndex() {
             Industry pitches, built to <span className="text-gradient">convert</span>
           </>
         }
-        description="Tailored landing pages we share with prospects — each one engineered for a specific industry and designed to turn a single click into a booked call."
+        description="Tailored landing pages we share with prospects. Each one engineered for a specific industry and designed to turn a single click into a booked call."
         breadcrumb={[{ label: "Home", href: "/" }, { label: "Landing Pages" }]}
       />
 
@@ -82,7 +82,7 @@ export default function LandingPagesIndex() {
                 </span>
                 <h3 className="mt-4 font-bold text-ink">More coming soon</h3>
                 <p className="mt-2 text-sm text-ink-muted">
-                  Law firms, trades, financial services and more — new landing pages added as
+                  Law firms, trades, financial services and more. New landing pages added as
                   we launch them.
                 </p>
               </div>

@@ -33,7 +33,7 @@ export default function ServicesTabs() {
           description="From the first line of code to the last conversion, we build and run your entire digital growth engine."
         />
 
-        {/* Tab bar — chips, horizontally scrollable on mobile */}
+        {/* Tab bar. Chips, horizontally scrollable on mobile */}
         <div className="relative mt-12 -mx-4 overflow-x-auto px-4 [-webkit-mask-image:linear-gradient(to_right,transparent,black_2%,black_98%,transparent)] [mask-image:linear-gradient(to_right,transparent,black_2%,black_98%,transparent)]">
           <div className="mx-auto flex w-max min-w-full items-center justify-start gap-2 sm:justify-center">
             {services.map((svc, i) => {
@@ -61,7 +61,7 @@ export default function ServicesTabs() {
           </div>
         </div>
 
-        {/* Detail panel — split screen */}
+        {/* Detail panel. Split screen */}
         <div className="mt-10 overflow-hidden rounded-3xl border border-line bg-white shadow-card">
           <AnimatePresence mode="wait">
             <motion.div
@@ -147,7 +147,7 @@ export default function ServicesTabs() {
                     </div>
                     <Image
                       src={s.image}
-                      alt={`${s.title} — Developer Studio`}
+                      alt={`${s.title}. Developer Studio`}
                       width={1280}
                       height={800}
                       sizes="(min-width: 1024px) 50vw, 100vw"

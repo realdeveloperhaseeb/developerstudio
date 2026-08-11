@@ -27,7 +27,7 @@ export default function PrivacyPage() {
             <h2 className="text-xl font-bold text-ink">Information we collect</h2>
             <p className="mt-2">
               When you contact us via our forms, WhatsApp, or email, we collect the details you
-              provide — such as your name, email, phone number, and message — solely to respond to
+              provide. Such as your name, email, phone number, and message. Solely to respond to
               your enquiry.
             </p>
           </div>

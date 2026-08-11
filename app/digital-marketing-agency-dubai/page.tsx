@@ -13,7 +13,7 @@ import Mark from "@/components/Mark";
 import CtaSection from "@/components/sections/CtaSection";
 
 /*
-  Dubai landing page — the flagship UAE page.
+  Dubai landing page. The flagship UAE page.
 
   SEO objective: rank for the "digital marketing agency dubai" cluster
   (see keyword table). Primary keyword sits in H1, meta title, meta
@@ -32,7 +32,7 @@ const CITY = "Dubai";
 const TITLE =
   "Digital Marketing Agency Dubai | SEO, Google Ads & Meta Ads | Developer Studio";
 const DESCRIPTION =
-  "Developer Studio is a results-driven digital marketing agency in Dubai. We manage SEO, Google Ads, Meta Ads and web development for ambitious UAE brands — with 2+ years of proven Dubai-market experience and campaigns delivering up to 13.5× ROAS. Book a free strategy call.";
+  "Developer Studio is a results-driven digital marketing agency in Dubai. We manage SEO, Google Ads, Meta Ads and web development for ambitious UAE brands. With 2+ years of proven Dubai-market experience and campaigns delivering up to 13.5× ROAS. Book a free strategy call.";
 
 export const metadata: Metadata = {
   // Absolute overrides the root layout's title template so we get the
@@ -91,7 +91,7 @@ const painsInDubai: { icon: IconName; title: string; text: string }[] = [
   {
     icon: "search",
     title: "You're invisible on Google in Dubai",
-    text: "Competitors are on page one for the searches that matter — 'digital marketing agency Dubai', 'lawyer Dubai', 'roofing Dubai'. You aren't, and you can't afford to be scrolled past.",
+    text: "Competitors are on page one for the searches that matter. 'digital marketing agency Dubai', 'lawyer Dubai', 'roofing Dubai'. You aren't, and you can't afford to be scrolled past.",
   },
   {
     icon: "bolt",
@@ -106,7 +106,7 @@ const painsInDubai: { icon: IconName; title: string; text: string }[] = [
   {
     icon: "mail",
     title: "Agencies that go dark after signup",
-    text: "You've been through the Dubai agency carousel: bold promises, monthly retainer, then radio silence — no reports, no calls, no accountability.",
+    text: "You've been through the Dubai agency carousel: bold promises, monthly retainer, then radio silence. No reports, no calls, no accountability.",
   },
 ];
 
@@ -127,12 +127,12 @@ const services: {
     icon: "target",
     title: "Google Ads (PPC) in Dubai",
     bullet:
-      "Search, Performance Max, and remarketing campaigns tuned for cost-per-lead in the UAE — with full GTM conversion tracking.",
+      "Search, Performance Max, and remarketing campaigns tuned for cost-per-lead in the UAE. With full GTM conversion tracking.",
     outcome: "49 conversions from $1.2k test spend (recent client)",
   },
   {
     icon: "share",
-    title: "Meta Ads Dubai — Facebook & Instagram",
+    title: "Facebook & Instagram Ads for Dubai",
     bullet:
       "Lead-generation and e-commerce funnels with the Meta Pixel, Conversions API and creative that stops the scroll in Arabic and English feeds.",
     outcome: "13.5× ROAS on a recent UAE e-commerce campaign",
@@ -148,7 +148,7 @@ const services: {
     icon: "app",
     title: "Social media management",
     bullet:
-      "Content, community and paid amplification on Instagram, TikTok and LinkedIn — bilingual where it matters, always brand-first.",
+      "Content, community and paid amplification on Instagram, TikTok and LinkedIn. Bilingual where it matters, always brand-first.",
     outcome: "Owned social channels that fill the pipeline",
   },
   {
@@ -164,7 +164,7 @@ const whyUs: { icon: IconName; title: string; text: string }[] = [
   {
     icon: "check",
     title: "Real Dubai-market experience",
-    text: "Our Co-Founder Abida has managed Meta and Google Ads for UAE, UK and US brands for 2+ years — including UAE Google Business Profile optimisation and Dubai-audience targeting.",
+    text: "Our Co-Founder Abida has managed Meta and Google Ads for UAE, UK and US brands for 2+ years. Including UAE Google Business Profile optimisation and Dubai-audience targeting.",
   },
   {
     icon: "target",
@@ -174,12 +174,12 @@ const whyUs: { icon: IconName; title: string; text: string }[] = [
   {
     icon: "bolt",
     title: "No lock-in retainers",
-    text: "Month-to-month engagements. If we're not driving measurable growth for your Dubai business, you're free to leave — most clients stay because it works.",
+    text: "Month-to-month engagements. If we're not driving measurable growth for your Dubai business, you're free to leave. Most clients stay because it works.",
   },
   {
     icon: "star",
     title: "Direct access to founders",
-    text: "You work directly with the people doing the work — no account-manager layer, no delayed replies, no lost context.",
+    text: "You work directly with the people doing the work. No account-manager layer, no delayed replies, no lost context.",
   },
 ];
 
@@ -187,7 +187,7 @@ const process = [
   {
     step: "01",
     title: "Free Dubai growth audit",
-    text: "We audit your website, current campaigns, Google Business Profile and competitors in Dubai — then send you a plain-English opportunity map. No fee, no pitch trap.",
+    text: "We audit your website, current campaigns, Google Business Profile and competitors in Dubai. Then send you a plain-English opportunity map. No fee, no pitch trap.",
   },
   {
     step: "02",
@@ -197,7 +197,7 @@ const process = [
   {
     step: "03",
     title: "Build & launch (14 days)",
-    text: "Site tuning, tracking setup, campaign build, creative production. Live in the UAE market inside two weeks — not two months.",
+    text: "Site tuning, tracking setup, campaign build, creative production. Live in the UAE market inside two weeks. Not two months.",
   },
   {
     step: "04",
@@ -225,7 +225,7 @@ const industriesDubai: { icon: IconName; name: string; text: string }[] = [
   {
     icon: "target",
     name: "Local services & trades",
-    text: "Roofers, cleaners, movers, contractors — capturing high-intent 'near me' searches across Dubai's neighbourhoods.",
+    text: "Roofers, cleaners, movers, contractors. Capturing high-intent 'near me' searches across Dubai's neighbourhoods.",
   },
   {
     icon: "star",
@@ -242,7 +242,7 @@ const industriesDubai: { icon: IconName; name: string; text: string }[] = [
 const dubaiFaqs: { q: string; a: string }[] = [
   {
     q: "How much does digital marketing cost in Dubai?",
-    a: "It depends entirely on channel and goal. A Google Ads engagement in Dubai typically starts around AED 3,500–5,000 per month in management on top of media spend (which we recommend starting at AED 5,000+ for a valid test). SEO retainers start around AED 4,000/month. We only quote after understanding your business — no generic 'packages' — so book a free call and we'll send a Dubai-specific proposal.",
+    a: "It depends entirely on channel and goal. A Google Ads engagement in Dubai typically starts around AED 3,500–5,000 per month in management on top of media spend (which we recommend starting at AED 5,000+ for a valid test). SEO retainers start around AED 4,000/month. We only quote after understanding your business. No generic 'packages'. So book a free call and we'll send a Dubai-specific proposal.",
   },
   {
     q: "How long does SEO take to work for a Dubai business?",
@@ -250,29 +250,29 @@ const dubaiFaqs: { q: string; a: string }[] = [
   },
   {
     q: "Do you work with startups and small businesses in Dubai?",
-    a: "Yes. Most of our best UAE case studies are with founder-led businesses, not enterprises. If you're pre-revenue we'll usually recommend a lean SEO + Google Business Profile foundation before paid media — so you're not paying to send traffic to a site that can't convert.",
+    a: "Yes. Most of our best UAE case studies are with founder-led businesses, not enterprises. If you're pre-revenue we'll usually recommend a lean SEO + Google Business Profile foundation before paid media. So you're not paying to send traffic to a site that can't convert.",
   },
   {
     q: "What makes Developer Studio different from other digital marketing companies in Dubai?",
-    a: "Three things. First, you work directly with the founders — no account-manager layer. Second, we report on cost-per-lead and revenue, not clicks or impressions. Third, we're comfortable saying no to work we don't think will succeed — if paid ads aren't right for your Dubai business right now, we'll tell you.",
+    a: "Three things. First, you work directly with the founders. No account-manager layer. Second, we report on cost-per-lead and revenue, not clicks or impressions. Third, we're comfortable saying no to work we don't think will succeed. If paid ads aren't right for your Dubai business right now, we'll tell you.",
   },
   {
     q: "Which areas of Dubai do you serve?",
-    a: "All of Dubai — Downtown, Business Bay, DIFC, Dubai Marina, JLT, JBR, Deira, Bur Dubai, Al Barsha, Jumeirah, Silicon Oasis, Motor City, JVC, JVT, Al Quoz and every other neighbourhood. We also serve the wider UAE (Abu Dhabi, Sharjah, Ajman, Ras Al Khaimah, Fujairah, Umm Al Quwain) — the same team, the same standard.",
+    a: "All of Dubai. Downtown, Business Bay, DIFC, Dubai Marina, JLT, JBR, Deira, Bur Dubai, Al Barsha, Jumeirah, Silicon Oasis, Motor City, JVC, JVT, Al Quoz and every other neighbourhood. We also serve the wider UAE (Abu Dhabi, Sharjah, Ajman, Ras Al Khaimah, Fujairah, Umm Al Quwain). The same team, the same standard.",
   },
   {
     q: "Do you offer Arabic content or bilingual campaigns?",
-    a: "Yes. We produce and run Arabic-language ad creative and landing pages where it's genuinely going to lift performance — usually B2C, hospitality, F&B and services targeting Emirati and Arabic-speaking Dubai residents. For B2B and expat-focused work, English is usually enough.",
+    a: "Yes. We produce and run Arabic-language ad creative and landing pages where it's genuinely going to lift performance. Usually B2C, hospitality, F&B and services targeting Emirati and Arabic-speaking Dubai residents. For B2B and expat-focused work, English is usually enough.",
   },
   {
     q: "Are you a Google Partner / Meta Business Partner agency in Dubai?",
-    a: "We work with Google Ads and Meta Ads every day — our Co-Founder is a certified Google Ads and Meta Ads specialist. Partner-badge status matters far less than case studies; ours are on this page.",
+    a: "We work with Google Ads and Meta Ads every day. Our Co-Founder is a certified Google Ads and Meta Ads specialist. Partner-badge status matters far less than case studies; ours are on this page.",
   },
 ];
 
 /* ---------------- Small helpers ---------------- */
 
-// Ensure the two founders are surfaced (in a fixed order) — Haseeb + Abida.
+// Ensure the two founders are surfaced (in a fixed order). Haseeb + Abida.
 const founders = team.filter((m) => m.founder || m.cofounder);
 
 /* ---------------- Page ---------------- */
@@ -282,7 +282,7 @@ export default function DubaiDigitalMarketingPage() {
 
   return (
     <>
-      {/* Structured data — LocalBusiness + Service + Breadcrumb + FAQ */}
+      {/* Structured data. LocalBusiness + Service + Breadcrumb + FAQ */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -290,7 +290,7 @@ export default function DubaiDigitalMarketingPage() {
             {
               "@context": "https://schema.org",
               "@type": "ProfessionalService",
-              name: `${site.name} — Digital Marketing Agency Dubai`,
+              name: `${site.name}. Digital Marketing Agency Dubai`,
               url: `${site.url}/${SLUG}`,
               image: `${site.url}/images/developer-studio-logo.png`,
               telephone: PHONE_E164,
@@ -434,7 +434,7 @@ export default function DubaiDigitalMarketingPage() {
             </h2>
             <p className="mt-5 text-base leading-relaxed text-ink-muted sm:text-lg">
               Most digital marketing companies in Dubai run the same generic
-              playbook — the same ad templates, the same landing pages, the same
+              playbook. The same ad templates, the same landing pages, the same
               monthly reports full of vanity metrics. That doesn&apos;t work in a
               market this competitive. Here&apos;s what we hear from the founders
               who come to us for a second opinion.
@@ -477,7 +477,7 @@ export default function DubaiDigitalMarketingPage() {
               <Mark variant="underline">Dubai</Mark>
             </h2>
             <p className="mt-5 text-base leading-relaxed text-ink-muted sm:text-lg">
-              A full-stack growth engine — SEO, paid media, web and social —
+              A full-stack growth engine. SEO, paid media, web and social .
               built for the UAE market and run by senior specialists, not
               juniors on a training plan.
             </p>
@@ -534,7 +534,7 @@ export default function DubaiDigitalMarketingPage() {
             <p className="mt-5 text-base leading-relaxed text-ink-muted sm:text-lg">
               A snapshot from recent Google Ads and Meta Ads campaigns our
               Co-Founder Abida has managed for brands across the UK, US and UAE
-              — not stock case-study slides.
+             . Not stock case-study slides.
             </p>
           </div>
 
@@ -550,13 +550,13 @@ export default function DubaiDigitalMarketingPage() {
                 img: "/images/projects/google-ads-results-2.jpeg",
                 tag: "Meta Ads · Lead generation",
                 title: "Leads at £5.69 each from £51 spend",
-                text: "Meta lead-generation funnel with Conversions API — proved the channel on a small test budget before scaling.",
+                text: "Meta lead-generation funnel with Conversions API. Proved the channel on a small test budget before scaling.",
               },
               {
                 img: "/images/projects/google-ads-results-3.jpeg",
                 tag: "Meta Ads · E-commerce",
                 title: "121 purchases · 13.5× ROAS",
-                text: "E-commerce Meta Ads campaign delivering 121 website purchases at £1.47 cost-per-purchase — 13.5× return over 18 days.",
+                text: "E-commerce Meta Ads campaign delivering 121 website purchases at £1.47 cost-per-purchase. 13.5× return over 18 days.",
               },
             ].map((r, i) => (
               <Reveal key={r.title} delay={(i % 3) * 0.08}>
@@ -564,7 +564,7 @@ export default function DubaiDigitalMarketingPage() {
                   <div className="relative aspect-[16/10] overflow-hidden bg-zinc-100">
                     <Image
                       src={r.img}
-                      alt={`Digital marketing campaign result for a Developer Studio client — ${r.title}`}
+                      alt={`Digital marketing campaign result for a Developer Studio client. ${r.title}`}
                       fill
                       sizes="(max-width: 1024px) 100vw, 33vw"
                       className="object-cover"
@@ -707,7 +707,7 @@ export default function DubaiDigitalMarketingPage() {
               How we work
             </span>
             <h2 className="mt-5 text-3xl font-black leading-tight text-ink sm:text-4xl">
-              From audit to <Mark variant="underline">measurable growth</Mark> —
+              From audit to <Mark variant="underline">measurable growth</Mark> .
               in 4 steps.
             </h2>
           </div>
@@ -757,7 +757,7 @@ export default function DubaiDigitalMarketingPage() {
               <Mark variant="highlight">the UAE</Mark>
             </h2>
             <p className="mt-5 text-base leading-relaxed text-ink-muted sm:text-lg">
-              We&apos;re not a one-size-fits-all Dubai digital marketing firm —
+              We&apos;re not a one-size-fits-all Dubai digital marketing firm .
               we specialise in the sectors where our playbooks and case
               studies are strongest.
             </p>
@@ -826,7 +826,7 @@ export default function DubaiDigitalMarketingPage() {
             ? `Ready to grow your ${dubaiPage.city} business?`
             : "Ready to grow your Dubai business?"
         }
-        subtitle="Book a free 30-minute strategy call. We'll audit your funnel, spot the quick wins, and send you a Dubai-specific growth plan — no fee, no obligation."
+        subtitle="Book a free 30-minute strategy call. We'll audit your funnel, spot the quick wins, and send you a Dubai-specific growth plan. No fee, no obligation."
       />
     </>
   );

@@ -8,7 +8,7 @@ import ContactForm from "@/components/ContactForm";
 import FaqSection from "@/components/sections/FaqSection";
 
 export const metadata: Metadata = {
-  title: "Contact — Get a Free Growth Plan",
+  title: "Contact. Get a Free Growth Plan",
   description:
     "Get in touch with Developer Studio. WhatsApp, email, or send an enquiry for web development, SEO, and digital marketing for your UK law firm or roofing company.",
   alternates: { canonical: "/contact" },

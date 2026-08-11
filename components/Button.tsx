@@ -7,7 +7,7 @@ type Size = "sm" | "md" | "lg";
 
 /*
   Layered button treatment. The `inset` shadow is a 1px top-highlight
-  (like a keycap or physical button) — the tell that this was
+  (like a keycap or physical button). The tell that this was
   considered rather than defaulted. Hover lifts the outer shadow
   slightly; the press collapses both.
 */

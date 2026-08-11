@@ -15,7 +15,7 @@ export default function NotFound() {
       <NotFoundExperience />
       <CtaSection
         title="Let's build something that works"
-        subtitle="Tell us about your law firm or roofing business and we'll map out exactly how we'd grow it — free."
+        subtitle="Tell us about your law firm or roofing business and we'll map out exactly how we'd grow it. Free."
       />
     </>
   );

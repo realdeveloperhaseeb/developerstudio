@@ -8,7 +8,7 @@ import Reveal from "@/components/Reveal";
 import CtaSection from "@/components/sections/CtaSection";
 
 export const metadata: Metadata = {
-  title: "Locations — Digital Marketing Across the UK",
+  title: "Locations. Digital Marketing Across the UK",
   description:
     "Developer Studio delivers web development, SEO, and digital marketing for law firms and roofing companies across UK cities including London, Manchester, Birmingham, Leeds and more.",
   alternates: { canonical: "/locations" },
@@ -24,7 +24,7 @@ export default function LocationsPage() {
             Growing businesses <span className="text-gradient">across the UK</span>
           </>
         }
-        description="We help law firms and roofing companies dominate their local market — wherever they are. Choose your city to see how we'd grow your business."
+        description="We help law firms and roofing companies dominate their local market. Wherever they are. Choose your city to see how we'd grow your business."
         breadcrumb={[{ label: "Home", href: "/" }, { label: "Locations" }]}
       />
 

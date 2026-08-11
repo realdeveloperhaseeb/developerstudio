@@ -3,7 +3,7 @@ import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
 
 /*
-  Editorial stat block. The value carries all the weight — huge, white,
+  Editorial stat block. The value carries all the weight. Huge, white,
   tabular, no gradient trick. Small green kicker sits above (nixo does
   this consistently: a tiny label, then a giant number). Verticals
   between stats read as a magazine spread rather than four evenly-spaced
@@ -14,7 +14,7 @@ export default function StatsSection() {
     <section className="py-12">
       <Container>
         <div className="relative overflow-hidden rounded-3xl bg-ink px-6 py-14 sm:px-14 sm:py-16">
-          {/* Ambient glow — off-grid, uneven */}
+          {/* Ambient glow. Off-grid, uneven */}
           <div className="pointer-events-none absolute inset-0 opacity-40">
             <div className="absolute -left-16 top-4 h-72 w-72 rounded-full bg-brand/45 blur-3xl" />
             <div className="absolute -right-24 bottom-0 h-64 w-64 rounded-full bg-brand-light/25 blur-3xl" />
@@ -28,7 +28,7 @@ export default function StatsSection() {
             </span>
           </div>
 
-          {/* Stats — visually divided by hairlines instead of grid gaps.
+          {/* Stats. Visually divided by hairlines instead of grid gaps.
               First stat gets no left divider; the rest do. */}
           <div className="relative mt-10 grid grid-cols-2 gap-y-10 sm:mt-12 lg:grid-cols-4 lg:gap-y-0">
             {stats.map((s, i) => (

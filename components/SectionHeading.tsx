@@ -9,7 +9,7 @@ export function Eyebrow({ children, className }: { children: React.ReactNode; cl
         className
       )}
     >
-      {/* Small horizontal marker — reads as an editorial kicker instead of another pill */}
+      {/* Small horizontal marker. Reads as an editorial kicker instead of another pill */}
       <span
         aria-hidden
         className="inline-block h-[2px] w-6 bg-brand rounded-full"

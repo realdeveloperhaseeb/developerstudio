@@ -19,7 +19,7 @@ export default function Footer() {
             <Link href="/" className="inline-flex" aria-label={site.name}>
               <Image
                 src="/images/developer-studio-logo.png"
-                alt={`${site.name} — digital marketing agency`}
+                alt={`${site.name}. Digital marketing agency`}
                 width={367}
                 height={178}
                 className="h-16 w-auto"

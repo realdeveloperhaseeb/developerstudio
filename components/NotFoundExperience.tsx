@@ -15,7 +15,7 @@ const script = (phrase: string) =>
     `→ researching the ${phrase.replace("a ", "")} market…`,
     `→ designing a conversion-first website…`,
     `→ launching SEO + Google Ads…`,
-    `✓ growth engine live — more clients incoming`,
+    `✓ growth engine live. More clients incoming`,
   ].join("\n");
 
 function lineClass(line: string) {
@@ -68,7 +68,7 @@ function Terminal() {
         <span className="h-3 w-3 rounded-full bg-red-400/80" />
         <span className="h-3 w-3 rounded-full bg-yellow-400/80" />
         <span className="h-3 w-3 rounded-full bg-green-400/80" />
-        <span className="ml-3 font-mono text-xs text-white/40">developerstudio — build</span>
+        <span className="ml-3 font-mono text-xs text-white/40">developerstudio. Build</span>
       </div>
       <pre className="min-h-[190px] whitespace-pre-wrap p-5 font-mono text-[13px] leading-relaxed sm:text-sm">
         {lines.map((line, idx) => (
@@ -127,7 +127,7 @@ export default function NotFoundExperience() {
                 This page went <span className="text-gradient">off the grid.</span>
               </h1>
               <p className="mt-5 max-w-md text-lg leading-relaxed text-white/70">
-                The link you followed has moved or never existed. Good news — building things
+                The link you followed has moved or never existed. Good news. Building things
                 that actually work is literally our job. Let&apos;s get you somewhere useful.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">

@@ -33,7 +33,7 @@ export async function generateMetadata({
   const c = getCity(city);
   const s = getService(service);
   if (!c || !s) return {};
-  const title = `${s.title} in ${c.name} — ${site.name}`;
+  const title = `${s.title} in ${c.name}. ${site.name}`;
   return {
     title,
     description: `${s.title} for law firms and roofing companies in ${c.name}, ${c.region}. ${s.short} Get a free ${c.name} quote.`,
@@ -65,7 +65,7 @@ export default async function CityServicePage({ params }: { params: Promise<Para
     {
       icon: "sparkles" as IconName,
       title: "Senior specialists",
-      text: `Direct access to the people doing your ${s.title.toLowerCase()} — no juniors, no hand-offs.`,
+      text: `Direct access to the people doing your ${s.title.toLowerCase()}. No juniors, no hand-offs.`,
     },
     {
       icon: "check" as IconName,
@@ -77,15 +77,15 @@ export default async function CityServicePage({ params }: { params: Promise<Para
   const faqs = [
     {
       q: `How much does ${s.title.toLowerCase()} cost in ${c.name}?`,
-      a: `Every ${c.name} project is priced to your goals. After a free consultation we give you a clear, fixed quote — no surprises and no long lock-in contracts.`,
+      a: `Every ${c.name} project is priced to your goals. After a free consultation we give you a clear, fixed quote. No surprises and no long lock-in contracts.`,
     },
     {
       q: `How quickly will ${s.title.toLowerCase()} work for my ${c.name} business?`,
-      a: `We move fast — you'll have a clear plan within days. ${s.title} then compounds as we optimise relentlessly for ${c.name} results.`,
+      a: `We move fast. You'll have a clear plan within days. ${s.title} then compounds as we optimise relentlessly for ${c.name} results.`,
     },
     {
       q: `Do you do ${s.title.toLowerCase()} for ${c.name} law firms and roofers?`,
-      a: `Yes — ${c.name} law firms and roofing companies are our specialism. We know how local customers search and what makes them pick up the phone.`,
+      a: `Yes. ${c.name} law firms and roofing companies are our specialism. We know how local customers search and what makes them pick up the phone.`,
     },
   ];
 
@@ -145,7 +145,7 @@ export default async function CityServicePage({ params }: { params: Promise<Para
                   <Icon name="bolt" className="h-4 w-4" />
                 </span>
                 <p className="text-sm text-ink-soft">
-                  <span className="font-bold text-brand-darker">The outcome:</span> {s.outcome} —
+                  <span className="font-bold text-brand-darker">The outcome:</span> {s.outcome} .
                   right here in {c.name}.
                 </p>
               </div>

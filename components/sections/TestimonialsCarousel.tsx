@@ -10,7 +10,7 @@ import Reveal from "@/components/Reveal";
 import Mark from "@/components/Mark";
 
 /*
-  Editorial testimonial carousel — one quote at a time, big and human.
+  Editorial testimonial carousel. One quote at a time, big and human.
   Auto-advances every 6s, pauses on hover, keyboard-accessible.
   Prev / Next arrows on the sides, numeric+dot indicators below.
 */
@@ -76,7 +76,7 @@ export default function TestimonialsCarousel() {
               Businesses we&apos;ve <Mark variant="underline">grown</Mark>
             </>
           }
-          description="We measure success in leads, cases, and booked jobs — not vanity metrics."
+          description="We measure success in leads, cases, and booked jobs. Not vanity metrics."
         />
 
         {/* Rating summary */}
@@ -101,7 +101,7 @@ export default function TestimonialsCarousel() {
           onFocus={() => setPaused(true)}
           onBlur={() => setPaused(false)}
         >
-          {/* Prev / Next arrows — sit outside the card on desktop */}
+          {/* Prev / Next arrows. Sit outside the card on desktop */}
           <button
             type="button"
             onClick={prev}

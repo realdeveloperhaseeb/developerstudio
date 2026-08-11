@@ -10,7 +10,7 @@ import StatsSection from "@/components/sections/StatsSection";
 import CtaSection from "@/components/sections/CtaSection";
 
 export const metadata: Metadata = {
-  title: "About — The Team Growing UK Businesses",
+  title: "About. The Team Growing UK Businesses",
   description:
     "Developer Studio is a UK digital growth partner for law firms and roofing companies. Founded by Haseeb, we grow businesses from zero and manage the entire engine.",
   alternates: { canonical: "/about" },
@@ -22,7 +22,7 @@ const values = [
   {
     icon: "target" as IconName,
     title: "Results over vanity",
-    text: "We measure success in leads, cases, and booked jobs — never likes or impressions for their own sake.",
+    text: "We measure success in leads, cases, and booked jobs. Never likes or impressions for their own sake.",
   },
   {
     icon: "bolt" as IconName,
@@ -93,7 +93,7 @@ export default function AboutPage() {
                   worse services but better marketing.
                 </p>
                 <p>
-                  So he built a different kind of agency — one that combines world-class web
+                  So he built a different kind of agency. One that combines world-class web
                   development with the SEO, content, and ads needed to actually win clients. No
                   silos, no finger-pointing, just one team accountable for your growth.
                 </p>

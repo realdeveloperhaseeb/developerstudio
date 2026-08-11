@@ -21,7 +21,7 @@ export const site = {
       "https://wa.me/447988563005?text=Hi%20Developer%20Studio%2C%20I%27d%20like%20to%20grow%20my%20business.",
   },
 
-  // Social links — replace with real profiles.
+  // Social links. Replace with real profiles.
   social: [
     { name: "Facebook", href: "https://facebook.com/developerstudio.org", icon: "facebook" },
     { name: "Instagram", href: "https://www.instagram.com/developerstudio_org/", icon: "instagram" },

@@ -65,14 +65,33 @@ summary {
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  /*
+    Bump the root rem unit ~6% (16px → 17px) so ALL rem-based sizes
+    grow proportionally. Body copy, paragraphs, buttons, cards all get
+    a readability boost without touching every className. Scales up
+    at larger viewports for tabletop / TV reading distance.
+  */
+  font-size: 17px;
+}
+@media (min-width: 1440px) {
+  html { font-size: 18px; }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-size: 1.0625rem;     /* ~18px @ 17px root */
+  line-height: 1.65;        /* generous vertical rhythm on paragraphs */
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+/*
+  Paragraph-level readability: comfortable line-length + baseline
+  rhythm without needing per-page prose classes.
+*/
+p {
+  line-height: 1.7;
 }
 
 ::selection {
@@ -82,7 +101,8 @@ body {
 
 h1, h2, h3, h4, h5 {
   font-family: var(--font-display), var(--font-sans), sans-serif;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.022em;   /* slightly tighter for editorial weight */
+  line-height: 1.12;          /* tighter than body — controls display sizes */
   text-wrap: balance;
 }
 

@@ -68,7 +68,7 @@ export default function Header() {
         <Link href="/" className="flex shrink-0 items-center gap-2" aria-label={site.name}>
           <Image
             src="/images/developer-studio-logo.png"
-            alt={`${site.name} — digital marketing agency`}
+            alt={`${site.name}. Digital marketing agency`}
             width={367}
             height={178}
             priority

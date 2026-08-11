@@ -7,7 +7,7 @@ import Button from "@/components/Button";
 import Mark from "@/components/Mark";
 
 const points = [
-  "A senior, in-house team — not outsourced freelancers",
+  "A senior, in-house team. Not outsourced freelancers",
   "Direct access to the people doing the work",
   "Transparent reporting on leads, rankings & ROI",
   "Proven playbooks for UK law firms & roofers",
@@ -31,13 +31,13 @@ const photos = [
 export default function AuthoritySection() {
   return (
     <section className="relative overflow-hidden py-12 sm:py-16">
-      {/* Off-grid ornament — asymmetric, breathes on the right side */}
+      {/* Off-grid ornament. Asymmetric, breathes on the right side */}
       <div
         aria-hidden
         className="pointer-events-none absolute -top-20 -right-24 h-96 w-96 rounded-full bg-brand-50 blur-3xl opacity-70"
       />
       <Container>
-        {/* Personal, conversational note above the section heading —
+        {/* Personal, conversational note above the section heading .
             humanises the brand instead of another agency headline. */}
         <Reveal className="mx-auto max-w-2xl text-center">
           <div className="inline-flex items-center gap-3 rounded-full border border-line bg-white px-4 py-1.5 shadow-soft">
@@ -49,7 +49,7 @@ export default function AuthoritySection() {
               className="h-7 w-7 rounded-full object-cover"
             />
             <span className="text-sm text-ink-soft">
-              <span className="font-semibold text-ink">Hey — it&apos;s Haseeb.</span>{" "}
+              <span className="font-semibold text-ink">Hey. It&apos;s Haseeb.</span>{" "}
               <span className="text-ink-muted">Here&apos;s who we really are.</span>
             </span>
           </div>
@@ -67,7 +67,7 @@ export default function AuthoritySection() {
           />
         </div>
 
-        {/* Both real photos — large */}
+        {/* Both real photos. Large */}
         <div className="mt-12 grid gap-6 sm:grid-cols-2">
           {photos.map((p, i) => (
             <Reveal key={p.src} delay={i * 0.1} direction={i === 0 ? "right" : "left"}>

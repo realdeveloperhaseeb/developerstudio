@@ -32,7 +32,7 @@ export default function ComparisonSection() {
               Why we beat the <span className="text-gradient">typical agency</span>
             </>
           }
-          description="Most agencies try to serve everyone. We do one thing: grow law firms and roofing companies — and it shows."
+          description="Most agencies try to serve everyone. We do one thing: grow law firms and roofing companies. And it shows."
         />
 
         <div className="mx-auto mt-12 grid max-w-4xl gap-6 md:grid-cols-2">

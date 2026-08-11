@@ -2,7 +2,7 @@ import { cn } from "@/lib/cn";
 
 /*
   Editorial "marker" accent. Sits inline in headings/paragraphs in place
-  of a hollow <span className="text-gradient">. Three variants — pick
+  of a hollow <span className="text-gradient">. Three variants. Pick
   sparingly (one per heading, not one per word) so it reads as human
   emphasis rather than another template flourish.
 

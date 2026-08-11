@@ -17,7 +17,7 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — ${site.tagline}`,
+    default: `${site.name}. ${site.tagline}`,
     template: `%s | ${site.name}`,
   },
   description: site.description,
@@ -36,19 +36,19 @@ export const metadata: Metadata = {
     locale: "en_GB",
     url: site.url,
     siteName: site.name,
-    title: `${site.name} — ${site.tagline}`,
+    title: `${site.name}. ${site.tagline}`,
     description: site.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — ${site.tagline}`,
+    title: `${site.name}. ${site.tagline}`,
     description: site.description,
   },
   alternates: { canonical: site.url },
   robots: { index: true, follow: true },
   verification: {
-    // Google Search Console — Next.js renders this as
-    // <meta name="google-site-verification" content="..." />
+    // Google Search Console. Next.js renders this as
+    // <meta name="google-site-verification" content=".." />
     google: "3RL-QPOsLnl29KrrBPmammgDTSXldRH3wAv-w8ZWxrE",
   },
 };

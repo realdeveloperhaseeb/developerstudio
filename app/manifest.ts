@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/data/site";
 
-// Required for output: "export" — bake into a static file at build time.
+// Required for output: "export". Bake into a static file at build time.
 export const dynamic = "force-static";
 
 export default function manifest(): MetadataRoute.Manifest {

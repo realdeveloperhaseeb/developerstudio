@@ -19,7 +19,7 @@ export default function Home() {
       <Hero />
       <TrustBar />
       <LocationsStrip />
-      {/* Services as a tabbed detail panel — 6 services, one per tab */}
+      {/* Services as a tabbed detail panel. 6 services, one per tab */}
       <ServicesTabs />
       <IndustriesSection />
       <AuthoritySection />
@@ -28,7 +28,7 @@ export default function Home() {
       <ClientsStrip />
       <ProjectsSection limit={6} />
       <TeamSection />
-      {/* Testimonials as a carousel — one full-width pull-quote at a time */}
+      {/* Testimonials as a carousel. One full-width pull-quote at a time */}
       <TestimonialsCarousel />
       <FaqSection />
       <CtaSection />

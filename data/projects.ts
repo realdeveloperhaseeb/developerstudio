@@ -14,7 +14,7 @@ export type Project = {
 /*
   Order matters: the home page shows the first 6 entries (`<ProjectsSection
   limit={6} />`). They're interleaved so the home page surfaces a mix of
-  Haseeb's web-dev builds AND Abida's paid-ads wins — both founders'
+  Haseeb's web-dev builds AND Abida's paid-ads wins. Both founders'
   work visible above the fold of the projects grid.
 */
 export const projects: Project[] = [
@@ -25,7 +25,7 @@ export const projects: Project[] = [
     industry: "Law Firms",
     image: "/images/projects/petroff-law-firm-website-design.png",
     summary:
-      "A polished, trust-first website for a growing law practice — built to rank locally and turn visitors into consultations.",
+      "A polished, trust-first website for a growing law practice. Built to rank locally and turn visitors into consultations.",
     services: ["Web Development", "SEO", "Google Ads"],
     results: [
       { label: "Organic traffic", value: "+180%" },
@@ -36,12 +36,12 @@ export const projects: Project[] = [
   },
   {
     slug: "meta-ecommerce-roas",
-    title: "Meta Ads — E-commerce 13.5× ROAS",
+    title: "Meta Ads. E-commerce 13.5× ROAS",
     category: "Meta Ads · E-commerce",
     industry: "E-commerce",
     image: "/images/projects/google-ads-results-3.jpeg",
     summary:
-      "E-commerce Meta Ads campaign delivering 121 website purchases at £1.47 cost-per-purchase — 13.5× return on ad spend over an 18-day window.",
+      "E-commerce Meta Ads campaign delivering 121 website purchases at £1.47 cost-per-purchase. 13.5× return on ad spend over an 18-day window.",
     services: ["Meta Ads", "Conversions API", "Audience Targeting"],
     results: [
       { label: "Purchases", value: "121" },
@@ -68,12 +68,12 @@ export const projects: Project[] = [
   },
   {
     slug: "google-ads-multi-region",
-    title: "Google Ads — UK/US Lead Engine",
+    title: "Google Ads. UK/US Lead Engine",
     category: "Google Ads · PPC",
     industry: "Paid Advertising",
     image: "/images/projects/google-ads-results-1.jpeg",
     summary:
-      "Multi-region Google Ads campaign delivering 49 conversions from a $1.21k test budget — clean targeting across UK and US markets with full conversion tracking via GTM.",
+      "Multi-region Google Ads campaign delivering 49 conversions from a $1.21k test budget. Clean targeting across UK and US markets with full conversion tracking via GTM.",
     services: ["Google Ads", "Conversion Tracking", "GTM"],
     results: [
       { label: "Conversions", value: "49" },
@@ -100,12 +100,12 @@ export const projects: Project[] = [
   },
   {
     slug: "meta-leads-service-business",
-    title: "Meta Lead Ads — Service Business",
+    title: "Meta Lead Ads. Service Business",
     category: "Meta Ads · Lead Generation",
     industry: "Local Services",
     image: "/images/projects/google-ads-results-2.jpeg",
     summary:
-      "Meta lead-generation funnel for a UK service business — qualified leads at £5.69 each from a £51 test budget, proving the channel before scaling spend.",
+      "Meta lead-generation funnel for a UK service business. Qualified leads at £5.69 each from a £51 test budget, proving the channel before scaling spend.",
     services: ["Meta Ads", "Conversions API", "Meta Pixel"],
     results: [
       { label: "Form leads", value: "9" },

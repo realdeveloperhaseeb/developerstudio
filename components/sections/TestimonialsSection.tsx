@@ -8,13 +8,13 @@ import Mark from "@/components/Mark";
 /*
   Editorial testimonial spread:
     · First testimonial is a full-width pull-quote (huge quote mark, big
-      body copy) — the "hero" quote of the section.
+      body copy). The "hero" quote of the section.
     · Remaining testimonials become smaller support cards below.
-  Aggressive size contrast between the two treatments is the point —
+  Aggressive size contrast between the two treatments is the point .
   breaks the "three identical cards in a row" template.
 */
 export default function TestimonialsSection() {
-  const [hero, ...rest] = testimonials;
+  const [hero, ..rest] = testimonials;
 
   return (
     <section className="relative overflow-hidden bg-zinc-50/70 py-14 sm:py-20">
@@ -32,7 +32,7 @@ export default function TestimonialsSection() {
               Businesses we&apos;ve <Mark variant="underline">grown</Mark>
             </>
           }
-          description="We measure success in leads, cases, and booked jobs — not vanity metrics."
+          description="We measure success in leads, cases, and booked jobs. Not vanity metrics."
         />
 
         {/* Rating summary */}
@@ -49,7 +49,7 @@ export default function TestimonialsSection() {
           </div>
         </Reveal>
 
-        {/* HERO PULL-QUOTE — the biggest, most human moment of the section */}
+        {/* HERO PULL-QUOTE. The biggest, most human moment of the section */}
         {hero && (
           <Reveal className="mt-14">
             <figure className="relative mx-auto max-w-4xl rounded-3xl border border-line bg-white p-8 shadow-card sm:p-12 lg:p-14">
@@ -91,7 +91,7 @@ export default function TestimonialsSection() {
           </Reveal>
         )}
 
-        {/* Support cards — small, tight, uniform */}
+        {/* Support cards. Small, tight, uniform */}
         {rest.length > 0 && (
           <div className="mt-6 grid gap-6 lg:grid-cols-3">
             {rest.map((t, i) => (

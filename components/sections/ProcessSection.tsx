@@ -7,8 +7,8 @@ import Mark from "@/components/Mark";
 
 /*
   Editorial process cards: the huge tabular numeral IS the visual, the
-  copy sits under it. Aggressive size contrast — the same nixo/editorial
-  move — lands the "01 → 02 → 03 → 04" rhythm without needing a graph
+  copy sits under it. Aggressive size contrast. The same nixo/editorial
+  move. Lands the "01 → 02 → 03 → 04" rhythm without needing a graph
   or a badge. Alternating card offset (odd rows nudged down slightly)
   breaks the perfect four-column grid so it doesn't read as templated.
 */

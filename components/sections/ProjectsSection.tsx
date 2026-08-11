@@ -28,7 +28,7 @@ export default function ProjectsSection({
                   Results we&apos;ve <span className="text-gradient">delivered</span>
                 </>
               }
-              description="Real websites and campaigns for real businesses — built to look great and drive revenue."
+              description="Real websites and campaigns for real businesses. Built to look great and drive revenue."
             />
             <Link
               href="/projects"

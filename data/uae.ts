@@ -1,5 +1,5 @@
 /*
-  UAE landing-page registry — powers the header "UAE ▾" dropdown and the
+  UAE landing-page registry. Powers the header "UAE ▾" dropdown and the
   UAE sitemap entries. Start with Dubai; add other emirates as we ship
   their dedicated pages.
 */

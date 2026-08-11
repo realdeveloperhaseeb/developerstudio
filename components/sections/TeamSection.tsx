@@ -18,7 +18,7 @@ export default function TeamSection({ heading = true }: { heading?: boolean }) {
                 The people who <span className="text-gradient">grow your business</span>
               </>
             }
-            description="A focused, senior team that treats your business like our own — led by founder Haseeb."
+            description="A focused, senior team that treats your business like our own. Led by founder Haseeb."
           />
         )}
 

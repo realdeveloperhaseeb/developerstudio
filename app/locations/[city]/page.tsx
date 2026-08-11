@@ -32,7 +32,7 @@ export async function generateMetadata({
   const { city } = await params;
   const c = getCity(city);
   if (!c) return {};
-  const title = `Digital Marketing in ${c.name} — Web, SEO & Ads`;
+  const title = `Digital Marketing in ${c.name}. Web, SEO & Ads`;
   return {
     title,
     description: `Web development, app development, SEO, social media, and Google Ads for law firms and roofing companies in ${c.name}, ${c.region}. ${c.blurb}`,
@@ -67,14 +67,14 @@ export default async function CityPage({ params }: { params: Promise<Params> }) 
     {
       icon: "target" as IconName,
       title: "Local ads that pay",
-      text: `Google & Meta ads targeted to ${c.name} that bring quote requests — not just clicks.`,
+      text: `Google & Meta ads targeted to ${c.name} that bring quote requests. Not just clicks.`,
     },
   ];
 
   const localFaqs = [
     {
       q: `Do you work with businesses in ${c.name}?`,
-      a: `Yes — we work with law firms, roofing companies, and ambitious businesses right across ${c.name} and ${c.region}.`,
+      a: `Yes. We work with law firms, roofing companies, and ambitious businesses right across ${c.name} and ${c.region}.`,
     },
     {
       q: `How soon will I see results in ${c.name}?`,
@@ -82,11 +82,11 @@ export default async function CityPage({ params }: { params: Promise<Params> }) 
     },
     {
       q: `Do you understand the ${c.name} market?`,
-      a: `We research your ${c.name} competitors and exactly how local customers search before we build your strategy — no guesswork.`,
+      a: `We research your ${c.name} competitors and exactly how local customers search before we build your strategy. No guesswork.`,
     },
     {
       q: `Can you manage everything for my ${c.name} business?`,
-      a: `Absolutely. Website, SEO, content, ads and reporting — all handled by one accountable team so you can focus on clients.`,
+      a: `Absolutely. Website, SEO, content, ads and reporting. All handled by one accountable team so you can focus on clients.`,
     },
   ];
 
@@ -141,14 +141,14 @@ export default async function CityPage({ params }: { params: Promise<Params> }) 
               </h2>
               <div className="mt-4 space-y-4 text-base leading-relaxed text-ink-muted">
                 <p>
-                  Your customers in {c.name} are searching right now — for a solicitor, for a
+                  Your customers in {c.name} are searching right now. For a solicitor, for a
                   roofer, for the service you provide. The only question is whether they find
                   you, or your competitor.
                 </p>
                 <p>
                   Developer Studio builds fast, conversion-focused websites and runs local SEO
                   and ad campaigns engineered to put your business at the top of {c.name} search
-                  results. We grow businesses from zero and manage the whole engine — so you can
+                  results. We grow businesses from zero and manage the whole engine. So you can
                   focus on serving clients.
                 </p>
               </div>

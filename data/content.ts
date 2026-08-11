@@ -6,7 +6,7 @@ export const industries = [
     image: "/images/professional-law-firm-team.webp",
     tagline: "More high-value cases, less wasted spend.",
     description:
-      "We help solicitors and law firms dominate local search, build authority, and turn website visitors into signed clients — from personal injury to immigration and family law.",
+      "We help solicitors and law firms dominate local search, build authority, and turn website visitors into signed clients. From personal injury to immigration and family law.",
     points: [
       "Practice-area SEO that ranks for high-intent searches",
       "Conversion-focused websites built on trust",
@@ -36,7 +36,7 @@ export const process = [
     step: "01",
     title: "Discover",
     description:
-      "We learn your business, market, and goals — then audit where you stand against competitors.",
+      "We learn your business, market, and goals. Then audit where you stand against competitors.",
     icon: "compass",
   },
   {
@@ -57,7 +57,7 @@ export const process = [
     step: "04",
     title: "Grow",
     description:
-      "We launch, optimise relentlessly, and report transparently — scaling what works.",
+      "We launch, optimise relentlessly, and report transparently. Scaling what works.",
     icon: "rocket",
   },
 ];
@@ -99,7 +99,7 @@ export const testimonials = [
 export const faqs = [
   {
     q: "Do you only work with law firms and roofing companies?",
-    a: "Those are our specialisms — we know how to win in both markets. We do work with other ambitious businesses too, but our deepest playbooks are built for legal and roofing.",
+    a: "Those are our specialisms. We know how to win in both markets. We do work with other ambitious businesses too, but our deepest playbooks are built for legal and roofing.",
   },
   {
     q: "How quickly will I see results?",
@@ -107,11 +107,11 @@ export const faqs = [
   },
   {
     q: "Do you manage everything for me?",
-    a: "Yes. We grow businesses from zero and manage the whole engine — brand, website, content, SEO, ads, and reporting — so you can focus on serving clients.",
+    a: "Yes. We grow businesses from zero and manage the whole engine. Brand, website, content, SEO, ads, and reporting. So you can focus on serving clients.",
   },
   {
     q: "Can I just take a website without ongoing marketing?",
-    a: "Absolutely. We build standalone websites and apps. Most clients add marketing once they see the quality — but there's no obligation.",
+    a: "Absolutely. We build standalone websites and apps. Most clients add marketing once they see the quality. But there's no obligation.",
   },
   {
     q: "Where are you based?",

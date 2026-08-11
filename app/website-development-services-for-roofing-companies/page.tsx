@@ -24,12 +24,12 @@ export const metadata: Metadata = {
   // (which otherwise appends "| Developer Studio" a second time)
   title: { absolute: TITLE },
   description:
-    "Developer Studio is a UK web design agency for roofing companies. We design and build mobile-first websites with instant quote forms, local SEO, and Google reviews — live in 14 days. Book a free consultation.",
+    "Developer Studio is a UK web design agency for roofing companies. We design and build mobile-first websites with instant quote forms, local SEO, and Google reviews. Live in 14 days. Book a free consultation.",
   alternates: { canonical: `/${SLUG}` },
   openGraph: {
     title: TITLE,
     description:
-      "Developer Studio designs lead-generating websites for UK roofing companies. Quote forms, local SEO, Google reviews — live in 14 days. Free consultation.",
+      "Developer Studio designs lead-generating websites for UK roofing companies. Quote forms, local SEO, Google reviews. Live in 14 days. Free consultation.",
     url: `${site.url}/${SLUG}`,
     siteName: site.name,
     type: "website",
@@ -62,7 +62,7 @@ const pains: { icon: IconName; title: string; text: string }[] = [
   {
     icon: "phone",
     title: "Quiet phones, empty diary",
-    text: "Your competitors are getting calls every day. Your line stays silent — or rings with the wrong jobs.",
+    text: "Your competitors are getting calls every day. Your line stays silent. Or rings with the wrong jobs.",
   },
   {
     icon: "search",
@@ -83,8 +83,8 @@ const pains: { icon: IconName; title: string; text: string }[] = [
 
 const features: { icon: IconName; title: string; text: string }[] = [
   { icon: "bolt",     title: "Mobile-first & lightning fast", text: "Loads in under a second on a phone. Every section optimised to turn a tap into a quote request." },
-  { icon: "target",   title: "Instant quote form",            text: "A simple step-by-step form on every page. Job type, postcode, photos — straight to your phone." },
-  { icon: "sparkles", title: "Before & after gallery",        text: "A showcase that proves quality. Easy to update — no developer needed." },
+  { icon: "target",   title: "Instant quote form",            text: "A simple step-by-step form on every page. Job type, postcode, photos. Straight to your phone." },
+  { icon: "sparkles", title: "Before & after gallery",        text: "A showcase that proves quality. Easy to update. No developer needed." },
   { icon: "search",   title: "Local SEO + Google Business",   text: "Your firm at the top of 'roofers near me' in your service area. GBP setup and review collection included." },
   { icon: "star",     title: "Reviews front-and-centre",      text: "Google reviews and trust badges woven through the site so visitors feel safe to call." },
   { icon: "phone",    title: "Call tracking & reporting",     text: "Know which jobs came from the site, which ads worked, and where your money went." },
@@ -104,7 +104,7 @@ const testimonials = [
   },
   {
     rating: 5,
-    quote: "Tried 3 other web designers — all promised the world, delivered a template. Developer Studio actually understood roofing. The local SEO setup is what won us page 1.",
+    quote: "Tried 3 other web designers. All promised the world, delivered a template. Developer Studio actually understood roofing. The local SEO setup is what won us page 1.",
     name: "Sarah W.", role: "Owner", business: "Premier Roofers", location: "Manchester", initial: "S",
   },
   {
@@ -123,9 +123,9 @@ const steps: { n: string; title: string; text: string; icon: IconName }[] = [
 
 const promises: { icon: IconName; title: string; text: string }[] = [
   { icon: "phone",  title: "Free 20-min discovery call",   text: "Zero obligation. Tell us your business, we'll show you exactly what we'd build." },
-  { icon: "bolt",   title: "Live in 14 days — guaranteed", text: "Your site goes live in two weeks. If we miss the date, the next month is on us." },
+  { icon: "bolt",   title: "Live in 14 days. Guaranteed", text: "Your site goes live in two weeks. If we miss the date, the next month is on us." },
   { icon: "check",  title: "No long contracts",            text: "Stay only as long as you're happy. Month-to-month support, cancel any time." },
-  { icon: "search", title: "Monthly performance reports",  text: "Clear, honest reports on traffic, calls, and rankings — straight to your inbox." },
+  { icon: "search", title: "Monthly performance reports",  text: "Clear, honest reports on traffic, calls, and rankings. Straight to your inbox." },
 ];
 
 const stats = [
@@ -136,8 +136,8 @@ const stats = [
 ];
 
 const faqs = [
-  { q: "How long until my roofing site is live?", a: "Typically 14 days from kickoff to launch — including copywriting, design, build, hosting setup, and Google Business Profile optimisation." },
-  { q: "Do I have to write the content?",         a: "No. We write everything — your services, your area, your pitch — based on a single 20-minute discovery call." },
+  { q: "How long until my roofing site is live?", a: "Typically 14 days from kickoff to launch. Including copywriting, design, build, hosting setup, and Google Business Profile optimisation." },
+  { q: "Do I have to write the content?",         a: "No. We write everything. Your services, your area, your pitch. Based on a single 20-minute discovery call." },
   { q: "Will it actually bring me quotes?",       a: "Yes. Every page is designed to convert. Combined with the local SEO setup and (optionally) Google Ads, most of our roofing clients see a noticeable jump in quote requests within 30–60 days." },
   { q: "How much does it cost?",                  a: "We quote per project after the discovery call so it matches your size and area. Get in touch and we'll give you a clear, no-pressure price." },
 ];
@@ -322,7 +322,7 @@ function MultiDeviceMockup() {
   );
 }
 
-/* Mini browser mockup with variable colour palette — for the style gallery */
+/* Mini browser mockup with variable colour palette. For the style gallery */
 function StyleVariant({ primary, dark, accent, label }: { primary: string; dark: string; accent: string; label: string }) {
   return (
     <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" className="h-auto w-full" role="img" aria-label={`${label} website mockup`}>
@@ -335,7 +335,7 @@ function StyleVariant({ primary, dark, accent, label }: { primary: string; dark:
       <circle cx="46" cy="14" r="4" fill="#86efac" />
       <rect x="64" y="8" width="200" height="12" rx="6" fill="#ffffff" stroke="#e2e8f0" />
 
-      {/* Hero band — colour varies */}
+      {/* Hero band. Colour varies */}
       <rect y="28" width="400" height="140" fill={dark} />
       {/* Decorative shape */}
       <circle cx="360" cy="60" r="28" fill={primary} fillOpacity="0.4" />
@@ -514,7 +514,7 @@ export default function RoofingLandingPage() {
                 <span className="text-gradient">Your website isn&apos;t.</span>
               </>
             }
-            description="Most roofing businesses lose work not on price or quality — but because customers can't find them, can't trust the site, or can't easily get a quote."
+            description="Most roofing businesses lose work not on price or quality. But because customers can't find them, can't trust the site, or can't easily get a quote."
           />
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {pains.map((p, i) => (
@@ -547,7 +547,7 @@ export default function RoofingLandingPage() {
                 <span className="text-gradient">roofing website needs.</span>
               </>
             }
-            description="Not a brochure — a lead-generation engine purpose-built for roofers."
+            description="Not a brochure. A lead-generation engine purpose-built for roofers."
           />
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((f, i) => (
@@ -575,7 +575,7 @@ export default function RoofingLandingPage() {
                 Three styles. <span className="text-gradient">One conversion-machine.</span>
               </>
             }
-            description="We tailor the look to your brand — but every variant is built around the same proven roofing-website blueprint."
+            description="We tailor the look to your brand. But every variant is built around the same proven roofing-website blueprint."
           />
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
             {variants.map((v, i) => (
@@ -620,7 +620,7 @@ export default function RoofingLandingPage() {
               Looks great everywhere. <span className="text-gradient">Converts everywhere.</span>
             </h2>
             <p className="mt-4 text-white/70">
-              Every site we build is engineered for desktop, tablet, and phone — pixel-perfect and tap-friendly.
+              Every site we build is engineered for desktop, tablet, and phone. Pixel-perfect and tap-friendly.
             </p>
           </Reveal>
 
@@ -768,7 +768,7 @@ export default function RoofingLandingPage() {
                   <span className="text-gradient">No fine print.</span>
                 </h2>
                 <p className="mx-auto mt-4 max-w-2xl text-ink-muted">
-                  We&apos;re only successful when you are. Here&apos;s exactly what you can expect — in writing.
+                  We&apos;re only successful when you are. Here&apos;s exactly what you can expect. In writing.
                 </p>
               </div>
 
@@ -864,7 +864,7 @@ export default function RoofingLandingPage() {
       {/* 11. Closing CTA */}
       <CtaSection
         title="Ready to fill your diary?"
-        subtitle={`Get a free, no-pressure quote for your new roofing website — or call us right now on ${PHONE_DISPLAY}.`}
+        subtitle={`Get a free, no-pressure quote for your new roofing website. Or call us right now on ${PHONE_DISPLAY}.`}
       />
 
       <div className="pb-28 text-center sm:pb-12">

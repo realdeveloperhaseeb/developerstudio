@@ -13,7 +13,7 @@ import FaqSection from "@/components/sections/FaqSection";
 import CtaSection from "@/components/sections/CtaSection";
 
 export const metadata: Metadata = {
-  title: "Services — Web, App, SEO, Social & Google Ads",
+  title: "Services. Web, App, SEO, Social & Google Ads",
   description:
     "Web development, app development, SEO, social media marketing, and Google Ads for UK law firms and roofing companies. One team that grows your business from zero.",
   alternates: { canonical: "/services" },
@@ -139,7 +139,7 @@ export default function ServicesPage() {
       <FaqSection />
       <CtaSection
         title="Not sure which service you need?"
-        subtitle="Tell us your goals and we'll recommend the fastest path to more clients — free of charge."
+        subtitle="Tell us your goals and we'll recommend the fastest path to more clients. Free of charge."
       />
     </>
   );

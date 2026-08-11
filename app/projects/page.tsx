@@ -6,7 +6,7 @@ import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import CtaSection from "@/components/sections/CtaSection";
 
 export const metadata: Metadata = {
-  title: "Projects — Websites & Campaigns We've Delivered",
+  title: "Projects. Websites & Campaigns We've Delivered",
   description:
     "A selection of websites, apps, and marketing campaigns Developer Studio has built for law firms, roofing companies, and growing UK businesses.",
   alternates: { canonical: "/projects" },
@@ -28,7 +28,7 @@ export default function ProjectsPage() {
       <ProjectsSection heading={false} />
       <StatsSection />
       <TestimonialsSection />
-      <CtaSection title="Want results like these?" subtitle="Let's build your next project — and the growth engine to back it up." />
+      <CtaSection title="Want results like these?" subtitle="Let's build your next project. And the growth engine to back it up." />
     </>
   );
 }

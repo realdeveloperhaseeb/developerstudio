@@ -28,7 +28,7 @@ export default function IndustriesSection() {
             <Reveal key={ind.slug} delay={i * 0.1} direction={i === 0 ? "right" : "left"}>
               <div className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-white transition-all duration-300 hover:border-brand/40 hover:shadow-card">
                 {/*
-                  Small "OUR SPECIALTY" sticker — rotated slightly, alternating
+                  Small "OUR SPECIALTY" sticker. Rotated slightly, alternating
                   sides between the two cards so they don't feel duplicated.
                 */}
                 <div

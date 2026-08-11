@@ -29,10 +29,10 @@ export async function generateMetadata({
   if (!m) return {};
   const displayName = m.fullName || m.name;
   const headline = m.founder
-    ? `${displayName} — Founder of ${site.name}`
+    ? `${displayName}. Founder of ${site.name}`
     : m.cofounder
-      ? `${displayName} — Co-Founder of ${site.name}`
-      : `${displayName} — ${m.role} at ${site.name}`;
+      ? `${displayName}. Co-Founder of ${site.name}`
+      : `${displayName}. ${m.role} at ${site.name}`;
   return {
     title: { absolute: `${headline} | ${m.role}` },
     description:
@@ -268,7 +268,7 @@ export default async function TeamMemberPage({
                   <span className="text-gradient">{m.name}</span>
                 </>
               }
-              description="Real campaigns and websites — measured by the leads, calls and revenue they delivered."
+              description="Real campaigns and websites. Measured by the leads, calls and revenue they delivered."
             />
             <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {memberProjects.map((p, i) => (

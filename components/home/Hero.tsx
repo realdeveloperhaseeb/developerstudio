@@ -42,7 +42,7 @@ export default function Hero() {
               className="animate-load mt-6 max-w-xl text-lg leading-relaxed text-ink-muted"
               style={delay(0.2)}
             >
-              Web &amp; app development, SEO, social media, and Google Ads — built for UK law
+              Web &amp; app development, SEO, social media, and Google Ads. Built for UK law
               firms and roofing companies. One accountable team that handles the whole growth
               engine, so you can focus on clients.
             </p>
