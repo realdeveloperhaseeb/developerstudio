@@ -4,6 +4,7 @@ import { cities } from "@/data/cities";
 import { services } from "@/data/services";
 import { landingPages } from "@/data/landingPages";
 import { team } from "@/data/team";
+import { uaeLocations } from "@/data/uae";
 
 export const dynamic = "force-static";
 
@@ -56,11 +57,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: m.founder || m.cofounder ? 0.8 : 0.6,
   }));
 
+  const uaeRoutes = uaeLocations.map((l) => ({
+    url: `${site.url}/${l.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.9, // high-intent commercial landing pages
+  }));
+
   return [
     ...staticRoutes,
     ...cityRoutes,
     ...cityServiceRoutes,
     ...landingRoutes,
     ...teamRoutes,
+    ...uaeRoutes,
   ];
 }
