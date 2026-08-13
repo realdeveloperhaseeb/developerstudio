@@ -135,6 +135,10 @@ h1, h2, h3, h4, h5 {
   background-position: 0 92%;
   background-size: 100% 0.42em;
   padding-bottom: 0.08em;
+  /* When the marked span wraps across lines, treat each line as its own
+     box so the underline draws under EACH line rather than only the last. */
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 .mark-highlight {
   background: linear-gradient(
@@ -146,6 +150,10 @@ h1, h2, h3, h4, h5 {
   );
   padding: 0 0.18em;
   border-radius: 2px;
+  /* Same box-decoration fix so each wrapped line gets its own clean
+     highlight strip instead of one tall stretched gradient block. */
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 .mark-circle {
   position: relative;

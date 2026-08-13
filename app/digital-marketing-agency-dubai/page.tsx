@@ -431,9 +431,12 @@ export default function DubaiDigitalMarketingPage() {
               <span aria-hidden className="inline-block h-[2px] w-6 rounded-full bg-brand" />
               Why Dubai brands come to us
             </span>
-            <h2 className="mt-5 text-3xl font-black leading-tight text-ink sm:text-4xl">
+            <h2 className="mt-5 text-2xl font-black leading-[1.15] text-ink sm:text-3xl md:text-4xl">
               You&apos;re not another Dubai brand.{" "}
-              <Mark variant="highlight">You shouldn&apos;t sound like one either.</Mark>
+              <span className="block sm:inline">
+                You shouldn&apos;t{" "}
+                <Mark variant="underline">sound like one</Mark> either.
+              </span>
             </h2>
             <p className="mt-5 text-base leading-relaxed text-ink-muted sm:text-lg">
               Most digital marketing companies in Dubai run the same generic
