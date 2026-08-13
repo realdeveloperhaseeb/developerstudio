@@ -17,6 +17,12 @@ export const uaeLocations: UaeLocation[] = [
     headline: "Digital Marketing Agency Dubai",
     eyebrow: "SEO · Google Ads · Meta Ads",
   },
+  {
+    slug: "digital-marketing-agency-abu-dhabi",
+    city: "Abu Dhabi",
+    headline: "Digital Marketing Agency Abu Dhabi",
+    eyebrow: "Social Media · SEO · Google Ads",
+  },
 ];
 
 export const getUaeLocation = (slug: string) =>
