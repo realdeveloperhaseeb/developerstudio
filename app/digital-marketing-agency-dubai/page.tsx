@@ -11,6 +11,7 @@ import Button from "@/components/Button";
 import PageHeader from "@/components/PageHeader";
 import Mark from "@/components/Mark";
 import CtaSection from "@/components/sections/CtaSection";
+import LiveDemosSection from "@/components/sections/LiveDemosSection";
 
 /*
   Dubai landing page. The flagship UAE page.
@@ -372,7 +373,9 @@ export default function DubaiDigitalMarketingPage() {
       <section className="border-b border-line bg-white">
         <Container className="py-10 sm:py-14">
           <div className="flex flex-col items-center gap-6">
-            <div className="flex flex-col gap-3 sm:flex-row">
+            {/* CTA row: stack until md — at sm the three pill buttons overflow
+                because the primary button is nearly 300px wide alone. */}
+            <div className="flex w-full flex-col gap-3 md:w-auto md:flex-row md:flex-wrap md:justify-center">
               <Button href="/contact" size="lg" icon="arrowRight">
                 Get a free Dubai growth plan
               </Button>
@@ -380,14 +383,14 @@ export default function DubaiDigitalMarketingPage() {
                 href={site.whatsapp.uk}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-13 items-center justify-center gap-2 rounded-full border border-line bg-white px-6 text-base font-semibold text-ink transition-colors hover:border-brand hover:text-brand-darker"
+                className="inline-flex h-13 w-full items-center justify-center gap-2 rounded-full border border-line bg-white px-6 text-base font-semibold text-ink transition-colors hover:border-brand hover:text-brand-darker md:w-auto"
               >
                 <Icon name="whatsapp" className="h-5 w-5 text-brand" />
                 Chat on WhatsApp
               </a>
               <a
                 href={`tel:${PHONE_E164}`}
-                className="inline-flex h-13 items-center justify-center gap-2 rounded-full border border-line bg-white px-6 text-base font-semibold text-ink transition-colors hover:border-brand hover:text-brand-darker"
+                className="inline-flex h-13 w-full items-center justify-center gap-2 rounded-full border border-line bg-white px-6 text-base font-semibold text-ink transition-colors hover:border-brand hover:text-brand-darker md:w-auto"
               >
                 <Icon name="phone" className="h-5 w-5 text-brand" />
                 {PHONE_DISPLAY}
@@ -782,6 +785,9 @@ export default function DubaiDigitalMarketingPage() {
           </div>
         </Container>
       </section>
+
+      {/* ---------------- LIVE PROJECTS (portfolio carousel) ---------------- */}
+      <LiveDemosSection />
 
       {/* ---------------- FAQ ---------------- */}
       <section className="bg-zinc-50/60 py-14 sm:py-20">
