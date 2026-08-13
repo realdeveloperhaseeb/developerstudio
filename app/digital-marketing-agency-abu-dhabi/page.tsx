@@ -461,7 +461,7 @@ export default function AbuDhabiDigitalMarketingPage() {
       <section className="relative overflow-hidden py-14 sm:py-20">
         <div
           aria-hidden
-          className="pointer-events-none absolute -top-24 -right-16 h-96 w-96 rounded-full bg-brand-50 blur-3xl"
+          className="pointer-events-none absolute -top-24 -right-16 hidden h-96 w-96 rounded-full bg-brand-50 blur-3xl sm:block"
         />
         <Container>
           <div className="mx-auto max-w-3xl text-center">
