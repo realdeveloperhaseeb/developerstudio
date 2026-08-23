@@ -25,6 +25,9 @@ type Demo = {
   tag: string;
   url: string;
   summary: string;
+  // Optional local screenshot path. When present, we use it instead of
+  // the mshots API — faster and reliably rendered.
+  screenshot?: string;
 };
 
 const demos: Demo[] = [
@@ -35,6 +38,7 @@ const demos: Demo[] = [
     url: "https://ani-improved.vercel.app/",
     summary:
       "A polished personal portfolio with editorial typography and considered micro-interactions.",
+    screenshot: "/images/projects/ani-filipova-website.png",
   },
   {
     slug: "fizaismail",
@@ -51,6 +55,7 @@ const demos: Demo[] = [
     url: "https://stayright-two.vercel.app/",
     summary:
       "Product landing for a modern lifestyle app — clean information hierarchy, conversion-first.",
+    screenshot: "/images/projects/stayright-website.png",
   },
   {
     slug: "nat-ui-improved",
@@ -59,6 +64,7 @@ const demos: Demo[] = [
     url: "https://nat-ui-improved.vercel.app/",
     summary:
       "A SaaS marketing site with a full design system, animated hero, and modular content blocks.",
+    screenshot: "/images/projects/nat-website.png",
   },
   {
     slug: "nixocontentgrid",
@@ -376,7 +382,7 @@ export default function LiveDemosSection({
                   */}
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={shotUrl(d.url)}
+                    src={d.screenshot || shotUrl(d.url)}
                     alt={`${d.title} — live site screenshot at desktop scale`}
                     loading="lazy"
                     className="h-full w-full object-cover object-top transition-transform duration-500 group-hover/img:scale-[1.02]"

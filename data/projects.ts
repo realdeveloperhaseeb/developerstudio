@@ -18,6 +18,74 @@ export type Project = {
   work visible above the fold of the projects grid.
 */
 export const projects: Project[] = [
+  /* ---- Recent portfolio & product builds ---- */
+  {
+    slug: "ani-filipova",
+    title: "Ani Filipova",
+    category: "Personal Portfolio",
+    industry: "Design & Creative",
+    image: "/images/projects/ani-filipova-website.png",
+    summary:
+      "A polished personal-brand portfolio with editorial typography and considered micro-interactions. Built to feel handmade, not templated.",
+    services: ["Web Development", "Design", "Performance"],
+    results: [
+      { label: "Lighthouse", value: "99/100" },
+      { label: "Page load", value: "<1s" },
+      { label: "Mobile score", value: "100/100" },
+    ],
+    url: "https://ani-improved.vercel.app/",
+    owner: "haseeb",
+  },
+  {
+    slug: "nat-ui",
+    title: "Nat UI",
+    category: "SaaS Landing Page",
+    industry: "SaaS · Product",
+    image: "/images/projects/nat-website.png",
+    summary:
+      "A SaaS marketing site with a full modular content system, animated hero, and design language that scales across every page.",
+    services: ["Web Development", "UI System", "Motion"],
+    results: [
+      { label: "Design system", value: "Full" },
+      { label: "Page load", value: "<1s" },
+      { label: "Mobile score", value: "100/100" },
+    ],
+    url: "https://nat-ui-improved.vercel.app/",
+    owner: "haseeb",
+  },
+  {
+    slug: "stayright",
+    title: "StayRight",
+    category: "Product Landing · Web App",
+    industry: "Lifestyle · Product",
+    image: "/images/projects/stayright-website.png",
+    summary:
+      "Product landing for a modern lifestyle app. Clean information hierarchy, conversion-focused CTAs, mobile-first from the first pixel.",
+    services: ["Web Development", "Conversion UX", "Design"],
+    results: [
+      { label: "Above-fold CTA", value: "3.1×" },
+      { label: "Page load", value: "<1s" },
+      { label: "Mobile score", value: "100/100" },
+    ],
+    url: "https://stayright-two.vercel.app/",
+    owner: "haseeb",
+  },
+  {
+    slug: "methew",
+    title: "Methew",
+    category: "Personal Brand Website",
+    industry: "Creator · Portfolio",
+    image: "/images/projects/methew-website.png",
+    summary:
+      "A modern personal-brand site with confident typography, warm imagery, and a clear conversion path for enquiries.",
+    services: ["Web Development", "Design", "Copy"],
+    results: [
+      { label: "Lighthouse", value: "99/100" },
+      { label: "Page load", value: "<1s" },
+      { label: "Mobile score", value: "100/100" },
+    ],
+    owner: "haseeb",
+  },
   {
     slug: "petroff-law",
     title: "Petroff Law",
