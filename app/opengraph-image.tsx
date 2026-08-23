@@ -83,40 +83,54 @@ export default async function OGImage() {
           </div>
         </div>
 
-        {/* Big pitch */}
+        {/* Big pitch. Split into single-child divs so Satori (which
+            requires explicit `display: flex` on any div with more than
+            one child) renders each line as its own block. */}
         <div
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: 12,
-            maxWidth: 900,
+            maxWidth: 940,
           }}
         >
           <div
             style={{
-              fontSize: 68,
+              display: "flex",
+              fontSize: 72,
               fontWeight: 900,
               lineHeight: 1.05,
               letterSpacing: -2,
+              color: "#ffffff",
             }}
           >
-            Grow your business{" "}
-            <span
-              style={{
-                color: "#6ee7b7",
-                borderBottom: "6px solid #10b981",
-                paddingBottom: 4,
-              }}
-            >
-              from zero
-            </span>
-            .
+            Grow your business
           </div>
           <div
             style={{
+              display: "flex",
+              fontSize: 72,
+              fontWeight: 900,
+              lineHeight: 1.05,
+              letterSpacing: -2,
+              marginTop: 6,
+            }}
+          >
+            <span
+              style={{
+                color: "#6ee7b7",
+                borderBottom: "8px solid #10b981",
+                paddingBottom: 4,
+              }}
+            >
+              from zero.
+            </span>
+          </div>
+          <div
+            style={{
+              display: "flex",
               fontSize: 26,
               color: "rgba(255,255,255,0.75)",
-              marginTop: 20,
+              marginTop: 24,
               lineHeight: 1.4,
             }}
           >
