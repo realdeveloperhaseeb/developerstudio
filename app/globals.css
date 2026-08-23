@@ -66,15 +66,16 @@ html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   /*
-    Bump the root rem unit ~6% (16px → 17px) so ALL rem-based sizes
-    grow proportionally. Body copy, paragraphs, buttons, cards all get
-    a readability boost without touching every className. Scales up
-    at larger viewports for tabletop / TV reading distance.
+    Bump the root rem unit ~12% (16px → 18px) so ALL rem-based sizes
+    grow proportionally. Body copy, paragraphs, buttons, cards, and
+    the small `text-sm` / `text-xs` labels all get a readability
+    boost without touching every className. Scales up further on
+    large viewports for comfortable reading distance.
   */
-  font-size: 17px;
+  font-size: 18px;
 }
 @media (min-width: 1440px) {
-  html { font-size: 18px; }
+  html { font-size: 19px; }
 }
 
 body {

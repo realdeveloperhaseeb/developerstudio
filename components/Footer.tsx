@@ -5,6 +5,7 @@ import { services } from "@/data/services";
 import { cities } from "@/data/cities";
 import { Icon } from "@/components/icons";
 import Container from "@/components/Container";
+import Signature from "@/components/Signature";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -138,7 +139,19 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row">
+        {/*
+          Hand-signed touch above the fine-print row. The signature draws
+          itself in when the footer scrolls into view — small piece of
+          craft that reads as "a real person built this".
+        */}
+        <div className="mt-14 flex flex-col items-center gap-2 border-t border-white/10 pt-10 text-center">
+          <span className="text-[11px] font-semibold uppercase tracking-[0.24em] text-white/40">
+            Signed off by
+          </span>
+          <Signature className="text-brand-light" />
+        </div>
+
+        <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row">
           <p className="text-sm text-white/50">
             © {year} {site.name}. All rights reserved.
           </p>
