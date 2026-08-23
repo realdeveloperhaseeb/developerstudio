@@ -279,6 +279,28 @@ h1, h2, h3, h4, h5 {
 }
 .animate-float { animation: float 6s ease-in-out infinite; }
 
+/*
+  Hero ambient blobs — slow, offset drift/scale so the two blurred
+  green pools feel like they're breathing without stealing attention.
+*/
+@keyframes drift-a {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(30px, -22px) scale(1.08); }
+}
+@keyframes drift-b {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(-34px, 20px) scale(1.1); }
+}
+.animate-drift-a { animation: drift-a 14s ease-in-out infinite; }
+.animate-drift-b { animation: drift-b 17s ease-in-out infinite; }
+
+/* Slow bounce for the hero scroll cue */
+@keyframes bounce-cue {
+  0%, 100% { transform: translateY(0); opacity: 0.7; }
+  50%      { transform: translateY(8px); opacity: 1; }
+}
+.animate-bounce-cue { animation: bounce-cue 2.4s ease-in-out infinite; }
+
 /* Slow spin for decorative rings */
 @keyframes spin-slow {
   to { transform: rotate(360deg); }

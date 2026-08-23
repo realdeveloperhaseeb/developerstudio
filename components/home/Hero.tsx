@@ -1,26 +1,123 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { AnimatePresence, motion } from "framer-motion";
 import { site } from "@/data/site";
 import { Icon } from "@/components/icons";
 import Container from "@/components/Container";
 import Mark from "@/components/Mark";
+import AnimatedNumber from "@/components/AnimatedNumber";
+
+/*
+  Home hero. Client component so we can:
+    · rotate a highlight word in the H1 (business → law firm → …)
+    · run a cursor-following spotlight overlay
+    · trigger the count-up numbers when hero is in view
+*/
 
 const delay = (s: number) => ({ ["--load-delay"]: `${s}s` }) as React.CSSProperties;
+
+// Words that swap in the H1. Same character-width envelope-ish so the
+// layout doesn't jump.
+const ROTATE_WORDS = ["business", "law firm", "roofing company", "UAE brand"];
+
+/* ---------------- Cursor spotlight ---------------- */
+
+function CursorSpotlight() {
+  const overlayRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const overlay = overlayRef.current;
+    if (!overlay) return;
+    const section = overlay.parentElement;
+    if (!section) return;
+
+    // Only enable on true pointer devices (skip touch → no cursor to follow).
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+
+    let raf = 0;
+    const onMove = (e: MouseEvent) => {
+      const rect = section.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        overlay.style.background = `radial-gradient(520px circle at ${x}px ${y}px, rgba(16,185,129,0.14), transparent 55%)`;
+        overlay.style.opacity = "1";
+      });
+    };
+    const onLeave = () => {
+      overlay.style.opacity = "0";
+    };
+    section.addEventListener("mousemove", onMove);
+    section.addEventListener("mouseleave", onLeave);
+    return () => {
+      section.removeEventListener("mousemove", onMove);
+      section.removeEventListener("mouseleave", onLeave);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  return (
+    <div
+      ref={overlayRef}
+      aria-hidden
+      className="pointer-events-none absolute inset-0 hidden opacity-0 transition-opacity duration-300 md:block"
+      style={{ zIndex: 1 }}
+    />
+  );
+}
+
+/* ---------------- Rotating word ---------------- */
+
+function RotatingWord() {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setI((v) => (v + 1) % ROTATE_WORDS.length), 2400);
+    return () => clearInterval(id);
+  }, []);
+  return (
+    <span
+      className="relative inline-flex align-baseline"
+      style={{ minWidth: "6ch" }}
+    >
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={i}
+          initial={{ opacity: 0, y: 18, filter: "blur(4px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          exit={{ opacity: 0, y: -18, filter: "blur(4px)" }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          className="inline-block"
+        >
+          <Mark variant="underline">{ROTATE_WORDS[i]}</Mark>
+        </motion.span>
+      </AnimatePresence>
+    </span>
+  );
+}
+
+/* ---------------- Hero ---------------- */
 
 export default function Hero() {
   return (
     <section className="relative overflow-hidden bg-white pt-10 pb-14 sm:pt-12 lg:pt-16">
-      {/* Background decor */}
+      {/* Cursor spotlight overlay (desktop only) */}
+      <CursorSpotlight />
+
+      {/* Background decor — grid + two drifting ambient blobs */}
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-grid [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
-        <div className="absolute -top-32 -right-24 h-96 w-96 rounded-full bg-brand/15 blur-3xl" />
-        <div className="absolute top-40 -left-24 h-80 w-80 rounded-full bg-brand-light/15 blur-3xl" />
+        <div className="animate-drift-a absolute -top-32 -right-24 h-96 w-96 rounded-full bg-brand/15 blur-3xl" />
+        <div className="animate-drift-b absolute top-40 -left-24 h-80 w-80 rounded-full bg-brand-light/15 blur-3xl" />
       </div>
 
       <Container>
         <div className="grid items-center gap-12 lg:grid-cols-2">
           {/* Copy */}
-          <div>
+          <div className="relative">
             <div className="animate-load" style={delay(0)}>
               <span className="inline-flex items-center gap-2 rounded-full border border-brand/30 bg-brand-50 py-1 pl-1 pr-4 text-xs font-semibold text-brand-darker sm:text-sm">
                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-brand text-white">
@@ -30,12 +127,18 @@ export default function Hero() {
               </span>
             </div>
 
+            {/*
+              H1: "We grow your [rotating word] from zero to industry
+              leader." The rotating span cycles through business / law
+              firm / roofing company / UAE brand, each getting a
+              hand-drawn brand underline via the Mark component.
+            */}
             <h1
               className="animate-load mt-6 text-4xl font-extrabold leading-[1.05] text-ink sm:text-5xl lg:text-6xl"
               style={delay(0.1)}
             >
-              We grow your business{" "}
-              <Mark variant="underline">from zero</Mark> to industry leader.
+              We grow your <RotatingWord />
+              <br className="hidden sm:block" /> from zero to industry leader.
             </h1>
 
             <p
@@ -79,7 +182,9 @@ export default function Hero() {
                 { value: "98%", label: "Client retention" },
               ].map((s) => (
                 <div key={s.label}>
-                  <div className="tabular text-2xl font-bold text-ink">{s.value}</div>
+                  <div className="tabular text-2xl font-bold text-ink">
+                    <AnimatedNumber value={s.value} />
+                  </div>
                   <div className="text-sm text-ink-muted">{s.label}</div>
                 </div>
               ))}
@@ -132,12 +237,28 @@ export default function Hero() {
                     <Icon name="bolt" className="h-5 w-5" />
                   </span>
                   <div>
-                    <div className="tabular text-sm font-bold text-ink">+212% leads</div>
+                    <div className="tabular text-sm font-bold text-ink">
+                      <AnimatedNumber value="+212%" />&nbsp;leads
+                    </div>
                     <div className="text-xs text-ink-muted">in 6 months</div>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/*
+          Scroll cue — tiny "SCROLL" label + a vertical line that fades
+          from brand-green to transparent, gently bouncing to signal
+          there's more below the fold.
+        */}
+        <div className="pointer-events-none mt-14 hidden justify-center lg:flex">
+          <div className="animate-bounce-cue flex flex-col items-center gap-2 text-ink-muted">
+            <span className="text-[10px] font-bold uppercase tracking-[0.32em]">
+              Scroll
+            </span>
+            <div className="h-10 w-[2px] rounded-full bg-gradient-to-b from-brand to-transparent" />
           </div>
         </div>
       </Container>

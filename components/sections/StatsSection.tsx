@@ -1,6 +1,7 @@
 import { stats } from "@/data/content";
 import Container from "@/components/Container";
 import Reveal from "@/components/Reveal";
+import AnimatedNumber from "@/components/AnimatedNumber";
 
 /*
   Editorial stat block. The value carries all the weight. Huge, white,
@@ -41,7 +42,7 @@ export default function StatsSection() {
                 }
               >
                 <div className="tabular text-5xl font-black leading-none text-white sm:text-6xl lg:text-[64px]">
-                  {s.value}
+                  <AnimatedNumber value={s.value} duration={1800} />
                 </div>
                 <div className="mt-3 text-sm font-medium text-white/60">
                   {s.label}

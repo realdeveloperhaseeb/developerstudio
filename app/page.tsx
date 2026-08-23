@@ -9,6 +9,7 @@ import ProcessSection from "@/components/sections/ProcessSection";
 import StatsSection from "@/components/sections/StatsSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import LiveDemosSection from "@/components/sections/LiveDemosSection";
+import ClientLogoWall from "@/components/sections/ClientLogoWall";
 import TeamSection from "@/components/sections/TeamSection";
 import TestimonialsCarousel from "@/components/sections/TestimonialsCarousel";
 import FaqSection from "@/components/sections/FaqSection";
@@ -23,6 +24,8 @@ export default function Home() {
       {/* Services as a tabbed detail panel. 6 services, one per tab */}
       <ServicesTabs />
       <IndustriesSection />
+      {/* Big trust-signal wall — brand marks + credibility strip */}
+      <ClientLogoWall />
       <AuthoritySection />
       <StatsSection />
       <ProcessSection />
