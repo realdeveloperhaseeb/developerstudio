@@ -28,7 +28,7 @@ export const services: Service[] = [
     ],
     deliverables: ["Design system", "Responsive build", "CMS handover", "Speed & SEO setup"],
     outcome: "Sites that load in under 1s and convert 2–3× better",
-    image: "/images/projects/petroff-law-firm-website-design.png",
+    image: "/images/projects/village-dog-brand-website-design.png",
   },
   {
     slug: "app-development",

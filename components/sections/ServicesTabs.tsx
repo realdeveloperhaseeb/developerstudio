@@ -61,8 +61,11 @@ export default function ServicesTabs() {
           </div>
         </div>
 
-        {/* Detail panel. Split screen */}
-        <div className="mt-10 overflow-hidden rounded-3xl border border-line bg-white shadow-card">
+        {/*
+          Detail panel. Split screen with a fixed min height on desktop so
+          switching between tabs doesn't cause the whole card to jump.
+        */}
+        <div className="mt-10 overflow-hidden rounded-3xl border border-line bg-white shadow-card lg:min-h-[520px]">
           <AnimatePresence mode="wait">
             <motion.div
               key={s.slug}
@@ -70,7 +73,7 @@ export default function ServicesTabs() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-              className="grid gap-0 lg:grid-cols-[1.05fr_1fr]"
+              className="grid h-full gap-0 lg:grid-cols-[1.05fr_1fr]"
             >
               {/* Copy side */}
               <div className="flex flex-col p-8 sm:p-10 lg:p-12">
@@ -145,14 +148,21 @@ export default function ServicesTabs() {
                         {s.slug}
                       </span>
                     </div>
-                    <Image
-                      src={s.image}
-                      alt={`${s.title}. Developer Studio`}
-                      width={1280}
-                      height={800}
-                      sizes="(min-width: 1024px) 50vw, 100vw"
-                      className="h-auto w-full"
-                    />
+                    {/*
+                      Fixed 16:10 crop so every service tab uses the same
+                      visual footprint regardless of source aspect ratio.
+                      Portrait / tall source images crop from the bottom
+                      (object-top) instead of pushing the card taller.
+                    */}
+                    <div className="relative aspect-[16/10] w-full overflow-hidden bg-zinc-100">
+                      <Image
+                        src={s.image}
+                        alt={`${s.title}. Developer Studio`}
+                        fill
+                        sizes="(min-width: 1024px) 50vw, 100vw"
+                        className="object-cover object-top"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
