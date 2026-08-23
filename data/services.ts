@@ -66,7 +66,7 @@ export const services: Service[] = [
     ],
     deliverables: ["SEO audit", "Keyword map", "Monthly content", "Rank & lead reports"],
     outcome: "Page-one rankings for the searches that pay",
-    image: "/images/uk-law-firm-strategy-meeting.webp",
+    image: "/images/projects/seo-results.png",
   },
   {
     slug: "social-media-marketing",
