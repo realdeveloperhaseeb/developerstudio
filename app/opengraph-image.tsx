@@ -137,10 +137,10 @@ export default async function OGImage() {
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <span
               style={{
-                display: "inline-block",
+                display: "flex",
                 width: 10,
                 height: 10,
-                borderRadius: "9999px",
+                borderRadius: 9999,
                 background: "#10b981",
               }}
             />
